@@ -1,0 +1,14 @@
+.DS_Store
+Thumbs.db
+*.swp
+node_modules/
+.vercel/
+.netlify/
+
+# Working files that should not ship with the site
+*.orig
+*.psd
+*.CR2
+*.NEF
+raw/
+exports/
