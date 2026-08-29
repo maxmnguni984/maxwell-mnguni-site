@@ -27,10 +27,18 @@ overwritten — it is left alone and the new one is written beside it as
 | `claude/CLAUDE.md` | `~/.claude/CLAUDE.md` | Preferences applied to every project: ship-first posture, stack defaults, deploy rules, how to talk to you. A project's own `CLAUDE.md` overrides it. |
 | `claude/settings.json` | `~/.claude/settings.json` | Pre-approves the safe commands that otherwise prompt every session (builds, tests, git reads). Denies force-push, `sudo`, `curl \| sh`, and reading `.env` files or SSH keys. |
 | `claude/statusline.sh` | `~/.claude/statusline.sh` | Status line showing directory, git branch with a `*` when dirty, and the model. |
-| `claude/skills/ship/` | `~/.claude/skills/ship/` | Getting an app to a live URL: pre-flight checks, host-specific gotchas, what to verify after, how to read a broken build. |
 | `claude/skills/scaffold/` | `~/.claude/skills/scaffold/` | Starting a new project without inheriting forty dependencies. |
+| `claude/skills/ship/` | `~/.claude/skills/ship/` | Getting an app to a live URL: pre-flight checks, host gotchas, what to verify after, how to read a broken build. |
+| `claude/skills/debug/` | `~/.claude/skills/debug/` | Finding the actual cause instead of guessing at fixes, and the shapes common bugs take. |
+| `claude/skills/supabase/` | `~/.claude/skills/supabase/` | Postgres, auth, storage: which key goes where, row level security, migrations that survive real data. |
+| `claude/skills/stripe/` | `~/.claude/skills/stripe/` | Taking payments without double-charging anyone: server-side pricing, webhook verification, idempotent fulfilment. |
 
-Both skills are global, so they work in every project, not just this one.
+The skills are global, so they load in every project. They cover a project's
+whole life: start it, build it, fix it, take money in it, put it live.
+
+Nothing here is specific to the website in the rest of this repo. That site's
+own tooling lives in `.claude/skills/` at the repo root and only loads when
+working in this repo — it never appears in your other projects.
 
 ## Editing
 
