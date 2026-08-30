@@ -40,6 +40,18 @@ Nothing here is specific to the website in the rest of this repo. That site's
 own tooling lives in `.claude/skills/` at the repo root and only loads when
 working in this repo — it never appears in your other projects.
 
+## Extras
+
+`export-notes.sh` dumps every note from the Apple Notes app into plain-text
+files (default `~/notes-export/`). It must run on the Mac itself — Notes is
+not reachable from anywhere else. It does not touch `~/.claude` and is not
+part of `install.sh`. The exported notes are private: commit them to a
+private repo if you want them versioned, never to this public one.
+
+```bash
+bash setup/export-notes.sh
+```
+
 ## Editing
 
 Change the files here, commit, and re-run `install.sh`. Do not edit
