@@ -1,0 +1,40 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Product registry record (one line of products.jsonl)",
+  "type": "object",
+  "required": ["product_id", "name", "dedupe_key", "niche", "status", "first_seen_run", "gates", "score", "confidence", "reject_reason", "owners"],
+  "properties": {
+    "product_id": {"type": "string", "pattern": "^P-[0-9]{4}-[0-9]{2}-[0-9]{2}-[0-9]{3}$"},
+    "name": {"type": "string", "minLength": 3},
+    "dedupe_key": {"type": "string", "minLength": 3, "description": "lowercase, alphanumeric and hyphens: normalised product name plus core function"},
+    "niche": {"type": "string"},
+    "status": {"type": "string", "enum": ["candidate", "researching", "held", "rejected", "finalist"]},
+    "first_seen_run": {"type": "string"},
+    "gates": {
+      "type": "object",
+      "required": ["G1", "G2", "G3", "G4", "G5", "G6", "G7", "G8"],
+      "properties": {
+        "G1": {"type": "string", "enum": ["pass", "fail", "unknown"]},
+        "G2": {"type": "string", "enum": ["pass", "fail", "unknown"]},
+        "G3": {"type": "string", "enum": ["pass", "fail", "unknown"]},
+        "G4": {"type": "string", "enum": ["pass", "fail", "unknown"]},
+        "G5": {"type": "string", "enum": ["pass", "fail", "unknown"]},
+        "G6": {"type": "string", "enum": ["pass", "fail", "unknown"]},
+        "G7": {"type": "string", "enum": ["pass", "fail", "unknown"]},
+        "G8": {"type": "string", "enum": ["pass", "fail", "unknown"]}
+      }
+    },
+    "score": {"type": "integer"},
+    "confidence": {"type": "string", "enum": ["low", "med", "high", "n/a"]},
+    "reject_reason": {"type": ["string", "null"]},
+    "owners": {
+      "type": "object",
+      "required": ["competition", "suppliers", "economics"],
+      "properties": {
+        "competition": {"type": "string", "enum": ["pending", "running", "done", "partial", "blocked", "skipped"]},
+        "suppliers": {"type": "string", "enum": ["pending", "running", "done", "partial", "blocked", "skipped"]},
+        "economics": {"type": "string", "enum": ["pending", "running", "done", "partial", "blocked", "skipped"]}
+      }
+    }
+  }
+}
