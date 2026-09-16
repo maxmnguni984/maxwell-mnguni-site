@@ -1,0 +1,42 @@
+# Research brief. The Lead copies this into runs/<run-id>/brief.md at the start of every run.
+# Everything here is an ASSUMPTION agreed with the store owner on 2026-09-16. Change it here, not in agent files.
+version: 1
+market:
+  country: US
+  customer: general consumer
+  currency: USD
+niches_in_scope:
+  - home-kitchen-problem-solvers
+  - fitness-recovery-accessories   # non-ingestible gear only
+  - pet
+  - car-accessories
+excluded_categories:              # Gate G0. Any match = REJECT.
+  - supplements or anything ingestible
+  - products that need medical, health or therapeutic claims to sell
+  - cosmetics or anything applied to skin
+  - electronics with lithium batteries or mains plugs
+  - weapons, knives, self-defence items
+  - branded, licensed, character or look-alike goods
+  - adult products
+  - children's toys or products covered by CPSC children's rules
+  - anything on the Shopify Payments prohibited list or restricted by TikTok/Meta commerce policy
+store:
+  platform: shopify-basic          # assumed, not yet created
+  payment_processor: shopify-payments
+price_band_usd: {min: 25, max: 60}
+delivery_cap_days_us: 12           # pessimistic end of a supplier's stated range must be <= this
+tracking_required: true
+budgets_usd:
+  startup_total_max: 500
+  research_tools_monthly_max: 0    # free tiers only
+  validation_test_per_product_max: 100
+  sample_per_product_max: 40
+marketing:
+  primary: organic                 # TikTok, Instagram Reels, YouTube Shorts
+  paid_ads: only after an organic signal, and only with explicit approval
+existing_tools_and_accounts: []    # none as of 2026-09-16
+run_limits:
+  discovery_max_candidates: 15
+  research_max_products_per_run: 8
+  fetch_cap_per_agent: {discovery: 40, competitor: 30, supplier: 30, economics: 15}
+  minutes_cap_per_agent: {discovery: 25, competitor: 20, supplier: 20, economics: 15}

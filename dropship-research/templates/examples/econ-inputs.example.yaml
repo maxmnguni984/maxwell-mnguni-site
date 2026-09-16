@@ -1,0 +1,11 @@
+# Worked example used to verify scripts/econ.py by hand. Numbers are illustrative only,
+# not research findings. Copy this shape into data/products/<id>/econ-inputs.yaml.
+product_id: P-EXAMPLE
+scenarios:
+  pessimistic: {price_usd: 29.00, product_cost_usd: 7.80, shipping_cost_usd: 4.50, duty_rate_pct: 10, discount_rate_pct: 15, refund_rate_pct: 8, chargeback_rate_pct: 1.0, packaging_usd: 0.50}
+  base:        {price_usd: 34.00, product_cost_usd: 6.90, shipping_cost_usd: 3.20, duty_rate_pct: 0, discount_rate_pct: 10, refund_rate_pct: 5, chargeback_rate_pct: 0.5, packaging_usd: 0.50}
+  optimistic:  {price_usd: 39.00, product_cost_usd: 6.20, shipping_cost_usd: 2.60, duty_rate_pct: 0, discount_rate_pct: 5, refund_rate_pct: 3, chargeback_rate_pct: 0.3, packaging_usd: 0.50}
+labels:
+  price_usd: "ESTIMATE - median of competitor band"
+  product_cost_usd: "CLAIM - supplier listing"
+  duty_rate_pct: "UNKNOWN - pessimistic placeholder only"

@@ -1,0 +1,14 @@
+# Fee and loss assumptions used by scripts/econ.py. Every number is an ASSUMPTION until the
+# source column is verified at run time by Agent 4 (cite the page in economics.md evidence table).
+version: 1
+payment_fee_pct: 2.9          # ASSUMPTION: Shopify Payments online rate, Basic plan, US. Verify at shopify.com/pricing
+payment_fee_fixed_usd: 0.30   # ASSUMPTION: same source
+discount_rate_pct: 10         # ASSUMPTION: average promo discount across orders (organic launch offers)
+refund_rate_pct: 5            # ASSUMPTION: share of orders refunded; product treated as lost
+chargeback_rate_pct: 0.5      # ASSUMPTION: share of orders charged back
+chargeback_fee_usd: 15        # ASSUMPTION: Shopify Payments chargeback fee, US. Verify at run time
+packaging_usd: 0.50           # ASSUMPTION: insert/poly mailer if supplier does not brand-neutral pack
+duty_rate_pct: 0              # UNKNOWN: US low-value import treatment changed in 2025. Agent 4 must cite
+                              # the current CBP rule for the product's origin/HS code and set this per product.
+shopify_plan_monthly_usd: 39  # noted, excluded from per-order contribution
+validation_test_budget_usd: 100
