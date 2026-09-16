@@ -1,0 +1,2 @@
+# Build outputs are regenerated from kdp/pages/approved, not hand-edited.
+kdp/build/*.pdf
