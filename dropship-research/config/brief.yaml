@@ -1,7 +1,8 @@
 # Research brief. The Lead copies this into runs/<run-id>/brief.md at the start of every run.
 # Confirmed with the store owner 2026-09-17. Change it here, not in agent files.
-version: 2
-changed_2026_09_17: "Marketing switched to paid-ads-first; platform set to Shopify; spend authorization set to zero."
+version: 3
+changed_2026_09_17: "Marketing paid-ads-first; platform Shopify; spend authorization zero."
+changed_2026_09_17_b: "Price band raised to 60-120 USD after the 25-60 band was proved unworkable under paid-ads gates. Sourcing stays China-direct by owner decision, with tariff and delivery risks accepted and documented."
 
 market:
   country: US
@@ -32,7 +33,35 @@ store:
   blocker: "Shopify requires a paid plan. Spend authorization is zero, so the store cannot be created yet."
   interim: "Build a working local storefront plus Shopify-importable product CSV and theme-ready copy."
 
-price_band_usd: {min: 25, max: 60}
+price_band_usd: {min: 60, max: 120}
+price_band_rationale: >
+  The 25-60 band was proved unworkable: at $25 the paid-ads gates fail even at zero cost of
+  goods, and the one candidate researched in depth had a market ceiling of ~$24 against a
+  gate minimum of $45. At 60-120 the gates clear comfortably even with a pessimistic 37.5%
+  duty applied.
+cost_targets_with_duty:          # max EX-FACTORY goods cost, duty 37.5% on goods, freight $6/unit
+  at_60_retail: 12.19
+  at_70_retail: 15.05
+  at_80_retail: 17.92
+  at_90_retail: 20.78
+  at_100_retail: 23.64
+  at_120_retail: 29.37
+  note: "Landed cost lands at ~38-39% of retail across the whole band."
+
+accepted_risks_2026_09_17:
+  - risk: "Tariff exposure on China-direct parcels"
+    status: "ACCEPTED BY OWNER, UNRESOLVED"
+    detail: >
+      A percentage duty is absorbed at this band: at 37.5% on goods, $69-119 retail still
+      yields $32-55 contribution and break-even ROAS under 2.0. A FLAT per-parcel fee is
+      not absorbed and does not scale away: at a $100 flat fee, contribution is -$77.61 at
+      $69 retail and still -$36.39 at $119. Raising the band does NOT mitigate this risk.
+  - risk: "12-day tracked delivery not dependably achievable China-direct"
+    status: "ACCEPTED BY OWNER, UNRESOLVED"
+    detail: >
+      Economy lines exclude supplier prep and mandatory customs entry. Reliable 12-day
+      delivery needs US warehousing, which needs inventory capital. Either the cap is
+      relaxed or the promise will be missed, particularly in Q4.
 delivery_cap_days_us: 12
 tracking_required: true
 delivery_finding_2026_09_17: >
