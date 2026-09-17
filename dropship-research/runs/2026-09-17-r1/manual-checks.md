@@ -12,3 +12,7 @@ Nothing here is a guess. An open item stays open until someone reads the real pa
 | 4 | carpet rake | https://www.rover.com/blog/best-carpet-rake-pet-hair/ | The complaint that it reveals hair but does not collect it. Decision-relevant for return rate | discovery | open |
 | 5 | BRIEF-LEVEL | https://dodropshipping.com/epacket-for-dropshipping/ | Whether ePacket China to US really averages ~22 days in 2026. This decides whether the 12-day delivery cap is achievable at all | discovery | open |
 | 6 | candidates 1 and 2 | patents.justia.com / USPTO | Patent clearance on US 8,267,291 before any spend. Highest-value check on this list | discovery | open |
+| 7 | MODEL-LEVEL | CBP or a customs broker | Is a $100 flat per-parcel postal fee in force as of Sept 2026? Decides whether per-order China-direct dropshipping works at all. HIGHEST PRIORITY | lead | open |
+| 8 | paw cleaner | amazon.com search "dog paw cleaner bundle" | Top ten kit prices. If they cluster under $30 the rejection is confirmed from the demand side | lead | open |
+| 9 | paw cleaner | USPTO, US 11,696,567 | Full text of claim 1: does "cup body made of a soft material" limit it to all-silicone cups? Only needed if the product is revisited | risk | open |
+| 10 | any China-direct product | customs broker | Correct HTS codes and stacked duty. Reported rates of 30%, 37.5% and 54% do not reconcile across sources | supplier | open |

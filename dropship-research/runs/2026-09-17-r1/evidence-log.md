@@ -15,3 +15,13 @@ Confidence: `fact` (page seen directly), `claim` (asserted by an interested part
 | E-DISC-06 | https://dodropshipping.com/epacket-for-dropshipping/ | 2026-09-17 | forum | Claims ePacket China to US averages ~22 days in 2026 | claim | discovery |
 | E-ECON-01 | local computation, scripts/econ.py | 2026-09-17 | manual-input | At $25 retail the paid-ads gates cannot be met even at zero cost of goods | fact | lead |
 | E-ECON-02 | local computation, scripts/econ.py | 2026-09-17 | manual-input | Gates open at about $45 retail; above $49 the binding limit is landed cost at 38% of retail | fact | lead |
+| E-COMP-01 | https://slickdeals.net/f/18388336-dexas-mudbuster-portable-pet-cleaning-kit-with-dog-paw-washer-pet-bathing-brush-microfiber-towel-large-green-24 | 2026-09-17 | marketplace-listing | Dexas sells washer + brush + microfibre towel as one kit at about $24 | fact | competitor |
+| E-COMP-02 | https://www.mudbay.com/dog/supplies/grooming/dexas-popware-for-pets-mudbuster-portable-dog-paw-cleaner-blue-medium/1009616.html | 2026-09-17 | marketplace-listing | MudBuster Medium listed at $18.99 | fact | competitor |
+| E-COMP-03 | https://www.walmart.com/c/kp/dog-paw-washer-cup | 2026-09-17 | marketplace-listing | Manual paw cleaner cups retail $7.50 to $12.99 at Walmart | claim | supplier |
+| E-RISK-01 | https://patents.google.com/patent/USD799126S1/en | 2026-09-17 | policy-page | Design patent D799,126, Pet paw washer, granted 2017-10-03. Ornamental appearance only | claim | risk |
+| E-RISK-02 | https://image-ppubs.uspto.gov/dirsearch-public/print/downloadPdf/11696567 | 2026-09-17 | policy-page | US 11,696,567: soft cup body with inward soft spikes. Reads onto all-silicone cups | claim | risk |
+| E-RISK-03 | https://rulings.cbp.gov/ruling/n325125 | 2026-09-17 | policy-page | CBP ruling: pet hair remover brush from China, HTS 9603.90.8050, MFN 2.8% base rate | fact | supplier |
+| E-SUPP-01 | https://www.exfreight.com/de-minimis-rule-china-800-threshold-eliminated/ | 2026-09-17 | policy-page | US $800 de minimis eliminated; all imports from China now dutiable | claim | supplier |
+| E-SUPP-02 | https://time.com/7285316/us-china-trump-tariff-rates-de-minimis-low-value-imports/ | 2026-09-17 | policy-page | Sub-$800 China shipments face 54% tariff or a $100 flat fee | claim | supplier |
+| E-SUPP-03 | https://eightx.co/blog/average-ecommerce-3pl-pick-pack-cost-by-order-size-2026 | 2026-09-17 | policy-page | US 3PL pick and pack $2.75 first item, $0.50 each additional, 2026 | claim | supplier |
+| E-ECON-03 | local computation, scripts/econ.py | 2026-09-17 | manual-input | $49 kit passes only at all-in delivered cost <= $18; at $29 contribution is negative | fact | lead |

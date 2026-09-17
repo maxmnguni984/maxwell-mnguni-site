@@ -35,6 +35,11 @@ store:
 price_band_usd: {min: 25, max: 60}
 delivery_cap_days_us: 12
 tracking_required: true
+delivery_finding_2026_09_17: >
+  UNRESOLVED. 12 days tracked is not dependably achievable China-direct. Economy lines
+  (YunExpress 7-12d, CJPacket 9-22d door-to-door) exclude supplier prep and the new
+  mandatory customs entry. Meeting 12 days reliably requires US warehousing, which means
+  buying inventory. Sources are logistics-vendor estimates, not measured data.
 
 budgets_usd:
   spend_authorization: 0          # ZERO. Owner approves every spend individually.
@@ -51,6 +56,23 @@ run_limits:
   research_max_products_per_run: 8
   fetch_cap_per_agent: {discovery: 40, competitor: 30, supplier: 30, economics: 15}
   minutes_cap_per_agent: {discovery: 25, competitor: 20, supplier: 20, economics: 15}
+
+market_conditions_2026:
+  de_minimis_repealed: true
+  detail: >
+    The US $800 de minimis exemption was withdrawn for China/HK in May 2025, suspended
+    worldwide in Aug 2025, and permanently repealed effective July 2027. In 2026 essentially
+    every parcel from every country is dutiable regardless of value. Reported rates do not
+    reconcile across sources: ~30% via commercial carriers, ~37.5% effective for China,
+    and for postal parcels 54% or a $100 FLAT FEE.
+  unresolved_and_critical: >
+    Whether a $100 flat per-parcel postal fee currently applies. If it does, per-order
+    China-direct dropshipping is not marginal for a $49 product, it is dead by ~5x.
+    This is a model-level question, not a product-level one. HIGHEST PRIORITY CHECK.
+  implication_for_cost_gate: >
+    The 38%-of-retail landed cost rule was derived for goods plus inbound freight only.
+    It excludes US pick/pack and outbound postage (~$8-12/order on a warehoused model)
+    and predates the tariff change. Re-derive before reusing it.
 
 environment_constraints:
   blocked_domains: [amazon.com, aliexpress.com, etsy.com, walmart.com, temu.com, alibaba.com, cjdropshipping.com, reddit.com, trends.google.com, shopify.com, google.com, duckduckgo.com]
