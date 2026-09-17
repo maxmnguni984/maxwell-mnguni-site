@@ -27,6 +27,13 @@ F4 DEMO VALUE       At or above the demo floor. Paid ads from day one mean a
                     wrong bet.
 F5 EXCLUDED CATEGORY  From the brief's exclusion list.
 F6 DUPLICATE        Already covered in a previous round.
+F7 PRICE EVIDENCE   The price must be FACT-grade: read from a named listing
+                    with a URL and a date. Everything downstream, the landed
+                    cost ceiling and the break-even CPA, is computed from
+                    price. Ranking an assumption-grade price as though it were
+                    measured is how a store gets built on a number nobody
+                    checked. Round two surfaced exactly this: a candidate whose
+                    price basis said ASSUMPTION outscored every rival.
 
 A candidate failing any filter is rejected with that filter named. Survivors
 are then scored, and the score never overrides a filter.
@@ -74,6 +81,16 @@ def price_mid(c):
     if lo is not None and hi is not None:
         return (lo + hi) / 2.0
     return lo if lo is not None else None
+
+
+def price_is_assumption(c):
+    """True when the candidate's own price basis admits it is not measured."""
+    p = c.get("observed_price_range") or {}
+    for field in (p.get("basis"), p.get("grade"), c.get("price_basis"),
+                  c.get("price_evidence_grade")):
+        if isinstance(field, str) and "assumption" in field.lower():
+            return True
+    return bool(c.get("flags") and "PRICE_IS_ASSUMPTION" in c["flags"])
 
 
 def demo_value(c):
@@ -169,6 +186,11 @@ def screen(candidates, cfg=None, excluded_keys=None):
 
         if c.get("excluded_category"):
             fails.append(("F5", str(c["excluded_category"])))
+
+        if mid is not None and price_is_assumption(c):
+            fails.append(("F7", "price is assumption-grade, not read from a named "
+                          "listing; the landed-cost ceiling and break-even CPA are "
+                          "both computed from it"))
 
         if fails:
             rejected.append({"name": name, "dedupe_key": key,
@@ -326,6 +348,29 @@ def self_test():
     r = screen([cand(dedupe_key="dup"), cand(dedupe_key="dup")])
     if len(r["passed"]) != 1 or len(r["rejected"]) != 1:
         failures.append("a duplicate within one sweep should be rejected once")
+
+    # F7 assumption-grade price. This is the case that motivated the filter:
+    # such a candidate would otherwise outscore every rival on a number nobody
+    # verified.
+    r = screen([cand(dedupe_key="assumed",
+                     observed_price_range={"low": 28, "high": 80,
+                                           "basis": "ASSUMPTION - aggregated answer, no URL"})])
+    if not r["rejected"] or not any(f["filter"] == "F7" for f in r["rejected"][0]["failed"]):
+        failures.append("an assumption-grade price should fail F7")
+    if r["passed"]:
+        failures.append("an assumption-grade price must not reach the ranking")
+
+    # And the flag form is caught too.
+    r = screen([cand(dedupe_key="flagged", flags=["PRICE_IS_ASSUMPTION"])])
+    if not any(f["filter"] == "F7" for f in r["rejected"][0]["failed"]):
+        failures.append("a PRICE_IS_ASSUMPTION flag should fail F7")
+
+    # A FACT-grade basis still passes, including a wordy one.
+    r = screen([cand(dedupe_key="factual",
+                     observed_price_range={"low": 34, "high": 40,
+                                           "basis": "FACT (single confirmed price point)"})])
+    if not r["passed"]:
+        failures.append("a FACT-grade basis should still pass, got %s" % r["rejected"])
 
     # Missing price is a rejection, not a crash.
     r = screen([cand(dedupe_key="f", observed_price_range={})])

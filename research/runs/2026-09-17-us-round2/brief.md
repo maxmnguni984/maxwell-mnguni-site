@@ -56,3 +56,20 @@ carrying an explicit price term work; Amazon-scoped price queries mostly do not.
 Every claim is graded. Nothing is invented. Demand remains unverifiable, so
 candidates are ranked on price-band fit, shipping physics, demonstration value,
 complaint specificity and risk exposure.
+
+## Filter F7 added mid-round, 2026-09-17
+
+Sweep A returned a non-electric bidet attachment that scored highest of the four
+on 75.0, ahead of every rival. Its own record said the price basis was
+`ASSUMPTION`: the figures came from an aggregated search answer and could not be
+matched to any listing URL.
+
+Everything downstream is computed from price. The landed-cost ceiling is price
+times roughly 0.39, and break-even cost per acquisition falls straight out of
+it. Ranking an unverified price as though it were measured is how a store gets
+built on a number nobody checked.
+
+So `screen.py` now rejects any candidate whose price basis is assumption-grade,
+and the rule is tested rather than remembered. The bidet also carried a
+`PLATFORM_POLICY` flag for advertising restrictions around genital-hygiene
+imagery, which would have been a second problem for a paid-ads-first store.
