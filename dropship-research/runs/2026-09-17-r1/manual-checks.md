@@ -16,3 +16,5 @@ Nothing here is a guess. An open item stays open until someone reads the real pa
 | 8 | paw cleaner | amazon.com search "dog paw cleaner bundle" | Top ten kit prices. If they cluster under $30 the rejection is confirmed from the demand side | lead | open |
 | 9 | paw cleaner | USPTO, US 11,696,567 | Full text of claim 1: does "cup body made of a soft material" limit it to all-silicone cups? Only needed if the product is revisited | risk | open |
 | 10 | any China-direct product | customs broker | Correct HTS codes and stacked duty. Reported rates of 30%, 37.5% and 54% do not reconcile across sources | supplier | open |
+| 11 | bulk model | freight forwarder | One LCL quote China to US West Coast: rate per CBM, minimum charge rule, destination handling and customs clearance fees. Decides which bulky candidates revive | lead | open |
+| 12 | bulk model | customs broker | Does the flat per-parcel postal fee apply at all to a containerised commercial entry? A container is a different customs path from a parcel | lead | open |
