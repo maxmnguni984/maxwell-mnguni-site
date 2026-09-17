@@ -1,0 +1,30 @@
+{
+  "_comment": "Placeholder product so the storefront can be built and tested before selection. Replaced wholesale once the owner picks from the shortlist.",
+  "id": "placeholder",
+  "name": "Placeholder Product",
+  "headline": "This is a structural placeholder, not a product claim",
+  "subheadline": "The storefront is built and testable before a product is chosen, so selection is the only thing standing between here and a real store.",
+  "description": "Every word on this page is a placeholder. Real copy is written after the owner selects a product from the ranked shortlist.",
+  "limitations": "Placeholder. This section exists because stating what a product does not do reduces returns and is the kind of thing most stores omit.",
+  "processing_time": null,
+  "shipping_estimate": null,
+  "returns_window": null,
+  "variants": [
+    {"sku": "PLACEHOLDER-A", "name": "Option A", "price": 39.0},
+    {"sku": "PLACEHOLDER-B", "name": "Option B", "price": 49.0}
+  ],
+  "specs": {
+    "Material": null,
+    "Dimensions": null,
+    "Weight": null,
+    "In the box": null
+  },
+  "benefits": [
+    {"title": "Benefit one", "body": "Placeholder. Real benefits come from verified review evidence, not invention."},
+    {"title": "Benefit two", "body": "Placeholder."},
+    {"title": "Benefit three", "body": "Placeholder."}
+  ],
+  "faqs": [
+    {"q": "Is this a real product page?", "a": "No. It is a structural placeholder used to test the storefront before a product is selected."}
+  ]
+}

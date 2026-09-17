@@ -1,15 +1,19 @@
 # Research brief. The Lead copies this into runs/<run-id>/brief.md at the start of every run.
-# Everything here is an ASSUMPTION agreed with the store owner on 2026-09-16. Change it here, not in agent files.
-version: 1
+# Confirmed with the store owner 2026-09-17. Change it here, not in agent files.
+version: 2
+changed_2026_09_17: "Marketing switched to paid-ads-first; platform set to Shopify; spend authorization set to zero."
+
 market:
   country: US
   customer: general consumer
   currency: USD
+
 niches_in_scope:
   - home-kitchen-problem-solvers
   - fitness-recovery-accessories   # non-ingestible gear only
   - pet
   - car-accessories
+
 excluded_categories:              # Gate G0. Any match = REJECT.
   - supplements or anything ingestible
   - products that need medical, health or therapeutic claims to sell
@@ -19,24 +23,35 @@ excluded_categories:              # Gate G0. Any match = REJECT.
   - branded, licensed, character or look-alike goods
   - adult products
   - children's toys or products covered by CPSC children's rules
-  - anything on the Shopify Payments prohibited list or restricted by TikTok/Meta commerce policy
+  - anything on the Shopify Payments prohibited list or restricted by Meta/TikTok ad policy
+
 store:
-  platform: shopify-basic          # assumed, not yet created
+  platform: shopify               # CONFIRMED by owner. Not yet provisioned; no plan purchased.
   payment_processor: shopify-payments
+  status: not_provisioned
+  blocker: "Shopify requires a paid plan. Spend authorization is zero, so the store cannot be created yet."
+  interim: "Build a working local storefront plus Shopify-importable product CSV and theme-ready copy."
+
 price_band_usd: {min: 25, max: 60}
-delivery_cap_days_us: 12           # pessimistic end of a supplier's stated range must be <= this
+delivery_cap_days_us: 12
 tracking_required: true
+
 budgets_usd:
-  startup_total_max: 500
-  research_tools_monthly_max: 0    # free tiers only
-  validation_test_per_product_max: 100
-  sample_per_product_max: 40
+  spend_authorization: 0          # ZERO. Owner approves every spend individually.
+  note: "No purchases, no subscriptions, no domains, no AI image credits, no ad spend without explicit per-item approval."
+
 marketing:
-  primary: organic                 # TikTok, Instagram Reels, YouTube Shorts
-  paid_ads: only after an organic signal, and only with explicit approval
-existing_tools_and_accounts: []    # none as of 2026-09-16
+  primary: paid-ads               # CONFIRMED: paid ads from day one
+  channels: [meta, tiktok]
+  organic: supporting only
+  implication: "Cold paid traffic must be paid for out of contribution margin, so the economics gate is materially stricter than an organic-first store."
+
 run_limits:
   discovery_max_candidates: 15
   research_max_products_per_run: 8
   fetch_cap_per_agent: {discovery: 40, competitor: 30, supplier: 30, economics: 15}
   minutes_cap_per_agent: {discovery: 25, competitor: 20, supplier: 20, economics: 15}
+
+environment_constraints:
+  blocked_domains: [amazon.com, aliexpress.com, etsy.com, walmart.com, temu.com, alibaba.com, cjdropshipping.com, reddit.com, trends.google.com, shopify.com, google.com, duckduckgo.com]
+  note: "Verified 2026-09-17 by direct request. Only the Anthropic-side WebSearch tool reaches the open web. Live prices, listings and reviews cannot be opened directly and must be recorded as manual checks."

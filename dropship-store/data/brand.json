@@ -1,0 +1,17 @@
+{
+  "_comment": "Placeholder until the owner selects a product. null means NOT YET SUPPLIED and renders as a visible [MISSING] marker. Never replace a null with a plausible guess.",
+  "name": "Placeholder Store",
+  "legal_name": null,
+  "business_address": null,
+  "returns_address": null,
+  "support_email": null,
+  "support_response_time": "one business day",
+  "trust_line": null,
+  "return_postage_policy": null,
+  "analytics_disclosure": null,
+  "policy_updated": null,
+  "payments": {
+    "provider": null,
+    "_comment": "Set to 'Shopify Payments' only once a real account exists. While null, the checkout button stays disabled and says so."
+  }
+}

@@ -1,32 +1,45 @@
 # Scoring rubric. Gates first; any FAIL = REJECT and no score is computed. UNKNOWN on a gate = HOLD.
-version: 1
+version: 2
+changed_2026_09_17: "G4 tightened for paid-ads-first. Added explicit break-even ROAS gate."
+
 gates:
   G0_category:   "Not in config/brief.yaml excluded_categories; does not need health/medical claims"
   G1_ip_legal:   "No brand/licensed/look-alike; no obvious patent-holder product; no CPSC recall hit for this product type"
   G2_safety:     "No fatal safety risk; if sample_required, finalist status is conditional on the sample"
   G3_delivery:   ">= 1 supplier with tracked delivery whose pessimistic estimate <= delivery_cap_days_us"
-  G4_economics:  "Base-case contribution >= 12 USD AND >= 35% of price; pessimistic contribution > 0"
+  G4_economics:  "PAID-ADS GATE: base contribution >= 20 USD AND >= 45% of net price AND pessimistic contribution > 0"
   G5_demand:     "Sustained demand: >= 2 independent signals spanning >= 90 days; not a single spike"
-  G6_platform:   "Not restricted by Shopify Payments, TikTok Shop/Ads or Meta commerce policy"
+  G6_platform:   "Not restricted by Shopify Payments, Meta or TikTok ad policy"
+  G7_paid_viable: "Break-even ROAS <= 2.2 in the base case"
+
 economics_floor:
-  base_contribution_usd_min: 12       # ASSUMPTION: ~8 orders recover a 100 USD test
-  base_margin_pct_min: 35
+  base_contribution_usd_min: 20     # raised from 12: cold paid traffic is funded from contribution
+  base_margin_pct_min: 45
   pessimistic_contribution_usd_min: 0
-weights:                              # sum = 100; each criterion scored 0-10 by the Lead
-  demand_strength: 20
-  demo_creative_potential: 20
-  base_economics: 20
+  max_breakeven_roas: 2.2
+  rationale: >
+    Contribution >= 45% of net price is arithmetically the same constraint as break-even ROAS <= 2.22.
+    Both are stated so the gate is legible from either direction. Below roughly 45%, a cold-traffic
+    store has to hit an unusually strong ROAS from day one to avoid losing money on every order.
+
+weights:                            # sum = 100; each criterion scored 0-10 by the Lead
+  demand_strength: 15
+  demo_creative_potential: 25       # raised: paid creative is the single biggest lever on CAC
+  base_economics: 25                # raised: margin headroom decides whether paid can work at all
   differentiation_credibility: 15
-  supplier_confidence: 15
+  supplier_confidence: 10
   competition_intensity_inverse: 10
+
 anchors:
   demand_strength:            {0: "1 weak signal", 5: "2-3 signals, flat", 10: ">= 3 signals rising over 6+ months"}
-  demo_creative_potential:    {0: "needs explanation", 5: "visible before/after", 10: "instant 'oh' moment in < 5 s"}
-  base_economics:             {0: "at floor", 5: "15-20 USD or 40-50%", 10: "> 20 USD and > 50%"}
+  demo_creative_potential:    {0: "needs explanation", 5: "visible before/after", 10: "instant 'oh' moment in < 3 s, scroll-stopping"}
+  base_economics:             {0: "at floor", 5: "25-30 USD or 50-55%", 10: "> 30 USD and > 55%"}
   differentiation_credibility: {0: "commodity, no angle", 5: "one plausible angle", 10: "evidence-backed unmet need"}
   supplier_confidence:        {0: "1 supplier, claims only", 5: "2 suppliers, some corroboration", 10: ">= 2 with corroborated reviews/photos"}
   competition_intensity_inverse: {0: "saturated, price war", 5: "moderate", 10: "few credible stores"}
+
 confidence_multiplier: {high: 1.0, medium: 0.85, low: 0.7}
+
 finalist_threshold:
   adjusted_score_min: 60
   confidence_min: medium
