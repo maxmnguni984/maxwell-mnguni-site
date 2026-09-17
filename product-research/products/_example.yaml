@@ -1,0 +1,33 @@
+# WORKED EXAMPLE, not a real candidate. Numbers are illustrative placeholders
+# used to exercise the calculator. Replace wholesale once the funnel names a product.
+name: "Worked example: 0.4 kg product at $99"
+retail_price_usd: 99.00
+discount_rate_pct: 10.0
+
+exfactory_usd: 16.00
+tooling_total_usd: 0.0
+first_order_units: 500
+packaging_usd: 1.20
+
+inbound_freight_usd: 1.40
+duty_rate_pct: 23.4
+customs_entry_total_usd: 900.0
+inspection_total_usd: 300.0
+
+receiving_usd: 0.50
+storage_usd: 0.60
+pick_pack_usd: 2.75
+outbound_postage_usd: 8.00
+
+payment_fee_pct: 2.9
+payment_fee_fixed_usd: 0.30
+platform_fee_pct: 0.0
+
+return_rate_pct: 8.0
+return_postage_paid_by_us_pct: 50.0
+resellable_after_return_pct: 60.0
+defect_rate_pct: 2.0
+chargeback_rate_pct: 0.4
+chargeback_fee_usd: 15.0
+
+unverified_inputs: "ALL OF THEM. ex-factory, freight and duty are placeholders; no supplier has quoted anything and no HTS code has been classified."

@@ -1,11 +1,11 @@
 ---
-subject: Mid-tier smart ring, sold under the Vyra Health brand
+subject: Mid-tier smart ring, sold under the the store brand
 date: 2026-09-17
 status: complete
 confidence: medium-high on the patent findings, medium elsewhere
 verdict: no-go as a generic white-label; two narrow conditional paths exist
 ---
-# Should Vyra Health sell a mid-tier smart ring?
+# Should the store sell a mid-tier smart ring?
 
 **Short answer: not as a generic white-label.** The unit economics are the best of any product assessed in this project. Everything else about it is wrong.
 
@@ -61,7 +61,7 @@ Oura has pursued essentially every meaningful entrant since March 2024:
 | Nexxbase | Reportedly out of the US market |
 | OMATE | Reported licensed |
 
-No evidence was found of Oura suing or filing Amazon takedowns against generic, no-name sellers. Every documented action targets a named, branded competitor with real market presence. **Treat that as descriptive, not protective.** A Vyra-branded ring at any volume is exactly the kind of findable target this campaign has consistently pursued, and Oura's stated posture is licensing rather than banning, which means the realistic outcome is a demand letter rather than a seizure.
+No evidence was found of Oura suing or filing Amazon takedowns against generic, no-name sellers. Every documented action targets a named, branded competitor with real market presence. **Treat that as descriptive, not protective.** A own-branded ring at any volume is exactly the kind of findable target this campaign has consistently pursued, and Oura's stated posture is licensing rather than banning, which means the realistic outcome is a demand letter rather than a seizure.
 
 Ultrahuman, a funded company, spent eighteen months and a Federal Circuit appeal to re-enter the US, and only succeeded by physically redesigning the product.
 
@@ -114,7 +114,7 @@ The mid-tier is compressing from both ends. Amazfit cut the Helio from $299 to $
 
 ## The two paths that could actually work
 
-**1. Source from an existing Oura licensee.** RingConn, Circular, OMATE and Zepp are all reported as licensed or settled. Get **written confirmation that the licence covers rings sold under the Vyra brand**, because licences are normally drafted to cover the licensee's own branded products and almost certainly do not travel to a third-party white-label by default. Pair it with an IP indemnity backed by a US-enforceable entity or escrow.
+**1. Source from an existing Oura licensee.** RingConn, Circular, OMATE and Zepp are all reported as licensed or settled. Get **written confirmation that the licence covers rings sold under your brand**, because licences are normally drafted to cover the licensee's own branded products and almost certainly do not travel to a third-party white-label by default. Pair it with an IP indemnity backed by a US-enforceable entity or escrow.
 
 **2. Source a unibody ring.** Customs ruling **H354023, dated 6 March 2026**, held that Ultrahuman's redesigned Ring Pro, built around an **integrally formed housing tube**, falls outside the exclusion order, because it does not practise all limitations of the '178 claims, **a point Oura itself conceded**. Customs reserved the right to demand CT scans and manufacturing records to verify the construction, so the manufacturer must supply that evidence. This is a real, documented safe harbour, but it is narrow: it addresses one patent, and Oura holds others.
 
@@ -145,4 +145,4 @@ Samsung challenged the '178 patent at the Patent Trial and Appeal Board in **PGR
 
 The margin on a $150 to $300 white-label ring does not cover the cost of a single patent demand letter, and you would be buying a business whose core asset, the app, belongs to someone else.
 
-If the Vyra Health brand is the thing worth preserving, the lower-risk versions are becoming an authorised dealer for an established ring, which removes the patent exposure entirely at the cost of thinner margins, or selling into the category without selling the ring itself.
+If the the store brand is the thing worth preserving, the lower-risk versions are becoming an authorised dealer for an established ring, which removes the patent exposure entirely at the cost of thinner margins, or selling into the category without selling the ring itself.
