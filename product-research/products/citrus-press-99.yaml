@@ -1,0 +1,35 @@
+name: "Cast-iron citrus press @ $99 (price it needs)"
+# REVIVAL CANDIDATE. Rejected in round one on the 45% gate alone: no patent,
+# no safety issue, no demand problem was found. Re-tested here under the
+# corrected model and the conditional 35% band.
+# Postage uses the fitted published-rate rule: $6.56 + $2.39 per billable kg,
+# fitted to five published points (0.25/1/3/4/6.5 kg), max error $0.28.
+
+retail_price_usd: 99.00
+discount_rate_pct: 10.0
+
+exfactory_usd: 10.50
+tooling_total_usd: 0.0
+first_order_units: 500
+moq_units: 500
+packaging_usd: 1.50
+
+inbound_freight_usd: 0.80
+duty_rate_pct: 23.4
+customs_entry_total_usd: 900.0
+inspection_total_usd: 300.0
+
+packed_weight_kg: 4.0
+packed_length_cm: 26
+packed_width_cm: 16
+packed_height_cm: 38
+postage_base_usd: 6.56
+postage_per_kg_usd: 2.39
+
+return_rate_pct: 6.0
+resellable_after_return_pct: 65.0
+defect_rate_pct: 2.0
+
+evidence_quality: "LOW. Ex-factory is an ESTIMATE from material mass, never quoted. Duty rate is a derived stack, not a customs ruling. Retail is anchored on one observed comparable at $72.19."
+unverified_inputs: "ex-factory $10.50; duty 23.4%; sea freight $0.80; postage rule; return rate; MOQ. Nothing has been quoted by anyone."
+must_verify: "Whether Section 232 steel duty at 50% applies to cast iron - this single question decides the product; An 8-digit HTS classification from a licensed customs broker; One factory quote at 500 units FOB, since $10.50 is an estimate from material mass; A negotiated 3PL rate card, because published postage at 4 kg is the second largest cost line; Whether a cold-traffic buyer pays $99 against an observed $72.19 incumbent - a 37% premium to an unknown brand"

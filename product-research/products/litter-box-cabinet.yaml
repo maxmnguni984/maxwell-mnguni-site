@@ -1,0 +1,32 @@
+name: "Litter box furniture cabinet @ $149"
+# REVIVAL CANDIDATE. Rejected in round one on margin alone. 0.090 CBM per unit.
+retail_price_usd: 149.00
+discount_rate_pct: 10.0
+
+exfactory_usd: 19.00
+tooling_total_usd: 0.0
+first_order_units: 300
+moq_units: 300
+packaging_usd: 3.00
+
+inbound_freight_usd: 15.30
+duty_rate_pct: 23.4
+customs_entry_total_usd: 900.0
+inspection_total_usd: 300.0
+
+packed_weight_kg: 16.0
+packed_length_cm: 60
+packed_width_cm: 50
+packed_height_cm: 30
+postage_base_usd: 6.56
+postage_per_kg_usd: 2.39
+
+return_rate_pct: 10.0
+resellable_after_return_pct: 45.0
+defect_rate_pct: 3.0
+pick_pack_usd: 4.50
+storage_usd: 1.80
+
+evidence_quality: "LOW. Ex-factory and CBM are ESTIMATES. Sea freight assumes $170/CBM, inside an unverified $140-200 range."
+unverified_inputs: "ex-factory $19.00; 0.090 CBM; $170/CBM sea rate; duty 23.4% (furniture may classify differently); postage at 18 kg billable, extrapolated beyond the fitted range."
+must_verify: "The 18 kg billable-weight postage figure - it is extrapolated past the published points the rule was fitted to and is the single largest cost line; HTS classification for wood or MDF pet furniture, which may not be the 23.4% consumer-goods stack; One LCL quote, since 0.090 CBM at the top of the rate range moves this materially; Damage-in-transit rate for flat-pack furniture, which drives both returns and resellability"
