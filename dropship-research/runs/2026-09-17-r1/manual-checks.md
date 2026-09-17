@@ -18,3 +18,6 @@ Nothing here is a guess. An open item stays open until someone reads the real pa
 | 10 | any China-direct product | customs broker | Correct HTS codes and stacked duty. Reported rates of 30%, 37.5% and 54% do not reconcile across sources | supplier | open |
 | 11 | bulk model | freight forwarder | One LCL quote China to US West Coast: rate per CBM, minimum charge rule, destination handling and customs clearance fees. Decides which bulky candidates revive | lead | open |
 | 12 | bulk model | customs broker | Does the flat per-parcel postal fee apply at all to a containerised commercial entry? A container is a different customs path from a parcel | lead | open |
+| 13 | citrus press | customs broker or USTR HTS lookup | Does cast iron trigger Section 232 steel duty at 50% on metal content? Decides whether the press needs $99 or $119 retail | lead | open |
+| 14 | any candidate | https://www.ustr.gov/issue-areas/enforcement/section-301-investigations/search | Run the 8-digit HTS. List 4A is 7.5%, Lists 1-3 are 25%. A 17-point swing on landed cost | lead | open |
+| 15 | bulk model | three freight forwarders | Written LCL quotes. The $137/CBM figure is one unverified snippet; use the $140-200 all-in range until quoted | lead | open |

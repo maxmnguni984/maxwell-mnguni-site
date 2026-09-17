@@ -30,3 +30,10 @@ Confidence: `fact` (page seen directly), `claim` (asserted by an interested part
 | E-IP-03 | https://espressosetupbuilder.com/news/kingrinder-lawsuit-2024 | 2026-09-17 | forum | Comandante initiated proceedings against Kingrinder April 2024 over burr design; holds US and EU design patents | claim | risk |
 | E-IP-04 | https://trademarks.justia.com/858/43/comandante-85843350.html | 2026-09-17 | policy-page | COMANDANTE Reg. 4465016 registered 2014-01-14, covering hand-operated coffee grinders | fact | risk |
 | E-IP-05 | https://trademarks.justia.com/873/82/nanopresso-87382120.html | 2026-09-17 | policy-page | NANOPRESSO Reg. 5373363 and MINIPRESSO Ser. 87034926, both Wacaco Company Limited | fact | risk |
+| E-BULK-01 | https://www.help.cbp.gov/s/article/Article-1919 | 2026-09-17 | policy-page | Non-postal shipments file a normal ACE entry and pay ordinary duties; flat fee was postal-only | fact | supplier |
+| E-BULK-02 | https://www.honigman.com/alert-3462 | 2026-09-17 | policy-page | Section 301 forced-labour 12.5% on China effective 2026-07-24, replacing the 10% Section 122 surcharge | fact | supplier |
+| E-BULK-03 | https://gingercontrol.com/blog/section-301-tariff-rates-china | 2026-09-17 | policy-page | List 4A is 7.5% and covers kitchenware and household goods | claim | supplier |
+| E-BULK-04 | https://www.sino-shipping.com/country-guides/shipping-from-china-to-usa/ | 2026-09-17 | policy-page | LCL China to USA quoted at $137.22 per CBM, September 2026. Single unverified snippet | claim | supplier |
+| E-BULK-05 | https://idshipthat.app/shipping-rates/usps-ground-advantage/ | 2026-09-17 | policy-page | USPS Ground Advantage 2026 by weight and zone; 8% fuel surcharge to 2027-01-17 atop a 7.8% increase | claim | supplier |
+| E-BULK-06 | https://www.fulfill.com/3pl-pricing | 2026-09-17 | policy-page | 3PL storage $18-25 per pallet monthly, pick and pack $2-3, average monthly minimum about $517 | claim | supplier |
+| E-ECON-04 | local computation, scripts/econ.py | 2026-09-17 | manual-input | Weight-price frontier: max 1 kg at $79, 3 kg at $89, 5 kg at $99, 6.5 kg at $119 | fact | lead |
