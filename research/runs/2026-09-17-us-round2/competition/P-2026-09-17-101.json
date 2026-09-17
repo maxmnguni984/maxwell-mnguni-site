@@ -1,0 +1,71 @@
+{
+  "product_id": "P-2026-09-17-101",
+  "product_ref": "R2-001",
+  "agent": "competitor",
+  "status": "complete",
+  "summary": "Four independently matched competitors carry the packable/foldable daypack at $29.99-$44.95 (median ~$34.99), which fully brackets our candidate's confirmed $33.99-$40.33 range. Read complaints cluster tightly on three failure points -- zippers unzipping or tearing free, straps and seams failing within days to weeks, and thin fabric with no abrasion resistance -- across four different SKUs at Walmart and REI. This gives a quotable, product-type-level failure mode (not just one brand's defect) to differentiate against, consistent with the brief's preference for a specific complaint pattern.",
+  "facts": [
+    {"claim": "Sea to Summit Ultra-Sil Packable Daypack is priced at $44.95 on REI.com.", "evidence_id": "E-004"},
+    {"claim": "baggallini Carryall Packable Backpack is priced at $29.99 (regular $43.00) on Target.com and folds into a 9in x 7.5in front zip pocket.", "evidence_id": "E-005"},
+    {"claim": "A Walmart search-results page shows Derstuewe packable travel backpack starting from $33.99 and WANDF Travel Backpack at $35.98.", "evidence_id": "E-006"},
+    {"claim": "A Walmart reviewer of the WATERFLY packable daypack reported the top zipper unzipped and broke before they even used it.", "evidence_id": "E-001"},
+    {"claim": "Walmart reviewers of the OPACK Extra Large Travel Backpack report the fabric next to the zipper ripped after less than 6 months, a strap broke off within the first month, and on other units the zipper tore completely away from the bag.", "evidence_id": "E-002"},
+    {"claim": "Walmart reviewers of the No Boundaries Backpack Duo report one bag tearing in 3 different areas with the zipper breaking off within 2 weeks, and a second unit coming apart at the seams in the same window.", "evidence_id": "E-003"},
+    {"claim": "REI reviewers of the Sea to Summit Ultra-Sil Packable Daypack describe the fabric as having virtually no abrasion resistance, ripping easily on contact with anything sharp, and call the bag 'a fancy shopping bag with a zipper, shoulder straps and a bit of water resistance.'", "evidence_id": "E-004"}
+  ],
+  "estimates": [
+    {"claim": "Median observed competitor price across the four matched SKUs ($29.99, $33.99, $35.98, $44.95) is approximately $34.99.", "method": "Midpoint of the two middle values in the sorted list of matched name-plus-price competitor observations.", "confidence": "med"}
+  ],
+  "assumptions": [
+    "OPACK Extra Large Travel Backpack and No Boundaries Backpack Duo are treated as close proxies for product-level complaint language because no review page could be matched to the exact Derstuewe or WANDF SKUs within the search budget; both are nylon travel/day backpacks sharing the same buyer and the same zipper/strap/seam failure points as the packable category."
+  ],
+  "unknowns": [
+    {"question": "Exact review counts and star ratings for the Derstuewe and WANDF packable backpacks.", "why_unresolved": "Only a Walmart search-results page with prices was matched for these two SKUs; their individual review pages were not located within the search budget."},
+    {"question": "Naturehike 18L packable backpack exact retail price.", "why_unresolved": "Two target.com-scoped queries returned product listing pages but no price snippet."},
+    {"question": "Whether CPSC has ever recalled a packable/foldable daypack as a product type.", "why_unresolved": "Not searched this round; the task directed search budget toward complaint language and the phone-mount-specific risk checks. Discovery also left this UNKNOWN."}
+  ],
+  "evidence": [
+    {"id": "E-001", "url": "https://www.walmart.com/reviews/product/5609429017", "accessed": "2026-09-17", "quote": "One reviewer reported that the top zipper unzipped and broke before they even used it.", "type": "search", "verification": "OBSERVED"},
+    {"id": "E-002", "url": "https://www.walmart.com/reviews/product/798083809", "accessed": "2026-09-17", "quote": "The area next to the zipper has ripped after less than 6 months; a strap broke off within the first month; the zipper has completely torn away from the bag and is unusable; a zipper broke after 4 months.", "type": "search", "verification": "OBSERVED"},
+    {"id": "E-003", "url": "https://www.walmart.com/reviews/product/749905210", "accessed": "2026-09-17", "quote": "Within 2 weeks, one started to tear in 3 different areas with the zipper completely breaking off, and the other bag began coming apart at seams.", "type": "search", "verification": "OBSERVED"},
+    {"id": "E-004", "url": "https://www.rei.com/product/799600/sea-to-summit-ultra-sil-packable-daypack", "accessed": "2026-09-17", "quote": "Priced at $44.95. Reviewer language: material has virtually no abrasion resistance and would rip easily; 'a fancy shopping bag with a zipper, shoulder straps and a bit of water resistance.'", "type": "search", "verification": "OBSERVED"},
+    {"id": "E-005", "url": "https://www.target.com/p/baggallini-carryall-packable-backpack/-/A-91195310", "accessed": "2026-09-17", "quote": "baggallini Carryall Packable Backpack priced at $29.99, regular $43.00; folds into a 9\"w x 7.5\"h front zipper pocket.", "type": "search", "verification": "OBSERVED"},
+    {"id": "E-006", "url": "https://www.walmart.com/search?q=packable+foldable+travel+backpack+daypack+%2435+OR+%2440+OR+%2445", "accessed": "2026-09-17", "quote": "Derstuewe Large Travel Backpack ... starting from $33.99; WANDF Travel Backpack ... priced at $35.98.", "type": "search", "verification": "OBSERVED"},
+    {"id": "E-007", "url": "https://www.walmart.com/ip/WATERFLY-Unisex-25L-Small-Lightweight-Packable-Backpack-Daypack-Travel-Hiking-for-Men-Women-Blue/15911912278", "accessed": "2026-09-17", "quote": "WATERFLY packable daypacks weigh just 0.6 lbs and fold down to the size of a small wallet.", "type": "search", "verification": "OBSERVED"}
+  ],
+  "flags": ["SOURCE_UNAVAILABLE"],
+  "recommendation": "proceed_with_conditions",
+  "limits_used": {"fetches": 0, "searches": 7, "minutes": 16},
+  "data": {
+    "competitors": [
+      {"name": "Derstuewe Large Travel Backpack", "url": "https://www.walmart.com/search?q=packable+foldable+travel+backpack+daypack+%2435+OR+%2440+OR+%2445", "price": 33.99, "variants": "UNKNOWN", "shipping_promise": "UNKNOWN - not captured in search snippet", "positioning": "Flight-approved women's travel backpack with waterproof laptop compartment and USB charging port", "offer": "UNKNOWN", "catalogue_size": "UNKNOWN - single-product Walmart marketplace listing, brand catalogue breadth not checked", "ads_observed": "UNKNOWN - Meta Ad Library not reachable this run", "ads_note": "UNKNOWN - not checked", "band_position": "inside $30-$60 band", "evidence_id": "E-006"},
+      {"name": "WANDF Travel Backpack", "url": "https://www.walmart.com/search?q=packable+foldable+travel+backpack+daypack+%2435+OR+%2440+OR+%2445", "price": 35.98, "variants": "UNKNOWN", "shipping_promise": "UNKNOWN", "positioning": "UNKNOWN - name and price only, description not captured", "offer": "UNKNOWN", "catalogue_size": "UNKNOWN", "ads_observed": "UNKNOWN", "ads_note": "UNKNOWN - not checked", "band_position": "inside $30-$60 band", "evidence_id": "E-006"},
+      {"name": "baggallini Carryall Packable Backpack", "url": "https://www.target.com/p/baggallini-carryall-packable-backpack/-/A-91195310", "price": 29.99, "variants": 7, "shipping_promise": "Free standard shipping on Target.com orders of $35+; same-day delivery/pickup available", "positioning": "Established travel-luggage brand (baggallini); packs into its own 9in x 7.5in front pocket", "offer": "On sale from $43.00 list to $29.99", "catalogue_size": "Multi-product Target brand shop-in-shop, 7+ colorways of this SKU alone", "ads_observed": "UNKNOWN - Meta Ad Library not reachable this run", "ads_note": "UNKNOWN - not checked", "band_position": "just below the $30 floor at sale price; at $43.00 list it sits inside the band", "evidence_id": "E-005"},
+      {"name": "Sea to Summit Ultra-Sil Packable Daypack", "url": "https://www.rei.com/product/799600/sea-to-summit-ultra-sil-packable-daypack", "price": 44.95, "variants": "UNKNOWN - color/size options not enumerated in snippet", "shipping_promise": "UNKNOWN - REI standard shipping terms not captured", "positioning": "Outdoor-specialist brand at REI, premium ultralight positioning", "offer": "UNKNOWN", "catalogue_size": "Broad - REI carries the full Sea to Summit packable line (daypack, tote, duffel, dry bags)", "ads_observed": "UNKNOWN - Meta Ad Library not reachable this run", "ads_note": "UNKNOWN - not checked", "band_position": "inside $30-$60 band, near the top", "evidence_id": "E-004"}
+    ],
+    "price_band_observed": {"low": 29.99, "high": 44.95, "median": 34.99},
+    "motivations": [
+      "Ultralight packability: the bag stows into its own small pouch or a front zip pocket, taking no suitcase space when not in use",
+      "A spare/second bag for day trips, hikes or souvenir overflow while traveling with one main bag",
+      "Travel-specific reassurance framing (e.g. 'flight approved', laptop sleeve, USB port) that signals fitness for air travel over a generic backpack"
+    ],
+    "complaints": [
+      {"complaint": "Top zipper unzips or breaks, sometimes before first use", "quote": "One reviewer reported that the top zipper unzipped and broke before they even used it.", "evidence_id": "E-001", "frequency": "UNKNOWN"},
+      {"complaint": "Zipper tears away from the bag body after light use", "quote": "The area next to the zipper has ripped after less than 6 months; the zipper has completely torn away from the bag and is unusable.", "evidence_id": "E-002", "frequency": "UNKNOWN"},
+      {"complaint": "Straps break off within weeks of normal use", "quote": "A strap broke off within the first month after school started.", "evidence_id": "E-002", "frequency": "UNKNOWN"},
+      {"complaint": "Seams and multiple stress points fail within days", "quote": "Within 2 weeks, one started to tear in 3 different areas with the zipper completely breaking off, and the other bag began coming apart at seams.", "evidence_id": "E-003", "frequency": "UNKNOWN"},
+      {"complaint": "Ultralight fabric has little abrasion resistance and feels flimsy/see-through", "quote": "material has virtually no abrasion resistance and would rip easily with the slightest bump into anything sharp ... 'a fancy shopping bag with a zipper, shoulder straps and a bit of water resistance.'", "evidence_id": "E-004", "frequency": "UNKNOWN"}
+    ],
+    "differentiation": [
+      {"angle": "Reinforced/double-stitched zipper track with bar-tacked pull tabs, since zipper failure is the single most repeated complaint across four unrelated SKUs", "type": "requires_product_change", "rationale": "Tied directly to E-001 and E-002; the failure mode is mechanical (thread and zipper-tape quality), not something an ad claim alone can fix."},
+      {"angle": "Bar-tacked, load-bearing strap anchors instead of single-stitch attachment points", "type": "requires_product_change", "rationale": "Tied to the strap and seam-tear complaints in E-002 and E-003; requires the supplier to change construction, not just marketing."},
+      {"angle": "Show a real load/stress demo in ad content (stuff the packed pouch to capacity, zip and unzip repeatedly, shake it) to preempt the 'flimsy fabric' skepticism competitors' listings do not address", "type": "testable_in_content", "rationale": "Directly answers the E-004 complaint about fabric feeling like 'a fancy shopping bag'; needs no supplier change, only honest demonstration footage once the product is in hand."}
+    ],
+    "paid_ads_fit": {
+      "five_second_silent_demo": true,
+      "demo_description": "Pulling the packed backpack out of its own pouch and shaking it open to full size is the same demonstration value REI and Target listings imply but do not show in an ad; pairing it with a zipper stress-test addresses the top complaint directly.",
+      "buyer": "US leisure and business travelers who fly with one main bag and want an add-on daypack for day trips, hikes or souvenir overflow",
+      "policy_hazards": "None specific to this product type flagged. Caution: any durability claim in ad copy (e.g. 'unbreakable zipper') should be substantiated, since the observed complaint pattern across competitors is precisely zipper and seam failure -- an unsubstantiated durability claim here carries ordinary consumer-protection/ad-policy risk, not a category-specific one."
+    }
+  }
+}

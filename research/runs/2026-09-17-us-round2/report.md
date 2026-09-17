@@ -67,6 +67,66 @@ Each was found by running the screen on real data, not by inspection.
    weight too, and an admitted-uncertain weight now scores below a confirmed one
    instead of passing silently.
 
+## Competitor research on the top two, and the wall it hit
+
+Both products now have real complaint evidence. It is good evidence, and it
+points somewhere uncomfortable.
+
+### Packable travel daypack
+
+Competitors run $29.99 to $44.95 across Walmart, Target and REI, so our $33.99
+to $40.33 sits comfortably inside the band. Four distinct product-level
+complaint sources yielded well over ten separate complaints:
+
+- The top zipper unzips or breaks before first use.
+- The zipper tears away from the bag body within months.
+- Straps break off within weeks.
+- Seams fail within days, at multiple points.
+- The ultralight fabric has "virtually no abrasion resistance"; one reviewer
+  called it "a fancy shopping bag with a zipper".
+
+Read that list again. These are not one fixable flaw in one bad product. They
+describe a whole category that is structurally flimsy, because ultralight
+packable bags are made cheaply by default. Buy a generic one and you inherit
+every complaint above, then pay for advertising to send people to it.
+
+### Magnetic car phone mount
+
+Competitors run $24.99 to $39.99. Complaints: magnets too weak to hold the phone
+at all, the magnetic top plate separating from the base, vent clips too loose so
+the whole thing falls to the floor, and the clip cracking within a month.
+
+Three specific risks, all real:
+
+- **MagSafe is a live Apple trademark.** It must never appear in our title,
+  store name or advertising. Two competitors put it directly in their listing
+  titles. That is a pattern to avoid, not to copy.
+- **Credit-card demagnetisation** is a genuine and independently raised consumer
+  concern, which means a packaging warning, never an advertising claim.
+- **Distracted-driving optics.** Creative must not show a driver interacting
+  with a phone in a moving vehicle.
+
+No CPSC recall was found for passive magnetic mounts, but that rests on a single
+query and is recorded as inconclusive rather than clean. Pacemaker interference
+was not checked and remains open.
+
+### The finding that matters
+
+For **both** products, two of the three differentiation angles are labelled
+`requires_product_change`: reinforced zipper tracks and bar-tacked strap anchors
+for the bag, a stronger magnet array and a locking vent clip for the mount.
+
+Only one angle per product is testable in content alone.
+
+So the thing that would make either product work is not positioning, not copy,
+and not creative. It is sourcing a unit genuinely better than the category
+default. **And supplier quality is precisely what cannot be verified from this
+environment.**
+
+That is the wall. Round one hit it on landed cost; round two hits it on product
+quality, from a different direction. More desk research will not move it. A
+sample in hand will, and it is the cheapest unblocking step available.
+
 ## What is still unknown
 
 Unchanged from round one and not fixable from this environment: supplier landed
