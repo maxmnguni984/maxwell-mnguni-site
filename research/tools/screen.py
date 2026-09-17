@@ -34,6 +34,14 @@ F7 PRICE EVIDENCE   The price must be FACT-grade: read from a named listing
                     measured is how a store gets built on a number nobody
                     checked. Round two surfaced exactly this: a candidate whose
                     price basis said ASSUMPTION outscored every rival.
+F8 INJURY RECALL    The product TYPE has a recall citing injuries or a repeated
+                    incident pattern. Round one rejected resistance bands on
+                    exactly this (five recalls since 2011 for anchors detaching
+                    and striking users). Round two then surfaced an expandable
+                    garden hose with 222 burst reports and 29 injuries, which
+                    only escaped because its price was out of band. A safety
+                    record is not something a score should be able to outweigh,
+                    so it is a filter and not a scoring input.
 
 A candidate failing any filter is rejected with that filter named. Survivors
 are then scored, and the score never overrides a filter.
@@ -93,6 +101,41 @@ def price_is_assumption(c):
     return bool(c.get("flags") and "PRICE_IS_ASSUMPTION" in c["flags"])
 
 
+INJURY_MARKERS = ("injur", "laceration", "burst", "fatalit", "death",
+                  "hospital", "amputat", "strangulat", "asphyxiat", "choking")
+
+
+def recall_text(c):
+    for key in ("cpsc_recall_history", "recall_history", "safety_history"):
+        v = c.get(key)
+        if isinstance(v, str):
+            return v
+        if isinstance(v, dict):
+            return " ".join(str(x) for x in v.values())
+    return ""
+
+
+def injury_recall(c):
+    """True when the recall record describes harm, not merely a recall search."""
+    t = recall_text(c).lower()
+    if not t or "unknown" in t or "no recall" in t or "none found" in t:
+        return False
+    if "recall" not in t and "incident" not in t:
+        return False
+    return any(m in t for m in INJURY_MARKERS)
+
+
+def price_single_source(c):
+    p = c.get("observed_price_range") or {}
+    if isinstance(c.get("flags"), list) and "PRICE_SINGLE_SOURCE" in c["flags"]:
+        return True
+    basis = str(p.get("basis", "")).lower()
+    if "single confirmed price" in basis or "single source" in basis:
+        return True
+    lo, hi = _num(p.get("low")), _num(p.get("high"))
+    return lo is not None and hi is not None and lo == hi
+
+
 def demo_value(c):
     d = c.get("demonstration_value")
     if isinstance(d, dict):
@@ -103,33 +146,85 @@ def demo_value(c):
     return d if isinstance(d, (int, float)) else None
 
 
+def _parse_weight(text):
+    """Pull a kilogram figure out of free text. Returns None when there isn't one."""
+    import re as _re
+    t = str(text).lower().replace("~", " ").replace("approx", " ")
+    m = _re.search(r"(\d+(?:\.\d+)?)\s*(kg|kilogram|lb|lbs|pound|oz|ounce|g\b|gram)", t)
+    if not m:
+        return None
+    val, unit = float(m.group(1)), m.group(2)
+    if unit.startswith("kg") or unit.startswith("kilo"):
+        return val
+    if unit.startswith("lb") or unit.startswith("pound"):
+        return val * 0.45359237
+    if unit.startswith("oz") or unit.startswith("ounce"):
+        return val * 0.0283495
+    return val / 1000.0          # grams
+
+
 def weight_kg(c):
-    for key in ("estimated_weight_kg", "weight_kg", "estimated_weight"):
+    """Best available weight in kg, or None.
+
+    Agents have used several shapes for this: a bare number, a dict with a
+    numeric value, and a dict whose `estimate` is free text such as
+    "under 1 kg" or "0.6 lb". Round two's candidates all used the last form,
+    which an earlier version of this parser silently ignored, leaving the
+    weight filter inert on every candidate. Hence the breadth here.
+    """
+    for key in ("estimated_weight_kg", "weight_kg", "estimated_weight",
+                "weight_and_pack_form", "weight"):
         v = c.get(key)
         if isinstance(v, (int, float)):
             return float(v)
+        if isinstance(v, str):
+            got = _parse_weight(v)
+            if got is not None:
+                return got
         if isinstance(v, dict):
-            for k in ("kg", "value", "estimate"):
+            for k in ("kg", "value"):
                 if isinstance(v.get(k), (int, float)):
                     return float(v[k])
-        if isinstance(v, str):
-            # tolerate "0.4 kg" / "~400g"
-            s = v.lower().replace("~", "").strip()
-            try:
-                if "kg" in s:
-                    return float(s.split("kg")[0].strip())
-                if "g" in s:
-                    return float(s.split("g")[0].strip()) / 1000.0
-            except ValueError:
-                pass
+            for k in ("estimate", "value", "weight", "method"):
+                if isinstance(v.get(k), str):
+                    got = _parse_weight(v[k])
+                    if got is not None:
+                        return got
     return None
+
+
+UNCERTAIN_MARKERS = ("uncertain", "borderline", "unconfirmed", "not confirmed",
+                     "unknown", "possibly over", "flagged")
+
+
+def weight_uncertain(c):
+    """True when the record itself says the weight is not settled.
+
+    An unconfirmed weight is not the same as a light product. Freight is the
+    input most likely to break the landed-cost ceiling, so an admitted unknown
+    is carried into the score rather than passing silently.
+    """
+    if isinstance(c.get("flags"), list) and "WEIGHT_UNCERTAIN" in c["flags"]:
+        return True
+    v = c.get("weight_and_pack_form")
+    if isinstance(v, dict):
+        blob = " ".join(str(x) for x in v.values()).lower()
+    else:
+        blob = str(v or "").lower()
+    if not blob:
+        return True                     # nothing recorded at all
+    if weight_kg(c) is not None and not any(m in blob for m in UNCERTAIN_MARKERS):
+        return False
+    return any(m in blob for m in UNCERTAIN_MARKERS) or weight_kg(c) is None
 
 
 def packs_flat(c):
     for key in ("packs_flat", "compressible", "folds_flat"):
         if isinstance(c.get(key), bool):
             return c[key]
-    form = str(c.get("packed_form", "") or c.get("form_factor", "")).lower()
+    v = c.get("weight_and_pack_form")
+    nested = " ".join(str(x) for x in v.values()) if isinstance(v, dict) else str(v or "")
+    form = (str(c.get("packed_form", "") or c.get("form_factor", "")) + " " + nested).lower()
     if not form:
         return None
     if any(w in form for w in ("rigid", "does not fold", "non-folding", "bulky")):
@@ -187,6 +282,10 @@ def screen(candidates, cfg=None, excluded_keys=None):
         if c.get("excluded_category"):
             fails.append(("F5", str(c["excluded_category"])))
 
+        if injury_recall(c):
+            fails.append(("F8", "the product type has a recall record citing injury: %s"
+                          % recall_text(c)[:150]))
+
         if mid is not None and price_is_assumption(c):
             fails.append(("F7", "price is assumption-grade, not read from a named "
                           "listing; the landed-cost ceiling and break-even CPA are "
@@ -220,9 +319,11 @@ def score(c, cfg):
     spec = max(0.0, min(1.0, len(complaints) / 3.0))
 
     w = weight_kg(c)
-    ship = 1.0 if w is None else max(0.0, min(1.0, (1.0 - w) / 0.8))
+    ship = 0.5 if w is None else max(0.0, min(1.0, (1.0 - w) / 0.8))
     if packs_flat(c) is False:
         ship *= 0.3
+    if weight_uncertain(c):
+        ship *= 0.6
 
     recall = str(c.get("cpsc_recall_history", "")).lower()
     if "unknown" in recall or not recall:
@@ -241,6 +342,13 @@ def score(c, cfg):
     }
     total = sum(parts[k] * WEIGHTS[k] for k in WEIGHTS)
 
+    # One confirmed listing is real evidence but thin. A candidate should not
+    # top the ranking on a single data point, so the score is discounted and
+    # the reason is carried in the output rather than left implicit.
+    thin = price_single_source(c)
+    if thin:
+        total *= 0.85
+
     return {
         "name": c.get("name"),
         "dedupe_key": c.get("dedupe_key"),
@@ -249,6 +357,8 @@ def score(c, cfg):
         "demo_value": d,
         "weight_kg": w,
         "score": round(total, 1),
+        "price_single_source": thin,
+        "weight_uncertain": weight_uncertain(c),
         "components": {k: round(v, 3) for k, v in parts.items()},
         "candidate": c,
     }
@@ -371,6 +481,69 @@ def self_test():
                                            "basis": "FACT (single confirmed price point)"})])
     if not r["passed"]:
         failures.append("a FACT-grade basis should still pass, got %s" % r["rejected"])
+
+    # Weight parsing must handle every shape agents have actually produced.
+    for shape, want in (
+            ({"estimated_weight_kg": 0.5}, 0.5),
+            ({"weight_and_pack_form": {"estimate": "under 1 kg"}}, 1.0),
+            ({"weight_and_pack_form": {"estimate": "0.6 lb, packs flat"}}, 0.272),
+            ({"weight_and_pack_form": {"estimate": "about 850 g"}}, 0.85),
+            ({"weight_and_pack_form": "12 oz"}, 0.340),
+            ({"weight_and_pack_form": {"estimate": "no figure available"}}, None)):
+        got = weight_kg(shape)
+        if want is None:
+            if got is not None:
+                failures.append("weight %r should not parse, got %s" % (shape, got))
+        elif got is None or abs(got - want) > 0.01:
+            failures.append("weight %r should parse near %.3f, got %s" % (shape, want, got))
+
+    # The round-two field shape must actually reach F2, since it previously did not.
+    r = screen([cand(dedupe_key="heavy", estimated_weight_kg=None,
+                     weight_and_pack_form={"estimate": "3.2 kg", "basis": "FACT"})])
+    if not r["rejected"] or not any(f["filter"] == "F2" for f in r["rejected"][0]["failed"]):
+        failures.append("a 3.2 kg nested weight should fail F2; this shape was silently "
+                        "ignored before and left the filter inert")
+
+    # An admitted-uncertain weight passes but scores below a confirmed one.
+    sure = score(cand(weight_and_pack_form={"estimate": "0.5 kg", "basis": "FACT"}), DEFAULTS)
+    unsure = score(cand(weight_and_pack_form={"estimate": "0.5 kg",
+                                              "basis": "ESTIMATE, UNCERTAIN"}), DEFAULTS)
+    if not unsure["weight_uncertain"]:
+        failures.append("an uncertain basis should be flagged")
+    if unsure["score"] >= sure["score"]:
+        failures.append("an uncertain weight should score below a confirmed one")
+
+    # F8 injury recall. A safety record must not be outweighed by a score.
+    r = screen([cand(dedupe_key="hose",
+                     cpsc_recall_history="2025 CPSC recall, 222 burst reports and 29 injuries")])
+    if not r["rejected"] or not any(f["filter"] == "F8" for f in r["rejected"][0]["failed"]):
+        failures.append("a recall citing injuries should fail F8")
+    if r["passed"]:
+        failures.append("an injury recall must not reach the ranking")
+
+    # A recall with no injury language does not trip F8 on its own.
+    r = screen([cand(dedupe_key="mild",
+                     cpsc_recall_history="2019 recall for mislabelled packaging")])
+    if any(f["filter"] == "F8" for f in (r["rejected"][0]["failed"] if r["rejected"] else [])):
+        failures.append("a non-injury recall should not fail F8")
+
+    # A clean or unchecked history does not trip F8 either.
+    for hist in ("no recall found", "UNKNOWN - not searched", ""):
+        r = screen([cand(dedupe_key="h" + hist[:3], cpsc_recall_history=hist)])
+        if r["rejected"]:
+            failures.append("history %r should not fail any filter, got %s"
+                            % (hist, r["rejected"][0]["failed"]))
+
+    # A single-source price is discounted, not rejected.
+    wide = score(cand(observed_price_range={"low": 34, "high": 40, "basis": "FACT"}), DEFAULTS)
+    thin = score(cand(observed_price_range={"low": 37, "high": 37, "basis": "FACT"}), DEFAULTS)
+    if not thin["price_single_source"]:
+        failures.append("an identical low and high should be flagged single-source")
+    if thin["score"] >= wide["score"]:
+        failures.append("a single-source price should score below a corroborated one")
+    r = screen([cand(dedupe_key="thin", flags=["PRICE_SINGLE_SOURCE"])])
+    if not r["passed"]:
+        failures.append("a single-source price should be discounted, not rejected")
 
     # Missing price is a rejection, not a crash.
     r = screen([cand(dedupe_key="f", observed_price_range={})])

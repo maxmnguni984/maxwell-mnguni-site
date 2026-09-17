@@ -73,3 +73,20 @@ So `screen.py` now rejects any candidate whose price basis is assumption-grade,
 and the rule is tested rather than remembered. The bidet also carried a
 `PLATFORM_POLICY` flag for advertising restrictions around genital-hygiene
 imagery, which would have been a second problem for a paid-ads-first store.
+
+## Filters F8 added and weight parsing fixed, 2026-09-17
+
+**F8, injury recalls.** Sweep B returned an expandable garden hose carrying a
+2025 CPSC recall of "burst-proof" hoses citing 222 burst reports and 29
+injuries. It was rejected, but only because its price was out of band. Had it
+been $50 it would have passed with a merely poor risk score. A safety record
+should not be something a score can outweigh, so an injury recall is now a hard
+filter. Back-checked against round one: it independently catches the resistance
+bands.
+
+**Weight parsing was broken.** Both sweeps recorded weight in a nested
+`weight_and_pack_form` field that the parser did not read, so the weight filter
+never fired on a single candidate and was effectively inert for the whole round.
+Now fixed, it also catches the garden hose at 1.4 kg. An admitted-uncertain
+weight now scores below a confirmed one rather than passing silently, because an
+unconfirmed weight is not the same thing as a light product.
