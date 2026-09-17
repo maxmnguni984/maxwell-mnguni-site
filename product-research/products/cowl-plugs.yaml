@@ -1,0 +1,31 @@
+name: "Aircraft engine cowl inlet plugs, C172 @ $99"
+# From the 2026-09-17-r2 hunt. SCREENED, NOT VERIFIED. Ex-factory is the
+# midpoint of the finder's estimated range; nobody has quoted anything.
+retail_price_usd: 99.00
+discount_rate_pct: 10.0
+
+exfactory_usd: 12
+tooling_total_usd: 450
+first_order_units: 300
+moq_units: 300
+packaging_usd: 2.0
+
+inbound_freight_usd: 1.91
+duty_rate_pct: 23.4
+customs_entry_total_usd: 900.0
+inspection_total_usd: 300.0
+
+packed_weight_kg: 0.75
+packed_length_cm: 30
+packed_width_cm: 25
+packed_height_cm: 15
+postage_base_usd: 6.56
+postage_per_kg_usd: 2.39
+
+return_rate_pct: 10.0
+resellable_after_return_pct: 50
+defect_rate_pct: 2.0
+
+evidence_quality: "LOW-MEDIUM. Demand evidence is supply-side inference only - the finder said so explicitly and refused to dress it up. IP CHECK FAILED, same 403 blocks."
+unverified_inputs: "Ex-factory, freight, duty, packed dimensions, return rate and MOQ are all ESTIMATES. No supplier has been contacted and no quote obtained."
+must_verify: "Demand evidence that is not 'other vendors sell these'; A patent search that actually ran; Whether the plugs ship nested - un-nested they blow past 1 cubic foot and land on the 139 dim divisor"
