@@ -1,0 +1,431 @@
+#!/usr/bin/env python3
+"""Screen discovery candidates against the entry filters, then rank survivors.
+
+Standard library only. Imports cost_ceiling for the economics.
+
+WHY THIS EXISTS
+---------------
+Round one's shortlist was ranked by hand in an ad-hoc shell script. That worked
+once, but the filters that actually mattered were only discovered after the
+fact, and applying them by eye means they drift between rounds.
+
+This encodes them. A candidate either clears the bar or it does not, the reason
+is printed, and the same code runs next time.
+
+THE FILTERS, and why each exists
+--------------------------------
+F1 PRICE FLOOR      Observed retail midpoint at or above the floor. Maximum
+                    landed cost is roughly 39% of price once paid acquisition
+                    is funded, so a cheap product leaves nothing to buy goods
+                    with. Four of round one's thirteen died here.
+F2 WEIGHT           Under the weight cap. Landed cost includes freight.
+F3 PACKS FLAT       Rigid unfoldable items carry a dimensional-weight penalty
+                    the arithmetic does not show. A 15 lb blanket and a rigid
+                    drying rack both died on this.
+F4 DEMO VALUE       At or above the demo floor. Paid ads from day one mean a
+                    benefit that cannot be shown in five silent seconds is the
+                    wrong bet.
+F5 EXCLUDED CATEGORY  From the brief's exclusion list.
+F6 DUPLICATE        Already covered in a previous round.
+
+A candidate failing any filter is rejected with that filter named. Survivors
+are then scored, and the score never overrides a filter.
+
+Usage:
+    python3 screen.py research/runs/<run>/discovery/candidates-A.jsonl [more...]
+    python3 screen.py <files> --json
+    python3 screen.py <files> --exclude research/runs/<run>/exclude-dedupe-keys.txt
+    python3 screen.py --self-test
+"""
+
+import argparse
+import json
+import os
+import sys
+
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+import cost_ceiling  # noqa: E402
+
+DEFAULTS = {
+    "price_floor": 30.00,
+    "price_ceiling": 60.00,
+    "weight_cap_kg": 1.0,
+    "demo_floor": 4,
+    "target_roas": 2.5,
+}
+
+# Scoring weights. Only applied to candidates that clear every filter.
+WEIGHTS = {
+    "ceiling_headroom": 30,   # how much room a supplier has to hit
+    "demo_value": 25,         # paid-ads creative potential
+    "complaint_specificity": 20,  # is there a real, quotable failure to fix
+    "shipping_profile": 15,   # light and flat beats heavy and rigid
+    "risk_cleanliness": 10,   # no recall history, no obvious IP trap
+}
+
+
+def _num(x):
+    return x if isinstance(x, (int, float)) else None
+
+
+def price_mid(c):
+    p = c.get("observed_price_range") or {}
+    lo, hi = _num(p.get("low")), _num(p.get("high"))
+    if lo is not None and hi is not None:
+        return (lo + hi) / 2.0
+    return lo if lo is not None else None
+
+
+def demo_value(c):
+    d = c.get("demonstration_value")
+    if isinstance(d, dict):
+        for k in ("score", "value", "rating"):
+            if isinstance(d.get(k), (int, float)):
+                return d[k]
+        return None
+    return d if isinstance(d, (int, float)) else None
+
+
+def weight_kg(c):
+    for key in ("estimated_weight_kg", "weight_kg", "estimated_weight"):
+        v = c.get(key)
+        if isinstance(v, (int, float)):
+            return float(v)
+        if isinstance(v, dict):
+            for k in ("kg", "value", "estimate"):
+                if isinstance(v.get(k), (int, float)):
+                    return float(v[k])
+        if isinstance(v, str):
+            # tolerate "0.4 kg" / "~400g"
+            s = v.lower().replace("~", "").strip()
+            try:
+                if "kg" in s:
+                    return float(s.split("kg")[0].strip())
+                if "g" in s:
+                    return float(s.split("g")[0].strip()) / 1000.0
+            except ValueError:
+                pass
+    return None
+
+
+def packs_flat(c):
+    for key in ("packs_flat", "compressible", "folds_flat"):
+        if isinstance(c.get(key), bool):
+            return c[key]
+    form = str(c.get("packed_form", "") or c.get("form_factor", "")).lower()
+    if not form:
+        return None
+    if any(w in form for w in ("rigid", "does not fold", "non-folding", "bulky")):
+        return False
+    if any(w in form for w in ("flat", "fold", "compress", "soft", "roll")):
+        return True
+    return None
+
+
+def screen(candidates, cfg=None, excluded_keys=None):
+    cfg = dict(DEFAULTS, **(cfg or {}))
+    excluded_keys = set(excluded_keys or [])
+    passed, rejected = [], []
+    seen = set()
+
+    for c in candidates:
+        name = c.get("name", "(unnamed)")
+        key = c.get("dedupe_key")
+        fails = []
+
+        if key and key in excluded_keys:
+            fails.append(("F6", "already covered in a previous round"))
+        if key and key in seen:
+            fails.append(("F6", "duplicate within this sweep"))
+        if key:
+            seen.add(key)
+
+        mid = price_mid(c)
+        if mid is None:
+            fails.append(("F1", "no observed price, so the price band cannot be checked"))
+        elif mid < cfg["price_floor"]:
+            fails.append(("F1", "observed midpoint $%.2f is below the $%.2f floor"
+                          % (mid, cfg["price_floor"])))
+        elif mid > cfg["price_ceiling"]:
+            fails.append(("F1", "observed midpoint $%.2f is above the $%.2f ceiling"
+                          % (mid, cfg["price_ceiling"])))
+
+        w = weight_kg(c)
+        if w is not None and w > cfg["weight_cap_kg"]:
+            fails.append(("F2", "estimated %.2f kg exceeds the %.2f kg cap; freight "
+                          "eats the landed-cost ceiling" % (w, cfg["weight_cap_kg"])))
+
+        flat = packs_flat(c)
+        if flat is False:
+            fails.append(("F3", "rigid and does not pack flat; dimensional weight "
+                          "attacks the ceiling invisibly"))
+
+        d = demo_value(c)
+        if d is None:
+            fails.append(("F4", "no demonstration value recorded"))
+        elif d < cfg["demo_floor"]:
+            fails.append(("F4", "demonstration value %s is below the floor of %s; "
+                          "paid ads run from day one" % (d, cfg["demo_floor"])))
+
+        if c.get("excluded_category"):
+            fails.append(("F5", str(c["excluded_category"])))
+
+        if fails:
+            rejected.append({"name": name, "dedupe_key": key,
+                             "failed": [{"filter": f, "reason": r} for f, r in fails]})
+        else:
+            passed.append(c)
+
+    scored = [score(c, cfg) for c in passed]
+    scored.sort(key=lambda s: -s["score"])
+    return {"passed": scored, "rejected": rejected, "config": cfg}
+
+
+def score(c, cfg):
+    mid = price_mid(c)
+    ceil = cost_ceiling.ceiling(mid, cfg["target_roas"])["max_landed_cost"]
+
+    # Headroom: a higher absolute ceiling gives a supplier more room to hit.
+    # $20 or more is full marks, $6 or less is zero.
+    head = max(0.0, min(1.0, (ceil - 6.0) / 14.0))
+
+    d = demo_value(c) or 0
+    demo = max(0.0, min(1.0, (d - 3.0) / 2.0))   # 3 -> 0, 5 -> 1
+
+    complaints = c.get("complaints") or c.get("complaint_language") or []
+    if isinstance(complaints, str):
+        complaints = [complaints]
+    spec = max(0.0, min(1.0, len(complaints) / 3.0))
+
+    w = weight_kg(c)
+    ship = 1.0 if w is None else max(0.0, min(1.0, (1.0 - w) / 0.8))
+    if packs_flat(c) is False:
+        ship *= 0.3
+
+    recall = str(c.get("cpsc_recall_history", "")).lower()
+    if "unknown" in recall or not recall:
+        risk = 0.5      # unchecked is not the same as clean
+    elif "no recall" in recall or "none" in recall:
+        risk = 1.0
+    else:
+        risk = 0.0
+
+    parts = {
+        "ceiling_headroom": head,
+        "demo_value": demo,
+        "complaint_specificity": spec,
+        "shipping_profile": ship,
+        "risk_cleanliness": risk,
+    }
+    total = sum(parts[k] * WEIGHTS[k] for k in WEIGHTS)
+
+    return {
+        "name": c.get("name"),
+        "dedupe_key": c.get("dedupe_key"),
+        "price_mid": round(mid, 2),
+        "max_landed_cost": ceil,
+        "demo_value": d,
+        "weight_kg": w,
+        "score": round(total, 1),
+        "components": {k: round(v, 3) for k, v in parts.items()},
+        "candidate": c,
+    }
+
+
+def render(result):
+    out = []
+    cfg = result["config"]
+    out.append("Filters: price $%.2f-$%.2f, weight under %.1f kg, demo at least %d, ROAS %.1f"
+               % (cfg["price_floor"], cfg["price_ceiling"], cfg["weight_cap_kg"],
+                  cfg["demo_floor"], cfg["target_roas"]))
+    out.append("")
+    out.append("PASSED (%d)" % len(result["passed"]))
+    if result["passed"]:
+        out.append("%-5s %-40s %-9s %-9s %-5s %s" %
+                   ("score", "product", "price", "ceiling", "demo", "kg"))
+        out.append("-" * 88)
+        for s in result["passed"]:
+            out.append("%-5.1f %-40s $%-8.2f $%-8.2f %-5s %s" %
+                       (s["score"], (s["name"] or "")[:40], s["price_mid"],
+                        s["max_landed_cost"], s["demo_value"],
+                        "%.2f" % s["weight_kg"] if s["weight_kg"] is not None else "?"))
+    else:
+        out.append("  none")
+    out.append("")
+    out.append("REJECTED (%d)" % len(result["rejected"]))
+    for r in result["rejected"]:
+        reasons = "; ".join("%s %s" % (f["filter"], f["reason"]) for f in r["failed"])
+        out.append("  %-40s %s" % ((r["name"] or "")[:40], reasons))
+    return "\n".join(out)
+
+
+def load_jsonl(path):
+    """Tolerant loader: accepts true JSONL and pretty-printed concatenated JSON."""
+    raw = open(path, encoding="utf-8").read()
+    dec = json.JSONDecoder()
+    objs, i = [], 0
+    while i < len(raw):
+        while i < len(raw) and raw[i] in " \n\r\t":
+            i += 1
+        if i >= len(raw):
+            break
+        obj, end = dec.raw_decode(raw, i)
+        objs.append(obj)
+        i = end
+    return objs
+
+
+def self_test():
+    import tempfile
+    failures = []
+
+    def cand(**kw):
+        base = {"name": "X", "dedupe_key": "x", "observed_price_range": {"low": 34, "high": 40},
+                "demonstration_value": 4, "estimated_weight_kg": 0.5,
+                "packed_form": "folds flat", "complaints": ["a", "b", "c"],
+                "cpsc_recall_history": "no recall found"}
+        base.update(kw)
+        return base
+
+    # A clean candidate passes.
+    r = screen([cand()])
+    if len(r["passed"]) != 1:
+        failures.append("a clean candidate should pass, got %s" % r["rejected"])
+
+    # F1 price floor.
+    r = screen([cand(dedupe_key="a", observed_price_range={"low": 15, "high": 20})])
+    if not r["rejected"] or r["rejected"][0]["failed"][0]["filter"] != "F1":
+        failures.append("a $17.50 candidate should fail F1")
+
+    # F1 upper bound.
+    r = screen([cand(dedupe_key="b", observed_price_range={"low": 80, "high": 120})])
+    if not any(f["filter"] == "F1" for f in r["rejected"][0]["failed"]):
+        failures.append("a $100 candidate should fail F1 on the ceiling")
+
+    # F2 weight.
+    r = screen([cand(dedupe_key="c", estimated_weight_kg=6.8)])
+    if not any(f["filter"] == "F2" for f in r["rejected"][0]["failed"]):
+        failures.append("a 6.8 kg candidate should fail F2")
+
+    # F3 rigid.
+    r = screen([cand(dedupe_key="d", packed_form="rigid steel frame, does not fold")])
+    if not any(f["filter"] == "F3" for f in r["rejected"][0]["failed"]):
+        failures.append("a rigid candidate should fail F3")
+
+    # F4 demo value.
+    r = screen([cand(dedupe_key="e", demonstration_value=2)])
+    if not any(f["filter"] == "F4" for f in r["rejected"][0]["failed"]):
+        failures.append("demo value 2 should fail F4")
+
+    # F6 previously covered.
+    r = screen([cand(dedupe_key="seen-before")], excluded_keys=["seen-before"])
+    if not any(f["filter"] == "F6" for f in r["rejected"][0]["failed"]):
+        failures.append("an excluded dedupe_key should fail F6")
+
+    # F6 duplicate within a sweep.
+    r = screen([cand(dedupe_key="dup"), cand(dedupe_key="dup")])
+    if len(r["passed"]) != 1 or len(r["rejected"]) != 1:
+        failures.append("a duplicate within one sweep should be rejected once")
+
+    # Missing price is a rejection, not a crash.
+    r = screen([cand(dedupe_key="f", observed_price_range={})])
+    if not any(f["filter"] == "F1" for f in r["rejected"][0]["failed"]):
+        failures.append("a candidate with no price should fail F1")
+
+    # Nested demo value shape is tolerated.
+    if demo_value({"demonstration_value": {"score": 5}}) != 5:
+        failures.append("a nested demonstration_value should be read")
+
+    # String weights are tolerated.
+    for text, want in (("0.4 kg", 0.4), ("~400g", 0.4), ("0.85kg", 0.85)):
+        got = weight_kg({"estimated_weight_kg": text})
+        if got is None or abs(got - want) > 0.01:
+            failures.append("weight %r should parse to %.2f, got %s" % (text, want, got))
+
+    # Scoring: a higher ceiling must outrank a lower one, all else equal.
+    r = screen([cand(dedupe_key="cheap", observed_price_range={"low": 30, "high": 31}),
+                cand(dedupe_key="dear", observed_price_range={"low": 55, "high": 58})])
+    if len(r["passed"]) != 2:
+        failures.append("both should pass the filters")
+    elif r["passed"][0]["dedupe_key"] != "dear":
+        failures.append("the higher-ceiling candidate should rank first")
+
+    # Scoring: an unchecked recall history must score below a clean one.
+    a = score(cand(cpsc_recall_history="no recall found"), DEFAULTS)
+    b = score(cand(cpsc_recall_history="UNKNOWN - not checked"), DEFAULTS)
+    c2 = score(cand(cpsc_recall_history="recalled 2020, 95000 units"), DEFAULTS)
+    if not a["score"] > b["score"] > c2["score"]:
+        failures.append("recall scoring should order clean > unchecked > recalled, got %.1f %.1f %.1f"
+                        % (a["score"], b["score"], c2["score"]))
+
+    # A score can never rescue a filter failure.
+    r = screen([cand(dedupe_key="g", observed_price_range={"low": 10, "high": 12},
+                     demonstration_value=5, complaints=["a", "b", "c"])])
+    if r["passed"]:
+        failures.append("a perfect-looking candidate must still fail the price filter")
+
+    # The tolerant loader handles both formats.
+    with tempfile.TemporaryDirectory() as tmp:
+        good = os.path.join(tmp, "good.jsonl")
+        with open(good, "w") as fh:
+            fh.write(json.dumps(cand()) + "\n" + json.dumps(cand(dedupe_key="y")) + "\n")
+        if len(load_jsonl(good)) != 2:
+            failures.append("true JSONL should load")
+        pretty = os.path.join(tmp, "pretty.jsonl")
+        with open(pretty, "w") as fh:
+            json.dump(cand(), fh, indent=2)
+            fh.write("\n")
+            json.dump(cand(dedupe_key="z"), fh, indent=2)
+        if len(load_jsonl(pretty)) != 2:
+            failures.append("pretty-printed concatenated JSON should also load, since "
+                            "round one produced exactly that")
+
+    if failures:
+        print("SELF-TEST FAILED")
+        for f in failures:
+            print("  - " + f)
+        return 1
+    print("screen.py self-test: all checks passed")
+    return 0
+
+
+def main(argv=None):
+    ap = argparse.ArgumentParser(description="Screen and rank discovery candidates.")
+    ap.add_argument("files", nargs="*", help="candidate jsonl files")
+    ap.add_argument("--exclude", help="file of dedupe_keys to exclude, one per line")
+    ap.add_argument("--price-floor", type=float, default=DEFAULTS["price_floor"])
+    ap.add_argument("--demo-floor", type=int, default=DEFAULTS["demo_floor"])
+    ap.add_argument("--json", action="store_true")
+    ap.add_argument("--self-test", action="store_true", dest="self_test")
+    args = ap.parse_args(argv)
+
+    if args.self_test:
+        return self_test()
+    if not args.files:
+        ap.error("give candidate files or --self-test")
+        return 2
+
+    cands = []
+    for f in args.files:
+        if not os.path.exists(f):
+            print("no such file: %s" % f, file=sys.stderr)
+            return 2
+        cands.extend(load_jsonl(f))
+
+    excluded = []
+    if args.exclude and os.path.exists(args.exclude):
+        excluded = [l.strip() for l in open(args.exclude) if l.strip()]
+
+    result = screen(cands, {"price_floor": args.price_floor,
+                            "demo_floor": args.demo_floor}, excluded)
+    if args.json:
+        for s in result["passed"]:
+            s.pop("candidate", None)
+        print(json.dumps(result, indent=2))
+    else:
+        print(render(result))
+    return 0
+
+
+if __name__ == "__main__":
+    sys.exit(main())
