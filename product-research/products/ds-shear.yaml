@@ -1,0 +1,26 @@
+name: "DROPSHIP: pro pet grooming shear @ $69 (PLACEHOLDER SUPPLIER COSTS)"
+# EVERY SUPPLIER FIGURE BELOW IS A PLACEHOLDER PENDING THE FULFILMENT RESEARCH.
+# It exists to show the formula with dollars in it, not to assert a cost.
+retail_price_usd: 69.00
+discount_rate_pct: 10.0
+shipping_charged_usd: 0.0
+
+supplier_unit_usd: 14.00
+supplier_shipping_usd: 7.00
+duty_rate_pct: 23.4
+declared_value_basis: supplier_unit
+clearance_fee_usd: 5.00
+duty_paid_by: seller
+neutral_packaging_surcharge_usd: 0.50
+
+return_rate_pct: 10.0
+return_recovery_pct: 0.0
+defect_rate_pct: 3.0
+chargeback_rate_pct: 1.0
+support_usd: 1.00
+
+processing_days: "UNKNOWN pending research"
+transit_days_low: "UNKNOWN pending research"
+transit_days_high: "UNKNOWN pending research"
+
+unverified_inputs: "ALL SUPPLIER FIGURES ARE PLACEHOLDERS. Unit price, shipping, clearance fee and duty rate are not yet researched. The duty rate assumes the project's established 23.4% consumer-hardgood stack, which was derived for bulk import and may not be the rate applied to a single parcel. The $5.00 clearance fee is a guess at per-parcel brokerage and is the single most uncertain line."

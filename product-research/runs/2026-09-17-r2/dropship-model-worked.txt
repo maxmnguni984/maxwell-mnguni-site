@@ -1,0 +1,82 @@
+==============================================================================
+DROPSHIP: pro pet grooming shear @ $69 (PLACEHOLDER SUPPLIER COSTS)
+==============================================================================
+
+THE FORMULA, WITH DOLLARS. One order, single-unit fulfilment.
+------------------------------------------------------------------------------
+  retail price                                          $69.00
+  less discounts given (10%)                            -$6.90
+  = NET REVENUE                                         $62.10   <- NET REVENUE
+     (excludes sales tax, which is the state's, never yours)
+
+  less product cost (supplier, 1 unit)                 -$14.00
+  less shipping, supplier to customer                   -$7.00
+  less neutral-packaging surcharge                      -$0.50
+  less import duty on $14.00                            -$3.28
+  less per-parcel clearance fee                         -$5.00
+  = FULFILMENT COST                                     $15.78   <- FULFILMENT
+
+  less customer support per order                       -$1.00
+  less payment processing                               -$2.10
+
+  refund allowance   = 10.0% x (net + payment fee + return shipping - recovery)
+                                                        -$6.42
+  defect allowance   = 3.0% x (product + shipping + duty + clearance)
+                                                        -$0.88
+  chargeback allowance = 1.00% x (net + $15.00 fee)
+                                                        -$0.77
+  = LOSS ALLOWANCES                                      $8.07   <- LOSSES
+
+------------------------------------------------------------------------------
+  CONTRIBUTION BEFORE ADVERTISING                       $21.15
+    as % of net revenue                                  34.1%
+  BREAK-EVEN CAC (same number, by definition)           $21.15
+  BREAK-EVEN ROAS                                         2.94
+  BAND                                                 NEITHER
+------------------------------------------------------------------------------
+
+THE SAME THREE LINES UNDER EACH SCENARIO
+                                          base      downside        severe
+  contribution before ads               $21.15         $2.33       $-21.23
+  as % of net                            34.1%          4.0%        -38.5%
+  break-even CAC                        $21.15         $2.33       $-21.23
+  band                                 NEITHER       NEITHER       NEITHER
+
+PROFIT OR LOSS PER ORDER, BY ACQUISITION COST
+  Contribution is positive => there IS a positive break-even CAC. The
+  question is never whether one exists, but whether it is reachable.
+------------------------------------------------------------------------------
+  acquisition cost                       base       downside         severe
+  $5                                   +16.15          -2.67         -26.23
+  $10                                  +11.15          -7.67         -31.23
+  $15                                   +6.15         -12.67         -36.23
+  $20                                   +1.15         -17.67         -41.23
+  $25                                   -3.85         -22.67         -46.23
+  $35                                  -13.85         -32.67         -56.23
+
+  break-even CAC                       $21.15          $2.33           none
+
+  REQUIRED CONVERSION RATE for advertising to pay for itself
+  (= cost per click / break-even CAC; a cold-traffic rate above about 3% is
+   outside anything this project found evidence for)
+  blended ecommerce, $0.87              4.11%         37.39%     impossible
+  TikTok, $1.00                         4.73%         42.97%     impossible
+  Meta all-industry, $1.72              8.13%         73.91%     impossible
+
+FULFILMENT FACTS THAT ARE NOT COSTS BUT DECIDE THE BUSINESS
+  supplier processing days                UNKNOWN pending research
+  transit days, fastest reported          UNKNOWN pending research
+  transit days, slowest reported          UNKNOWN pending research
+  duty paid by                            seller
+
+CASH AT RISK BEFORE THE FIRST SALE
+  Inventory outlay                        $0.00
+  This is the entire argument for the model, and it is a real one.
+  What it buys in exchange: no control of lead time, no control of packaging,
+  no unit to inspect before a customer sees it, and a refund that recovers
+  nothing because the goods are in a customer's house and the supplier is
+  8,000 miles away.
+
+UNVERIFIED INPUTS declared in the spec:
+  ALL SUPPLIER FIGURES ARE PLACEHOLDERS. Unit price, shipping, clearance fee and duty rate are not yet researched. The duty rate assumes the project's established 23.4% consumer-hardgood stack, which was derived for bulk import and may not be the rate applied to a single parcel. The $5.00 clearance fee is a guess at per-parcel brokerage and is the single most uncertain line.
+
