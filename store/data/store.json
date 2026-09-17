@@ -1,0 +1,74 @@
+{
+  "_comment": "Business details. Fields whose value is the string REQUIRED_FROM_OWNER are deliberately blank. build_store.py refuses to produce a publishable build while any remain, so the store can never go live claiming a detail nobody supplied.",
+
+  "brand": {
+    "name": "REQUIRED_FROM_OWNER",
+    "tagline": "REQUIRED_FROM_OWNER",
+    "domain": "REQUIRED_FROM_OWNER",
+    "founded_year": 2026
+  },
+
+  "legal": {
+    "entity_name": "REQUIRED_FROM_OWNER",
+    "entity_type": "REQUIRED_FROM_OWNER",
+    "registered_address": "REQUIRED_FROM_OWNER",
+    "country": "REQUIRED_FROM_OWNER",
+    "vat_or_tax_id": "REQUIRED_FROM_OWNER"
+  },
+
+  "contact": {
+    "support_email": "REQUIRED_FROM_OWNER",
+    "support_hours": "Monday to Friday, 9am to 5pm",
+    "response_target_hours": 24,
+    "phone": null
+  },
+
+  "currency": {"code": "USD", "symbol": "$"},
+
+  "shipping": {
+    "_comment": "These describe what we will actually do. Every figure here must be backed by a supplier quote before the store goes live, or it is a promise we cannot keep.",
+    "origin": "REQUIRED_FROM_OWNER",
+    "free_shipping_threshold": null,
+    "flat_rate": 0.0,
+    "processing_days_min": null,
+    "processing_days_max": null,
+    "transit_days_min": null,
+    "transit_days_max": null,
+    "carrier": "REQUIRED_FROM_OWNER",
+    "tracking_provided": null,
+    "ships_to": ["United States"],
+    "duties_note": "REQUIRED_FROM_OWNER"
+  },
+
+  "returns": {
+    "window_days": 30,
+    "condition": "Unused and in original packaging.",
+    "who_pays_return_shipping": "REQUIRED_FROM_OWNER",
+    "refund_method": "Original payment method.",
+    "refund_processing_days": 5,
+    "return_address": "REQUIRED_FROM_OWNER",
+    "restocking_fee_pct": 0
+  },
+
+  "privacy": {
+    "data_collected": ["name", "email address", "shipping address", "order history"],
+    "payment_processor": "REQUIRED_FROM_OWNER",
+    "analytics_provider": null,
+    "email_provider": null,
+    "data_retention_years": 7,
+    "dpo_contact": null
+  },
+
+  "analytics": {
+    "_comment": "Left null on purpose. No tracking script is embedded until the owner supplies a real property ID, because a placeholder ID silently collects nothing and looks like it works.",
+    "ga4_measurement_id": null,
+    "meta_pixel_id": null,
+    "tiktok_pixel_id": null
+  },
+
+  "checkout": {
+    "_comment": "No payment provider is wired up. Under zero spend authorization no account exists. The cart is real and functional; the checkout button explains what is missing rather than failing silently.",
+    "provider": null,
+    "test_mode": true
+  }
+}

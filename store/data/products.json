@@ -1,0 +1,22 @@
+{
+  "_comment": "Placeholder until the owner selects a product from the ranked shortlist. Nothing here is a real product, real price or real claim. build_store.py marks any build containing a placeholder product as DRAFT and stamps every page.",
+  "placeholder": true,
+  "products": [
+    {
+      "handle": "placeholder-product",
+      "title": "Product To Be Selected",
+      "subtitle": "Awaiting the owner's choice from the ranked shortlist",
+      "price": 39.99,
+      "compare_at_price": null,
+      "sku": "TBD-001",
+      "available": false,
+      "placeholder": true,
+      "summary": "This slot is reserved. It fills once a product is selected and a supplier quote confirms the landed cost sits under the ceiling computed by research/tools/cost_ceiling.py.",
+      "benefits": [],
+      "specs": {},
+      "variants": [],
+      "images": [],
+      "faqs": []
+    }
+  ]
+}
