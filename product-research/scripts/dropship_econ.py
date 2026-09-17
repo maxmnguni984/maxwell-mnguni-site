@@ -69,9 +69,24 @@ FIELDS = (
 DEFAULTS = {
     "discount_rate_pct": 10.0,
     "shipping_charged_usd": 0.0,
+    # Duty is assessed on TRANSACTION VALUE - what you pay the supplier, not
+    # retail. US de minimis is gone: suspended for all countries since
+    # 2025-08-29, re-grounded 2026-06-24 on CBP's own 19 USC 1321 + TFTEA
+    # authority (so the Feb 2026 Supreme Court IEEPA ruling did not restore
+    # it), and terminated by statute from 2027-07-01. There is no value floor
+    # below which a commercial parcel enters free.
     "duty_rate_pct": 0.0,
     "declared_value_basis": "supplier_unit",
-    "clearance_fee_usd": 0.0,
+    # VERIFIED* 2026-09-17. This is floor-driven and does NOT scale with parcel
+    # value, which is what makes low-value cross-border uneconomic:
+    #   ECCF fee per air waybill ~$1.38 (19 CFR 24.23(b)(4)(i), FY2027 factor).
+    #     In the express channel this applies IN LIEU OF the informal MPF of
+    #     $2.77 - do not charge both. Most spreadsheets get this wrong.
+    #   Carrier disbursement/advancement floor: UPS 3.5% min $14.00;
+    #     FedEx greater of $17.50 or 2.5%, raised in 2026 from $15.00/2%.
+    #   A standalone broker filing instead would be $50-150 per entry (CLAIM),
+    #     at which level nothing in this price band survives.
+    "clearance_fee_usd": 20.0,
     "duty_paid_by": "seller",
     "neutral_packaging_surcharge_usd": 0.0,
     "payment_fee_pct": 2.9,
