@@ -1,6 +1,6 @@
 # Dropshipping product research: complete findings
 
-**Status: research complete on structure, one candidate hunt still running.
+**Status: research complete. All four rounds have reported.
 Nothing has been purchased, ordered, published, or sent to any supplier.
 Spend authorisation remains zero.**
 
@@ -10,7 +10,7 @@ Date: 2026-09-17 · Repository: `product-research/` · Branch: `claude/charming-
 
 ## 0. The one-paragraph version
 
-Across roughly 109 screened products and four research rounds, **no product has
+Across **133 screened products** across four research rounds, **no product has
 cleared the gates**. The reason is not bad luck in product selection, and after
 this round it is possible to say what it actually is: two independent
 arithmetic constraints — the cost of buying a customer, and the cost of moving
@@ -418,14 +418,15 @@ Screened from public listings only; nobody was contacted.
 
 ## 8. What was screened, and what killed it
 
-Roughly **109 products** across four rounds.
+**133 products** across four rounds. **Nothing survived.**
 
 | Round | Screened | Advanced | Survived |
 |---|---:|---:|---:|
 | 1, dropship-research | ~40 | 0 | 0 |
 | 2, bounded funnel | 21 | 0 | 0 |
 | 3, dual-threshold hunt | 40 | 9 | **0 tested** (see below) |
-| 4, dropship candidates | 8 of 24 so far | 0 | 0 |
+| 4, dropship candidates | 24 | 2 | **0** |
+| **Total** | **133** | **11** | **0** |
 
 ### Causes of death
 
@@ -577,3 +578,137 @@ the contribution such products generate, and the categories that survive the
 price-floor test are the ones somebody already patented.
 
 That is worth more than a product I would have to talk you into.
+
+
+---
+
+## 13. Round 4 in full: the dropshipping hunt under the corrected gate
+
+24 products, six search angles, gate set at retail $129–199 with contribution
+at or above $50 and single-supplier single-unit fulfilment. **Two advanced.
+Neither survived verification. Zero of 24.**
+
+### What was screened
+
+| Retail | Product | Died on |
+|---:|---|---|
+| $149 | Thermoformed T700 carbon pickleball paddle | Spec-sheet clone, 8+ ASINs verbatim; reviewers name an $85 equivalent |
+| $179 | 800FP ultralight down backpacking quilt | **The supplier is the competitor** — sells the identical quilt direct at $107–167 |
+| $159 | Gravity-fed stainless water filter | Hazard class, ingestion, with a live federal action |
+| $149 | Large specimen houseplant | Closest structural fit — no spec sheet, no tariff, no clone — still failed |
+| $179 | Countertop reverse-osmosis purifier | 6.5 kg forces express air; delivered $131–221, double the ceiling |
+| $149 | At-home IPL hair-removal handset | **Passed the economics** and died on FDA class II regulation |
+| $179 | Permanent outdoor RGBIC eave lighting | Most extreme clone ratio found in the project |
+| $169 | Hoof boots for barefoot horses | Channel economics and hazard |
+| **$199** | **Custom hand-painted oil portrait** | Advanced, then killed on all three lenses. See below |
+| $149 | Aviation-grade directional ice ball press | Clone and weight |
+| $199 | Custom photo-replica plush of a pet | Clone and fulfilment |
+| $149 | Rear-support dog wheelchair (IVDD) | Fit liability and channel |
+| $149 | Solar automatic chicken coop door | Clone |
+| $179 | Smart water shutoff valve with leak detection | Certification and install liability |
+| $179 | NACS-to-CCS DC fast-charge adapter | Certification and safety |
+| $149 | Custom LED neon sign | Clone, evacuated category |
+| $179 | Fiberglass freediving fins | Clone and sizing returns |
+| $149 | Custom-fit dental night guard | Regulated device |
+| $195 | US-made rotary rock tumbler | Domestic margin structure |
+| $149 | 350W electric pottery wheel | Weight and certification |
+| $129 | AI species-identifying smart bird feeder | Clone, saturated |
+| $179 | Vehicle-specific enthusiast accessory | Fit complexity and clone |
+
+### The near-miss worth recording
+
+The **custom hand-painted oil portrait** was found independently by two
+different search angles — the only candidate in 133 to be surfaced twice — and
+it is the first to get past the two screens that killed everything else.
+
+**The price floor did not kill it.** The refuting agent could not find a
+functional equivalent anywhere near 60% of $199. At 20×24in, Etsy listings run
+**$239.39 to $280**, and third-party comparison sites report customers paying
+**$250–350**. The agent's conclusion was that $199 may be *too low*, not too
+high. That had not happened once in this project.
+
+**Fulfilment did not kill it either.** A named supplier (Art in Bulk, Xiamen)
+publishes a white-label dropship programme: *"no minimum order quantity... you
+can order a single painting to start"*, shipped direct with *"your business name
+on the packing slip and no Art in Bulk branding"*, in **4–7 business days** to
+the US. The verifying agent wrote: *"TRANSIT IS NOT THE PROBLEM... Kill that
+specific fear."* It is a supplier CLAIM until test-ordered, but a specific and
+falsifiable one.
+
+**It died on the delivered cost and the acquisition arithmetic.** The ceilings
+at $199 are $72.80 at 45% and $90.20 at 35%. The candidate's own midpoint,
+recomputed from its own stated ranges, is **$102.50** — the $95 it claimed was
+not derivable from its inputs, and even $95 exceeds the $90.20 ceiling it
+claimed to pass. Correcting the per-parcel clearance charge removes the best
+case too.
+
+So the closest thing to a viable dropshipping product this project found was
+killed by the parcel tax, on a product with no clone, a defensible price, and
+genuinely good fulfilment.
+
+### A challenge to my own arithmetic, checked
+
+One agent reported that my delivered-cost ceilings *"appear to be computed
+against retail rather than net revenue"* and recomputed the paddle at **48.5%**
+contribution against my 29.8%.
+
+I re-ran it. **The ceilings are correct and the agent's recomputation was
+wrong.** It subtracted only the delivered cost from net revenue, omitting
+$19.67 per order:
+
+| Line the recomputation omitted | Amount |
+|---|---:|
+| payment processing | $4.19 |
+| customer support | $1.00 |
+| refund allowance | $11.06 |
+| defect allowance | $2.23 |
+| chargeback allowance | $1.19 |
+
+Full model: contribution **$39.97, 29.8% of net, band NEITHER**. The agent was
+explicitly trying not to pick the flattering reading and picked it anyway — the
+same error, in the same direction, as the two arithmetic bugs in §4. That
+direction of error is the one to watch for.
+
+### What round 4 adds to the patterns
+
+6. **The supplier is often the competitor.** The quilt manufacturer sells the
+   identical item direct to your customer on Amazon, eBay and its own store at
+   $107–167. Not a third party cloning it — the factory itself. Check whether
+   your supplier retails before you plan to resell them.
+7. **Clearing the economics is not the hard part any more.** The IPL handset
+   passed the contribution gate and died on FDA class II regulation. The
+   portrait passed price and fulfilment and died on the parcel tax. Different
+   candidates now fail at different stages, which means the screens are working
+   and the funnel is no longer bottlenecked on one thing.
+8. **A category with no spec sheet is the one structural escape from the clone
+   problem.** The houseplant and the portrait — bespoke, living, or
+   made-to-order goods — were the only candidates where "search the clone" had
+   nothing to find. Both still failed, but that is where the remaining space is.
+
+---
+
+## 14. Final position
+
+**No product is recommended. 133 screened, 11 advanced, 0 survived.**
+
+The constraint is the business model, not the product search. In 2026:
+
+- **De minimis is gone** and survived the Supreme Court ruling on independent
+  CBP authority, so every parcel is a dutiable import.
+- **The per-parcel fee stack is floor-driven** — $14–17.50 minimum regardless of
+  parcel value — and is not negotiable at solo-founder volume. A bulk importer
+  pays it once per 500 units.
+- **Published CPAs ($29.99–$49.04) exceed the contribution** that sub-$129
+  products generate, so the ad auction is lost before it starts.
+- **Meta deleted occupation targeting**, removing professional and trade buyers
+  from paid social entirely.
+- **The categories that survive the price-floor test** are the ones somebody has
+  already patented, certified, or is selling to your customer themselves.
+
+Those five facts are independent of each other and of any product. Together they
+say that single-product, China-direct, paid-ads-from-day-one dropshipping under
+$129 retail is arithmetically closed — and above $129, the surviving space is
+bespoke and made-to-order goods, where the clone search has nothing to find.
+
+If this is worth continuing, that is where to look, and the screens in this
+repository will kill the bad candidates for nothing before any money moves.
