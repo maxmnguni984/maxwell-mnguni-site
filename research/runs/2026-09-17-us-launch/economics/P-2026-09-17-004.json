@@ -1,0 +1,244 @@
+{
+  "product_id": "P-2026-09-17-004",
+  "agent": "economics",
+  "status": "partial",
+  "summary": "Manual hand-pump vacuum compression storage bags at a $25.00 target price, manual pump only, with the USB-rechargeable version excluded by the brief as lithium-battery electronics. This candidate fails on economics. cost_ceiling.py at break-even allows $9.37 landed base, $3.51 pessimistic and $14.22 optimistic; once a $5.00 profit per order is required the pessimistic ceiling goes NEGATIVE at minus $0.95 and the tool returns its own verdict of REJECT, with a base ceiling of only $4.66. This is a multi-piece kit, several film bags plus a moulded hand pump, and $25.00 is the floor of the brief's price band, so there is no room to absorb paid acquisition and a physical kit at the same time. G6 fails. The risk screen is otherwise mostly clean: no CPSC recall for compression storage bags, and no Meta, TikTok or Shopify policy category applies. Two IP notes: SPACE BAG is a registered trademark in exactly this product category, and the one-way valve is covered by a dense and still-growing patent family.",
+  "facts": [
+    {
+      "claim": "SPACE BAG is a registered trademark used on commercially available vacuum compression storage bags, indicated by the registered symbol in USPTO patent text describing the category",
+      "evidence_id": "E-001"
+    },
+    {
+      "claim": "The one-way valve used on vacuum compression storage bags is covered by a large and continuing patent family including US9296541B2 (vacuum valve and compression storage bags including the valve), US8066433B2 (valve for vacuum storage bag), US11267634, US7614203B2, US5839582A and a 2025-range filing, US12466628 (compression bag)",
+      "evidence_id": "E-002"
+    },
+    {
+      "claim": "USPTO patent text for vacuum storage bag valves states that disassembly of valve components or loss of the diaphragm creates a risk of suffocation if found by a pet or infant",
+      "evidence_id": "E-003"
+    },
+    {
+      "claim": "A CPSC recall search for vacuum compression storage bags and space-saver bags returned no recall of any compression storage bag; the returned records are exercise machines, vacuum cleaners, storage trunks and toy storage chests",
+      "evidence_id": "E-004"
+    },
+    {
+      "claim": "CPSC's plastic film requirement, applicable to toys and children's products, is that certain plastic film must have an average thickness greater than 0.00150 inch (0.03175 mm) or be perforated such that 1 percent of the surface is removed, and products posing such a risk have carried a 'WARNING: SUFFOCATION HAZARD' label",
+      "evidence_id": "E-005"
+    },
+    {
+      "claim": "Shopify's Acceptable Use Policy restricted list includes 'no lithium batteries', which independently confirms the brief's exclusion of the USB-rechargeable pump version of this product",
+      "evidence_id": "E-006"
+    },
+    {
+      "claim": "Meta's advertising Restricted Goods and Services categories are weapons/ammunition/explosives, drugs and pharmaceuticals, health and wellness, financial services and gambling; compression storage bags fall in none of them",
+      "evidence_id": "E-007"
+    },
+    {
+      "claim": "US duty-free de minimis treatment was suspended for all countries effective 12:01 a.m. EDT on 29 August 2025 under Executive Order 14324, and Federal Register documents dated 24 June 2026 record indefinite suspension of the exemption",
+      "evidence_id": "E-008"
+    }
+  ],
+  "estimates": [
+    {
+      "claim": "At break-even the maximum landed cost is $9.37 base (37.5% of the $25.00 price), $3.51 pessimistic and $14.22 optimistic",
+      "method": "research/tools/cost_ceiling.py --price 25.00; output stored in P-2026-09-17-004.econ.json",
+      "confidence": "high"
+    },
+    {
+      "claim": "Requiring $5.00 profit per order makes the pessimistic ceiling negative at minus $0.95 and leaves only $4.66 in the base case, and the tool's own grade is REJECT",
+      "method": "research/tools/cost_ceiling.py --price 25.00 --profit 5; output stored in P-2026-09-17-004.profit5.json",
+      "confidence": "high"
+    },
+    {
+      "claim": "This candidate has the lowest ceiling of the four in both dollars and percentage terms, and is the only one of the four where any scenario turns negative",
+      "method": "comparison of the four cost_ceiling outputs at their target prices",
+      "confidence": "high"
+    },
+    {
+      "claim": "The economics are a function of the price point rather than the product: re-testing the same product at the $34.99 end of the observed $15-$35 range would move the base break-even ceiling to $13.65 and the $5-profit base ceiling to $8.93, which is the only realistic route to reopening this candidate",
+      "method": "reading the candidate 002/003 cost_ceiling outputs, which share a $34.99/$35.00 price point, as the counterfactual for this product",
+      "confidence": "med"
+    }
+  ],
+  "assumptions": [
+    "Every rate inside cost_ceiling.py is an ASSUMPTION for a store with no trading history: discount 15/10/5 percent, refunds 12/6/3 percent, chargebacks 1.5/0.7/0.3 percent, packaging $1.50/$1.00/$0.50 across pessimistic/base/optimistic.",
+    "Payment fees assume the Shopify Payments US online card rate of 2.9 percent plus $0.30. The owner has no Shopify plan, so this is unconfirmed.",
+    "Target ROAS of 2.5 in the base case is an ASSUMPTION about cold-traffic performance, not a prediction.",
+    "The $25.00 price is the brief's band floor; discovery recorded the observed range as $15 to $35 and labelled it ASSUMPTION because no single SKU price was captured.",
+    "The $5.00 profit per order test is an ASSUMPTION about what the owner needs per unit, chosen because a store that only breaks even on ads cannot fund restocking, sampling or a second product test.",
+    "Duty is assumed to sit inside the landed cost figure the supplier must beat, because the applicable HTS rate, probably heading 3923.21, could not be read."
+  ],
+  "unknowns": [
+    {
+      "question": "Landed cost per unit from any supplier",
+      "why_unresolved": "Every supplier catalogue (aliexpress.com, alibaba.com, cjdropshipping.com, zendrop, spocket) is refused by the network egress proxy. The supplier handoff for this product, suppliers/P-2026-09-17-004.json, exists but has status 'blocked' and every econ_inputs field is null, so there is no cost to compare against the ceiling."
+    },
+    {
+      "question": "Applicable HTS duty rate for sacks and bags of polyethylene, probably 3923.21",
+      "why_unresolved": "hts.usitc.gov returns EGRESS_BLOCKED to direct fetching and scoped search returned index pages without a rate column"
+    },
+    {
+      "question": "Whether US12466628 and US11267634 are live, what they claim, and whether a generic imported one-way valve reads on them",
+      "why_unresolved": "patents.google.com and image-ppubs.uspto.gov are blocked to direct fetching; only search-result titles and abstract fragments were obtainable"
+    },
+    {
+      "question": "The registrant, registration number, class and live status of the SPACE BAG mark",
+      "why_unresolved": "tmsearch.uspto.gov is not reachable in this environment; the registered status was observed only as a registered symbol inside USPTO patent prose"
+    },
+    {
+      "question": "Whether any CPSC or saferproducts incident records exist for compression storage bag valve or seal failure",
+      "why_unresolved": "saferproducts.gov returns EGRESS_BLOCKED to direct fetching, including the keyless Recall REST endpoint; scoped search returned patent documents rather than incident records"
+    },
+    {
+      "question": "Base-case contribution margin in dollars and percent as rubric G6 literally defines it",
+      "why_unresolved": "Contribution margin requires a unit cost, which is unobtainable here"
+    }
+  ],
+  "evidence": [
+    {
+      "id": "E-001",
+      "url": "https://image-ppubs.uspto.gov/dirsearch-public/print/downloadPdf/7387440",
+      "accessed": "2026-09-17",
+      "quote": "Examples of vacuum bags are sold under the SPACE BAG registered tradename... SPACE BAG brand vacuum compression storage bags are commercially available for storage of clothing and other items.",
+      "type": "registry",
+      "verification": "OBSERVED"
+    },
+    {
+      "id": "E-002",
+      "url": "https://patents.google.com/patent/US9296541",
+      "accessed": "2026-09-17",
+      "quote": "US9296541B2 - Vacuum valve and compression storage bags including the valve - a flexible compact valve for affixing to a vacuum compression storage bag that includes a stand-off for optimizing the air flow and evacuation of air from the bag.",
+      "type": "registry",
+      "verification": "OBSERVED"
+    },
+    {
+      "id": "E-003",
+      "url": "https://patents.google.com/patent/US8066433B2/en",
+      "accessed": "2026-09-17",
+      "quote": "One important problem related to disassembly of valve components or loss of diaphragm is the risk of suffocation if found by a pet or infant.",
+      "type": "registry",
+      "verification": "OBSERVED"
+    },
+    {
+      "id": "E-004",
+      "url": "https://www.cpsc.gov/Recalls",
+      "accessed": "2026-09-17",
+      "quote": "No specific recalls for vacuum compression storage bags were found in these results. The search results didn't contain specific recall information for vacuum compression storage bags.",
+      "type": "registry",
+      "verification": "OBSERVED"
+    },
+    {
+      "id": "E-005",
+      "url": "https://www.cpsc.gov/s3fs-public/5220.pdf",
+      "accessed": "2026-09-17",
+      "quote": "Certain plastic film (includes packaging) must have an average thickness greater than 0.00150 in. (0.03175 mm) or be perforated such that 1% of the surface is removed.",
+      "type": "policy",
+      "verification": "OBSERVED"
+    },
+    {
+      "id": "E-006",
+      "url": "https://www.shopify.com/legal/aup",
+      "accessed": "2026-09-17",
+      "quote": "you cannot sell anything that is toxic or flammable - so no cleansers, no aerosol sprays, no lithium batteries, no research chemicals and no Peptides.",
+      "type": "policy",
+      "verification": "OBSERVED"
+    },
+    {
+      "id": "E-007",
+      "url": "https://transparency.meta.com/policies/community-standards/restricted-goods-services/",
+      "accessed": "2026-09-17",
+      "quote": "Restricted Goods and Services: Weapons, Ammunition or Explosives; Drugs and Pharmaceuticals; Health and Wellness; Financial and Insurance Products and Services; Online Gambling and Games.",
+      "type": "policy",
+      "verification": "OBSERVED"
+    },
+    {
+      "id": "E-008",
+      "url": "https://www.federalregister.gov/documents/2026/02/25/2026-03829/continuing-the-suspension-of-duty-free-de-minimis-treatment-for-all-countries",
+      "accessed": "2026-09-17",
+      "quote": "Continuing the Suspension of Duty-Free De Minimis Treatment for All Countries",
+      "type": "policy",
+      "verification": "OBSERVED"
+    }
+  ],
+  "flags": [
+    "IP_RISK",
+    "SAFETY",
+    "SOURCE_UNAVAILABLE",
+    "OPS"
+  ],
+  "recommendation": "reject",
+  "reject_reason": "G6 fails. At the $25.00 target price the product cannot carry paid acquisition and a multi-piece physical kit at the same time: cost_ceiling.py returns grade REJECT once $5.00 profit per order is required, with a negative pessimistic ceiling of minus $0.95 and a base ceiling of only $4.66, and even at pure break-even the pessimistic ceiling is $3.51 for a set of film bags plus a moulded hand pump delivered tracked to a US address with duty paid. The price point, not the product, is what fails; $25.00 is the floor of the brief's band so there is no downward room, and the only route to reopening this candidate is a re-test at roughly $34.99 supported by competitor price evidence.",
+  "limits_used": {
+    "fetches": 3,
+    "searches": 19,
+    "minutes": 32
+  },
+  "data": {
+    "scenarios_file": "P-2026-09-17-004.econ.json",
+    "profit5_file": "P-2026-09-17-004.profit5.json",
+    "method": "cost_ceiling (reverse economics). No supplier quote obtainable, so contribution margin is not computable; the maximum bearable landed cost is reported instead.",
+    "price": 25.0,
+    "price_label": "ASSUMPTION - brief band floor; discovery's observed $15-$35 range was itself derived from a category browse page with no exact SKU price captured",
+    "max_landed_cost": {
+      "pessimistic": 3.51,
+      "base": 9.37,
+      "optimistic": 14.22
+    },
+    "max_landed_cost_pct_of_price": {
+      "pessimistic": 14.1,
+      "base": 37.5,
+      "optimistic": 56.9
+    },
+    "max_landed_cost_at_5_profit": {
+      "pessimistic": -0.95,
+      "base": 4.66,
+      "optimistic": 9.37
+    },
+    "break_even_roas": {
+      "pessimistic": 1.8,
+      "base": 2.5,
+      "optimistic": 3.5
+    },
+    "ad_cost_per_order": {
+      "pessimistic": 11.81,
+      "base": 9.0,
+      "optimistic": 6.79
+    },
+    "break_even_cac_at_ceiling_base": 9.0,
+    "tool_grade_breakeven": "WORKABLE",
+    "tool_grade_at_5_profit": "REJECT",
+    "check_this_number": 9.37,
+    "contribution_base": null,
+    "contribution_pct_base": null,
+    "gates": {
+      "G2": {
+        "result": "pass",
+        "reason": "Screen only, not legal advice. The product form is generic and widely sold, so it passes, but with two named conditions. First, SPACE BAG is a registered trademark in exactly this category, so that phrase and Ziploc must never appear in listing titles, ad copy or a store name. Second, the one-way valve sits in a dense and still-growing patent family (US9296541B2, US8066433B2, US11267634, US12466628); that is primarily a manufacturer's exposure, but an importer of an infringing article carries it too, so a supplier attestation on valve design would be required before any order.",
+        "evidence_id": "E-002"
+      },
+      "G3": {
+        "result": "pass",
+        "reason": "No CPSC recall found for vacuum compression storage bags. No health, medical, safety or efficacy claim is needed; the compression demonstration speaks for itself. Two conditions, both satisfiable by labelling rather than by redesign: large plastic film bags are a child and pet suffocation risk, acknowledged in the USPTO valve prose itself, so a 'WARNING: SUFFOCATION HAZARD - keep away from children' label and a keep-out-of-reach line in the listing are mandatory; and the manual pump form must be kept, because the USB-rechargeable variant is excluded by the brief and independently by Shopify's no-lithium-batteries rule.",
+        "evidence_id": "E-004"
+      },
+      "G4": {
+        "result": "pass",
+        "reason": "Not listed in Meta's Restricted Goods and Services, TikTok's prohibited industry entry list, or Shopify's Acceptable Use Policy restricted categories. The only adjacent AUP line, 'no lithium batteries', is avoided precisely because this is the manual-pump variant.",
+        "evidence_id": "E-006"
+      },
+      "G6": {
+        "result": "fail",
+        "reason": "cost_ceiling.py returns grade REJECT at $25.00 once $5.00 profit per order is required: the pessimistic ceiling is minus $0.95 and the base ceiling is $4.66. At pure break-even the pessimistic ceiling is $3.51 and the base is $9.37, which must cover several film bags, a moulded hand pump, tracked US delivery inside 12 days, and duty now that de minimis relief has ended for all countries. No plausible supplier meets that for a multi-piece kit. Not softened: the other three gates pass and the risk profile is clean, and the product is still rejected."
+      }
+    },
+    "operational_risks": [
+      "Multi-piece kit: bag count, bag sizes and one pump all have to arrive complete, and a missing or mismatched piece is a full refund on the lowest-ceiling product in the set",
+      "Seal and valve failure is the defining complaint for this category, 'it did not hold the vacuum', and it surfaces days after delivery, which pushes the real refund rate above the model's 6 percent base assumption",
+      "Because the refund rate is the input this product is most sensitive to, and because the pessimistic scenario is already negative at $5 profit, a refund rate above assumption is not a margin dent here but a solvency question",
+      "Light but voluminous: film bags plus a rigid pump make an awkward parcel shape that ships worse than its weight suggests",
+      "Variant sprawl from set composition (6-piece, 12-piece, 20-piece, mixed sizes) is the single easiest way to multiply SKUs on the cheapest product in the set",
+      "Genuinely seasonal: demand concentrates around seasonal wardrobe changeover and the moving season, so a launch outside those windows reads as a dead product rather than a bad ad",
+      "Hand pumps crack at the piston and the hose coupling, and a broken pump makes the whole kit useless even though the bags are fine",
+      "12-day tracked delivery is achievable on weight, but the awkward parcel shape and the moving-season demand spike collide: customers buying for a move on a date will not accept day 12"
+    ]
+  }
+}

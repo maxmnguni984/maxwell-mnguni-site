@@ -1,0 +1,59 @@
+{
+  "price": 25.0,
+  "required_profit_per_order": 5.0,
+  "scenarios": {
+    "pessimistic": {
+      "price": 25.0,
+      "net_price": 21.25,
+      "target_roas": 1.8,
+      "required_profit_per_order": 5.0,
+      "ad_cost_per_order": 11.8056,
+      "payment_fee": 0.9163,
+      "chargeback_allowance": 0.5437,
+      "refund_rate": 0.12,
+      "packaging": 1.5,
+      "max_landed_cost": -0.95,
+      "max_landed_cost_pct_of_price": -3.8,
+      "workable": false
+    },
+    "base": {
+      "price": 25.0,
+      "net_price": 22.5,
+      "target_roas": 2.5,
+      "required_profit_per_order": 5.0,
+      "ad_cost_per_order": 9.0,
+      "payment_fee": 0.9525,
+      "chargeback_allowance": 0.2625,
+      "refund_rate": 0.06,
+      "packaging": 1.0,
+      "max_landed_cost": 4.66,
+      "max_landed_cost_pct_of_price": 18.6,
+      "workable": true
+    },
+    "optimistic": {
+      "price": 25.0,
+      "net_price": 23.75,
+      "target_roas": 3.5,
+      "required_profit_per_order": 5.0,
+      "ad_cost_per_order": 6.7857,
+      "payment_fee": 0.9888,
+      "chargeback_allowance": 0.1163,
+      "refund_rate": 0.03,
+      "packaging": 0.5,
+      "max_landed_cost": 9.37,
+      "max_landed_cost_pct_of_price": 37.5,
+      "workable": true
+    }
+  },
+  "grade": "REJECT",
+  "decision_rule": "Even the base case leaves nothing for the product if the pessimistic case is negative. This price cannot support paid acquisition.",
+  "check_this_number": 4.66,
+  "assumptions": [
+    "Every rate here is an ASSUMPTION. A new store has no history to measure.",
+    "Target ROAS is the return on ad spend the store must actually achieve on cold traffic. Base case 2.5 means $2.50 of revenue per $1.00 of ad spend. It is a target, not a prediction, and no one can promise it.",
+    "Landed cost means everything to get one unit to the customer's door: unit price, supplier shipping, and duty. US de minimis relief ended for all countries on 2025-08-29 under Executive Order 14324, so imported parcels are dutiable and duty belongs inside this figure.",
+    "Payment fees use the Shopify Payments US online card rate of 2.9% + $0.30. Confirm against the plan actually bought.",
+    "Refund loss assumes the unit is not recovered, so the goods are lost along with the revenue.",
+    "This tool says what a product may cost. It does not say what it does cost. That still requires a real supplier quote."
+  ]
+}

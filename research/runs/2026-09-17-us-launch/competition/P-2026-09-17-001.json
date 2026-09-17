@@ -1,0 +1,75 @@
+{
+  "product_id": "P-2026-09-17-001",
+  "agent": "competitor",
+  "status": "complete",
+  "summary": "Portable adjustable aluminum laptop stands are sold by at least five named competitors across Walmart and Best Buy, with confirmed prices from $23.39 to $59.99 (one Best Buy listing shows a $99.99 comparison value that could not be confirmed as a live selling price). This sits mostly inside the $25-60 band, with the cheapest confirmed competitor $1.61 below the floor. All evidence in this file is WebSearch-snippet text, not a direct page read; the underlying commerce domains are blocked at the network proxy, so every claim is search-snippet-only (see flags). The strongest, most-repeated customer complaints are wobble/instability (especially on soft surfaces or under active typing) and laptops slipping off short support arms; scratching is a secondary, addressed-by-padding concern. Demonstration value for paid video is high: opening the stand and raising a laptop to eye level is a clean, silent, self-explanatory 5-second shot.",
+  "facts": [
+    {"claim": "Jumper Laptop Stand for Desk, Aluminum Adjustable, lists at $30.46 on Walmart.com.", "evidence_id": "E-001"},
+    {"claim": "Nulaxy Laptop Stand, Ergonomic Height Angle Adjustable Riser Holder (Silver), lists at $23.39 on Walmart.com.", "evidence_id": "E-002"},
+    {"claim": "Nulaxy Adjustable Aluminum Laptop Stand, Riser, Notebook Holder (Space Grey), lists at $42.00 on Walmart.com and was shown out of stock at the time of search.", "evidence_id": "E-003"},
+    {"claim": "Nulaxy Laptop Stand, Ergonomic Sit-to-Stand Holder Convertor (Silver), lists at $59.99 on Walmart.com.", "evidence_id": "E-004"},
+    {"claim": "Target and Best Buy each carry multiple named adjustable aluminum laptop stand brands (Mount-It!, Uncaged Ergonomics WorkEZ, iMountek, Dartwood, Lifelong at Target; MUNBYN, Staples TECH, Mybat Pro at Best Buy), indicating a broad multi-retailer category, though exact prices for most of these specific listings were not visible in search snippets.", "evidence_id": "E-005"},
+    {"claim": "A recurring customer complaint across multiple Amazon listings is that the stand wobbles or topples, particularly under active typing or with a heavier 15-inch laptop.", "evidence_id": "E-006"},
+    {"claim": "A recurring customer complaint is that short support arms let the laptop slip or nearly fall off the stand.", "evidence_id": "E-007"},
+    {"claim": "Reviews note stands that perform fine on a hard desk become noticeably unstable on carpet, a bed, or other soft surfaces.", "evidence_id": "E-006"},
+    {"claim": "Scratching (of the laptop or the desk) is a recognized concern for metal stands; multiple competing listings market silicone/rubber pads specifically to address it.", "evidence_id": "E-008"}
+  ],
+  "estimates": [
+    {"claim": "Observed competitor retail for this category clusters between roughly $23 and $60, with most named models in the $30-$45 range.", "method": "Median of four confirmed Walmart FACT prices ($23.39, $30.46, $42.00, $59.99); the $99.99 Best Buy figure excluded as unconfirmed live price.", "confidence": "med"}
+  ],
+  "assumptions": [
+    "Best Buy's price-bucket filters (seen in the Best Buy search) implies stock in the under-$25, $25-49.99, $50-74.99 and $75-99.99 tiers for this category, but this is a filter-bucket observation, not a per-SKU price, and is not relied on for the price band."
+  ],
+  "unknowns": [
+    {"question": "Current live Best Buy selling price for the MUNBYN 360° Rotating Adjustable Aluminum Laptop Stand.", "why_unresolved": "The WebSearch snippet returned only a $99.99 'comparable value' (likely a compare-at/reference price), not a confirmed current sale price; the Best Buy product page could not be fetched directly because amazon-style commerce domains are blocked at the environment's network proxy for WebFetch/curl."},
+    {"question": "Exact prices for the Target-listed Mount-It!, Uncaged Ergonomics, iMountek, Dartwood and Lifelong laptop stand models.", "why_unresolved": "Target search snippets returned product titles and shipping/pickup policy text but never displayed a specific dollar figure; direct page fetch is blocked."},
+    {"question": "Frequency of each complaint theme (what share of buyers experience wobble vs. slipping vs. scratching).", "why_unresolved": "Search-snippet evidence surfaces complaint themes via engine-synthesized summaries of multiple reviews, not individual verbatim reviews with counts; per the run's known source limitation, review pages cannot be opened directly, so frequency is not obtainable and is not estimated."}
+  ],
+  "evidence": [
+    {"id": "E-001", "url": "https://www.walmart.com/ip/Jumper-Laptop-Stand-for-Desk-Aluminum-Adjustable-Stand-of-Laptop/17048771530", "accessed": "2026-09-17", "quote": "Jumper Laptop Stand for Desk, Aluminum Adjustable Stand of Laptop - Walmart.com, priced at $30.46", "type": "search", "verification": "OBSERVED"},
+    {"id": "E-002", "url": "https://www.walmart.com/ip/Nulaxy-Laptop-Stand-Ergonomic-Height-Angle-Adjustable-Riser-Holder-Compatible-MacBook-Air-Pro-Dell-XPS-Samsung-Alienware-All-Laptops-11-17-Supports-U/574642956", "accessed": "2026-09-17", "quote": "Ergonomic Height Angle Adjustable Laptop Riser Holder in Silver is priced at $23.39", "type": "search", "verification": "OBSERVED"},
+    {"id": "E-003", "url": "https://www.walmart.com/ip/Nulaxy-Adjustable-Laptop-Stand-Riser-Aluminum-Notebook-Holder-Compatible-MacBook-Air-Pro-Dell-XPS-HP-Samsung-Alienware-More-Laptops-173-Space-Grey/713329014", "accessed": "2026-09-17", "quote": "One model (B-Grey color) is priced at $42.00 (currently out of stock)", "type": "search", "verification": "OBSERVED"},
+    {"id": "E-004", "url": "https://www.walmart.com/ip/Nulaxy-Laptop-Stand-Ergonomic-Sit-Stand-Holder-Convertor-Adjustable-Height-2-1-13-8-Supports-22lbs-Compatible-MacBook-All-Laptops-Tablets-11-17-Silve/5062629252", "accessed": "2026-09-17", "quote": "Ergonomic Sit to Stand Laptop Holder Convertor in Silver is priced at $59.99", "type": "search", "verification": "OBSERVED"},
+    {"id": "E-005", "url": "https://www.target.com/s/adjustable+laptop+stand", "accessed": "2026-09-17", "quote": "Mount-It! Adjustable Laptop Stand... Uncaged Ergonomics WorkEZ Professional Adjustable Laptop Stand... Imountek adjustable Aluminum Laptop Stand Riser... Dartwood Adjustable and Portable Laptop Stand", "type": "search", "verification": "OBSERVED"},
+    {"id": "E-006", "url": "https://www.amazon.com/aluminum-laptop-stand/s?k=aluminum+laptop+stand", "accessed": "2026-09-17", "quote": "with a MacBook Pro 15 the stand would topple over without even touching it... a curved shape to the stand makes it more wobbly... perform well on hard surfaces but become very unstable when placed on carpet or other soft surfaces", "type": "search", "verification": "OBSERVED"},
+    {"id": "E-007", "url": "https://www.amazon.com/aluminum-laptop-stand/s?k=aluminum+laptop+stand", "accessed": "2026-09-17", "quote": "laptop arms are short and the laptop has almost fallen off many times", "type": "search", "verification": "OBSERVED"},
+    {"id": "E-008", "url": "https://www.amazon.com/LEHOM-Adjustable-Portable-Computer-Foldable/product-reviews/B08B3H5F5L", "accessed": "2026-09-17", "quote": "Metal laptop stands can scratch things if not stored properly in a case... rubber-made stands will not scratch, scuff, or cause unwanted abrasions on the bottom of laptops", "type": "search", "verification": "OBSERVED"}
+  ],
+  "flags": ["SOURCE_UNAVAILABLE"],
+  "recommendation": "proceed_with_conditions",
+  "reject_reason": "",
+  "limits_used": {"fetches": 0, "searches": 8, "minutes": 14},
+  "data": {
+    "competitors": [
+      {"name": "Jumper Laptop Stand for Desk (Aluminum Adjustable)", "url": "https://www.walmart.com/ip/Jumper-Laptop-Stand-for-Desk-Aluminum-Adjustable-Stand-of-Laptop/17048771530", "price": 30.46, "variants": null, "shipping_promise": "UNKNOWN - not visible in search snippet", "positioning": "Generic budget adjustable aluminum riser", "offer": "UNKNOWN", "catalogue_size": null, "ads_observed": false, "ads_note": "UNKNOWN - Ad Library not queried for this product; ad presence is not evidence of sales in any case", "evidence_id": "E-001"},
+      {"name": "Nulaxy Ergonomic Height Angle Adjustable Laptop Riser Holder (Silver)", "url": "https://www.walmart.com/ip/Nulaxy-Laptop-Stand-Ergonomic-Height-Angle-Adjustable-Riser-Holder-Compatible-MacBook-Air-Pro-Dell-XPS-Samsung-Alienware-All-Laptops-11-17-Supports-U/574642956", "price": 23.39, "variants": null, "shipping_promise": "UNKNOWN", "positioning": "Multi-brand catalogue seller, mid-range ergonomic riser", "offer": "UNKNOWN", "catalogue_size": null, "ads_observed": false, "ads_note": "UNKNOWN", "evidence_id": "E-002"},
+      {"name": "Nulaxy Adjustable Aluminum Laptop Stand (Space Grey)", "url": "https://www.walmart.com/ip/Nulaxy-Adjustable-Laptop-Stand-Riser-Aluminum-Notebook-Holder-Compatible-MacBook-Air-Pro-Dell-XPS-HP-Samsung-Alienware-More-Laptops-173-Space-Grey/713329014", "price": 42.0, "variants": null, "shipping_promise": "UNKNOWN", "positioning": "Mid-tier aluminum riser, shown out of stock", "offer": "UNKNOWN", "catalogue_size": null, "ads_observed": false, "ads_note": "UNKNOWN", "evidence_id": "E-003"},
+      {"name": "Nulaxy Ergonomic Sit-to-Stand Laptop Holder Convertor (Silver)", "url": "https://www.walmart.com/ip/Nulaxy-Laptop-Stand-Ergonomic-Sit-Stand-Holder-Convertor-Adjustable-Height-2-1-13-8-Supports-22lbs-Compatible-MacBook-All-Laptops-Tablets-11-17-Silve/5062629252", "price": 59.99, "variants": null, "shipping_promise": "UNKNOWN", "positioning": "Premium sit-to-stand convertor, top of observed band", "offer": "UNKNOWN", "catalogue_size": null, "ads_observed": false, "ads_note": "UNKNOWN", "evidence_id": "E-004"},
+      {"name": "MUNBYN 360° Rotating Adjustable Laptop Stand (Aluminum)", "url": "https://www.bestbuy.com/product/munbyn-360-rotating-adjustable-laptop-stand-aluminum-20-lighter-for-11-15-6-inch-laptops-tablets-bearing-up-to-8-8lbs-silver/J3R8Z4VFCT", "price": null, "variants": null, "shipping_promise": "UNKNOWN", "positioning": "Rotating-base ergonomic riser, Best Buy exclusive-style listing", "offer": "UNKNOWN", "catalogue_size": null, "ads_observed": false, "ads_note": "UNKNOWN", "evidence_id": "E-005"}
+    ],
+    "price_band_observed": {"low": 23.39, "high": 59.99, "median": 36.23},
+    "motivations": [
+      "Raise the laptop screen to eye level to reduce neck/shoulder strain during long desk sessions",
+      "Portability for hybrid and remote workers who move between desk, cafe and travel setups",
+      "Tidier desk setup and better airflow/cooling for the laptop"
+    ],
+    "complaints": [
+      {"complaint": "Stand wobbles or topples, especially under active typing or with a heavier 15-inch laptop", "quote": "the stand would topple over without even touching it", "evidence_id": "E-006", "frequency": "UNKNOWN - theme confirmed across multiple listings' reviews via search synthesis, exact share of reviews not obtainable from snippets"},
+      {"complaint": "Laptop slips or nearly falls off because support arms are too short", "quote": "laptop arms are short and the laptop has almost fallen off many times", "evidence_id": "E-007", "frequency": "UNKNOWN"},
+      {"complaint": "Stand is unstable on soft surfaces (carpet, bed) even if fine on a hard desk", "quote": "perform well on hard surfaces but become very unstable when placed on carpet or other soft surfaces", "evidence_id": "E-006", "frequency": "UNKNOWN"},
+      {"complaint": "Not sturdy enough for active typing; better suited to passive screen viewing only", "quote": "aren't sturdy enough to hold weight while actively typing and are better suited for passive viewing", "evidence_id": "E-006", "frequency": "UNKNOWN"},
+      {"complaint": "Metal surface can scratch the laptop or desk if unpadded", "quote": "metal laptop stands can scratch things if not stored properly in a case", "evidence_id": "E-008", "frequency": "UNKNOWN"}
+    ],
+    "differentiation": [
+      {"angle": "Wider non-slip tripod-style base plus a locking (not friction-only) hinge, marketed as stable on carpet, bed trays and under active typing", "type": "requires_product_change", "rationale": "Directly answers the two most repeated complaints (wobble, instability on soft surfaces); the generic single-arm friction-hinge design most competitors use is the structural cause."},
+      {"angle": "Deep-lip silicone cradle demonstrated on camera holding a laptop at a steep angle without sliding", "type": "testable_in_content", "rationale": "Addresses the slipping complaint; testable in content only if the sourced unit is confirmed to have adequate arm/lip depth before the claim is made in an ad."},
+      {"angle": "Scratch-free guarantee shown via a close-up demo (dragging a key or coin across the silicone pad with no mark)", "type": "testable_in_content", "rationale": "Turns an acknowledged category concern into a concrete, filmable proof point rather than a bare claim."}
+    ],
+    "paid_ads_fit": {
+      "silent_5s_demo": "Strong - unfolding the stand and sliding a laptop onto it so the screen visibly rises to eye level reads clearly with no audio needed.",
+      "buyer": "Remote/hybrid workers, students and digital nomads who work from a desk, bed or cafe table.",
+      "policy_hazard": "Low, provided ad copy avoids implying a medical or therapeutic outcome (e.g. 'cures neck pain', 'fixes your posture'); Meta and TikTok restrict health-outcome claims. Ergonomic-comfort and desk-setup framing only."
+    },
+    "gate_G8": {"result": "pass", "reason": "Three of four confirmed FACT prices ($30.46, $42.00, $59.99) sit inside the $25-60 band; the fourth confirmed price ($23.39) sits $1.61 below the floor. The observed median ($36.23) sits comfortably inside the band, so a launch price in the $30-45 range is supportable by observed competition."}
+  }
+}

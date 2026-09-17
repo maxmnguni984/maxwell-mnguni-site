@@ -1,0 +1,230 @@
+{
+  "product_id": "P-2026-09-17-003",
+  "agent": "economics",
+  "status": "partial",
+  "summary": "Over-the-sink adjustable 2-tier dish drying rack at a $35.00 target price. No supplier quote is obtainable, so economics were run backwards with cost_ceiling.py: maximum landed cost is $13.65 base (target ROAS 2.5), $5.64 pessimistic (ROAS 1.8) and $20.24 optimistic (ROAS 3.5); requiring $5.00 profit per order leaves $8.93 base and $1.18 pessimistic. The arithmetic matches candidate 002 almost exactly, but the physical product does not: this is the heaviest and bulkiest item in the set, a rigid two-tier steel frame, so shipping and dimensional weight will consume far more of the same ceiling. The serious finding is IP: a design patent titled 'Adjustable over the sink dish drying rack' (D1023495) and a second titled 'Multiple tier over the sink dish rack' (D630813) match this product's description exactly, and neither record could be opened to confirm grant date, assignee or live status because the patent sources are blocked. G2 is therefore unknown, which under the rubric is a HOLD. G3 and G4 pass; G6 is unknown.",
+  "facts": [
+    {
+      "claim": "A design patent titled 'Adjustable over the sink dish drying rack' exists under number D1023495, and a second design patent titled 'Multiple tier over the sink dish rack', described as a two tier over the sink dish rack, exists under number D630813",
+      "evidence_id": "E-001"
+    },
+    {
+      "claim": "Utility patents on expandable and adjustable dish racks include US6179134 (expandable dish rack), US8074813B2 (dish rack with adjustable spout and removable drip tray) and US8794455B2 (dish rack with a rotatably attached drain spout)",
+      "evidence_id": "E-002"
+    },
+    {
+      "claim": "A CPSC recall search for dish drying racks and over-sink kitchen racks returned only dishwasher recalls, all for fire hazards from power cords or heating elements, and no recall of any non-powered dish drying rack",
+      "evidence_id": "E-003"
+    },
+    {
+      "claim": "Meta's advertising Restricted Goods and Services categories are weapons/ammunition/explosives, drugs and pharmaceuticals, health and wellness, financial services and gambling; a dish drying rack falls in none of them",
+      "evidence_id": "E-004"
+    },
+    {
+      "claim": "TikTok's advertising policy categories cover adult content, alcohol, animals, dangerous products, deceptive practices, financial services, gambling, healthcare, IP infringement, misinformation, politics, self-harm, teen safety, violence and weight management; a dish drying rack falls in none of them",
+      "evidence_id": "E-005"
+    },
+    {
+      "claim": "Shopify's Acceptable Use Policy restricted list covers regulated/illegal products, age-restricted products, adult products, financial and gambling services, self-harm items, toxic or flammable goods including lithium batteries, and pseudo-pharmaceuticals; a dish drying rack falls in none of them",
+      "evidence_id": "E-006"
+    },
+    {
+      "claim": "US duty-free de minimis treatment was suspended for all countries effective 12:01 a.m. EDT on 29 August 2025 under Executive Order 14324, and Federal Register documents dated 24 June 2026 record indefinite suspension of the exemption",
+      "evidence_id": "E-007"
+    }
+  ],
+  "estimates": [
+    {
+      "claim": "Maximum landed cost per unit at the base case is $13.65 (39.0% of the $35.00 price), $5.64 pessimistic and $20.24 optimistic, at break-even after paid acquisition",
+      "method": "research/tools/cost_ceiling.py --price 35.00; output stored in P-2026-09-17-003.econ.json",
+      "confidence": "high"
+    },
+    {
+      "claim": "Requiring $5.00 profit per order drops the ceiling to $8.93 base and $1.18 pessimistic",
+      "method": "research/tools/cost_ceiling.py --price 35.00 --profit 5; output stored in P-2026-09-17-003.profit5.json",
+      "confidence": "high"
+    },
+    {
+      "claim": "This is the heaviest and most voluminous of the four candidates, a rigid two-tier steel frame, so the same $13.65 base ceiling buys materially less product here than it does for the soft-sided trunk organizer at the same ceiling",
+      "method": "comparison of the four candidates' material and rigid packed volume against identical cost_ceiling outputs at $34.99 and $35.00",
+      "confidence": "med"
+    },
+    {
+      "claim": "D1023495 falls in the design-patent number range issued in 2024, and US design patents filed on or after 13 May 2015 carry a 15-year term from grant, so this patent is very likely still in force; D630813 falls in the 2011 range and would have expired under the older 14-year term",
+      "method": "inference from design patent number sequence and the statutory term rules; neither record could be opened to confirm",
+      "confidence": "low"
+    }
+  ],
+  "assumptions": [
+    "Every rate inside cost_ceiling.py is an ASSUMPTION for a store with no trading history: discount 15/10/5 percent, refunds 12/6/3 percent, chargebacks 1.5/0.7/0.3 percent, packaging $1.50/$1.00/$0.50 across pessimistic/base/optimistic.",
+    "Payment fees assume the Shopify Payments US online card rate of 2.9 percent plus $0.30. The owner has no Shopify plan, so this is unconfirmed.",
+    "Target ROAS of 2.5 in the base case is an ASSUMPTION about cold-traffic performance, not a prediction.",
+    "The $35.00 price is itself derived from Amazon category price-filter buckets rather than any single observed listing, which discovery already labelled ASSUMPTION; it sits inside the brief's $25 to $60 band.",
+    "The model's base refund rate of 6 percent is likely optimistic for this product type given the sink-span fit problem and post-delivery rust complaints, but it has not been raised because no competitor review evidence exists for this run to justify a specific higher number."
+  ],
+  "unknowns": [
+    {
+      "question": "Landed cost per unit from any supplier",
+      "why_unresolved": "Every supplier catalogue (aliexpress.com, alibaba.com, cjdropshipping.com, zendrop, spocket) is refused by the network egress proxy. The supplier handoff for this product, suppliers/P-2026-09-17-003.json, exists but has status 'blocked' and every econ_inputs field is null, so there is no cost to compare against the ceiling."
+    },
+    {
+      "question": "Grant date, assignee, live status and claimed ornamental scope of design patent D1023495 'Adjustable over the sink dish drying rack'",
+      "why_unresolved": "patents.google.com and image-ppubs.uspto.gov are blocked to direct fetching; only a search-result title was obtainable, with no drawing, no date and no assignee"
+    },
+    {
+      "question": "Whether a generic dropshipped over-sink rack would be an ordinary-observer match to the D1023495 design",
+      "why_unresolved": "The design drawings could not be viewed, and no candidate supplier listing could be viewed either, so no visual comparison was possible"
+    },
+    {
+      "question": "Applicable HTS duty rate, probably heading 7323 (table, kitchen or other household articles of iron or steel)",
+      "why_unresolved": "hts.usitc.gov returns EGRESS_BLOCKED to direct fetching and scoped search returned index pages without a rate column"
+    },
+    {
+      "question": "Whether saferproducts.gov holds consumer incident reports for dish drying racks",
+      "why_unresolved": "saferproducts.gov returns EGRESS_BLOCKED to direct fetching, including the keyless Recall REST endpoint; scoped search returned unrelated incident IDs"
+    },
+    {
+      "question": "Base-case contribution margin in dollars and percent as rubric G6 literally defines it",
+      "why_unresolved": "Contribution margin requires a unit cost, which is unobtainable here"
+    }
+  ],
+  "evidence": [
+    {
+      "id": "E-001",
+      "url": "https://image-ppubs.uspto.gov/dirsearch-public/print/downloadPdf/D1023495",
+      "accessed": "2026-09-17",
+      "quote": "Adjustable over the sink dish drying rack",
+      "type": "registry",
+      "verification": "OBSERVED"
+    },
+    {
+      "id": "E-002",
+      "url": "https://patents.google.com/patent/US8794455B2/en",
+      "accessed": "2026-09-17",
+      "quote": "US8794455B2 - Dish rack - a dish rack with a rotatably attached drain spout to direct water to different positions to match kitchen environments.",
+      "type": "registry",
+      "verification": "OBSERVED"
+    },
+    {
+      "id": "E-003",
+      "url": "https://www.cpsc.gov/Recall-Products/Dishwashers",
+      "accessed": "2026-09-17",
+      "quote": "The results are primarily about dishwasher recalls rather than dish drying racks that mount over the sink... various recalled dishwashers from ASKO, BSH Home Appliances, Cove, Whirlpool, Maytag and GE, most due to fire hazards from power cord or heating element issues.",
+      "type": "registry",
+      "verification": "OBSERVED"
+    },
+    {
+      "id": "E-004",
+      "url": "https://transparency.meta.com/policies/community-standards/restricted-goods-services/",
+      "accessed": "2026-09-17",
+      "quote": "Restricted Goods and Services: Weapons, Ammunition or Explosives; Drugs and Pharmaceuticals; Health and Wellness; Financial and Insurance Products and Services; Online Gambling and Games.",
+      "type": "policy",
+      "verification": "OBSERVED"
+    },
+    {
+      "id": "E-005",
+      "url": "https://ads.tiktok.com/help/article/tiktok-advertising-policies-industry-entry",
+      "accessed": "2026-09-17",
+      "quote": "Adult Content, Alcohol, Animals and Environment, Dangerous Products or Services, Deceptive practices, Financial Services, Gambling and Games, Healthcare and Pharmaceuticals, Intellectual Property Infringement, Weight Management and Body Image.",
+      "type": "policy",
+      "verification": "OBSERVED"
+    },
+    {
+      "id": "E-006",
+      "url": "https://www.shopify.com/legal/aup",
+      "accessed": "2026-09-17",
+      "quote": "Products or services that require regulatory approval or compliance... age-restricted products... anything that is toxic or flammable - so no cleansers, no aerosol sprays, no lithium batteries... Pharmaceuticals and other products that make health claims that are not verified by a local or nat [...]",
+      "type": "policy",
+      "verification": "OBSERVED"
+    },
+    {
+      "id": "E-007",
+      "url": "https://www.federalregister.gov/documents/2025/09/02/2025-16802/notice-of-implementation-of-the-presidents-executive-order-14324-suspending-duty-free-de-minimis",
+      "accessed": "2026-09-17",
+      "quote": "Executive Order 14324 suspends the duty-free de minimis exemption otherwise authorized under section 321(a)(2)(C) of the Tariff Act of 1930, as amended, for all covered products, regardless of country of origin, valued at $800 or less... effective on or after 12:01 a.m. eastern daylight time o [...]",
+      "type": "policy",
+      "verification": "OBSERVED"
+    }
+  ],
+  "flags": [
+    "IP_RISK",
+    "SOURCE_UNAVAILABLE",
+    "OPS"
+  ],
+  "recommendation": "proceed_with_conditions",
+  "limits_used": {
+    "fetches": 3,
+    "searches": 19,
+    "minutes": 32
+  },
+  "data": {
+    "scenarios_file": "P-2026-09-17-003.econ.json",
+    "profit5_file": "P-2026-09-17-003.profit5.json",
+    "method": "cost_ceiling (reverse economics). No supplier quote obtainable, so contribution margin is not computable; the maximum bearable landed cost is reported instead.",
+    "price": 35.0,
+    "price_label": "ESTIMATE - derived from Amazon category price-filter buckets, not a single observed listing; inside the brief's $25-$60 band",
+    "max_landed_cost": {
+      "pessimistic": 5.64,
+      "base": 13.65,
+      "optimistic": 20.24
+    },
+    "max_landed_cost_pct_of_price": {
+      "pessimistic": 16.1,
+      "base": 39.0,
+      "optimistic": 57.8
+    },
+    "max_landed_cost_at_5_profit": {
+      "pessimistic": 1.18,
+      "base": 8.93,
+      "optimistic": 15.38
+    },
+    "break_even_roas": {
+      "pessimistic": 1.8,
+      "base": 2.5,
+      "optimistic": 3.5
+    },
+    "ad_cost_per_order": {
+      "pessimistic": 16.53,
+      "base": 12.6,
+      "optimistic": 9.5
+    },
+    "break_even_cac_at_ceiling_base": 12.6,
+    "tool_grade_breakeven": "WORKABLE",
+    "tool_grade_at_5_profit": "WORKABLE",
+    "check_this_number": 13.65,
+    "contribution_base": null,
+    "contribution_pct_base": null,
+    "gates": {
+      "G2": {
+        "result": "unknown",
+        "reason": "Screen only, not legal advice. A design patent titled exactly 'Adjustable over the sink dish drying rack' (D1023495) and a second titled 'Multiple tier over the sink dish rack' (D630813) match this product's description word for word. Design patents protect ornamental appearance, so whether a specific sourced rack infringes depends on a visual comparison that could not be made: patents.google.com and image-ppubs.uspto.gov are blocked, so no drawing, grant date, assignee or live status was obtainable. This is the largest IP exposure across the four candidates and must be cleared before any sourcing. Under the rubric, unknown means HOLD.",
+        "evidence_id": "E-001"
+      },
+      "G3": {
+        "result": "pass",
+        "reason": "No CPSC recall found for any non-powered dish drying rack; the only recalls in this search space are dishwashers recalled for electrical fire hazards, a different product class entirely. No health, medical, safety or efficacy claim is needed to sell a drying rack. Residual physical hazards are minor: exposed wire ends and cut edges on cheap stampings, and a chipped coating on carbon steel that rusts.",
+        "evidence_id": "E-003"
+      },
+      "G4": {
+        "result": "pass",
+        "reason": "Not listed in Meta's Restricted Goods and Services, TikTok's prohibited industry entry list, or Shopify's Acceptable Use Policy restricted categories.",
+        "evidence_id": "E-004"
+      },
+      "G6": {
+        "result": "unknown",
+        "reason": "The arithmetic is identical to candidate 002 ($13.65 base, $5.64 pessimistic, $8.93 base with $5 profit required), but the physical product is the heaviest and bulkiest in the set. A rigid two-tier steel frame carries a dimensional-weight penalty on tracked US air freight that the same ceiling will absorb far less comfortably than a flat-packing fabric organizer does. Without a landed quote it is not possible to say which side of $13.65 this falls on, and the honest answer is unknown rather than a guess."
+      }
+    },
+    "operational_risks": [
+      "Heaviest and bulkiest candidate of the four: a rigid two-tier steel frame carries a dimensional-weight penalty that directly attacks the $13.65 ceiling, and it is also the most expensive of the four to take back on a return",
+      "Return freight on a rigid multi-kilogram item will in most cases exceed the entire contribution on the order, so a refund here is worse than a lost sale",
+      "Sink-span fit is a genuine sizing problem, not a cosmetic one: the 'adjustable' feature exists precisely because sinks vary, and a rack that does not span the customer's sink is an immediate return",
+      "Transit damage is the top fragility risk: bent tiers, sprung welds and scratched chrome on a rigid frame shipped 12 days in a soft carton",
+      "Rust and coating chip complaints arrive weeks after delivery, typically after the return window closes but inside the chargeback window, so they land as disputes rather than returns",
+      "Assembly steps and missing small parts (drip tray, spout, utensil holder, cutting-board hook) are a support-load multiplier",
+      "Two or three finish variants (stainless, black, bronze) plus a possible one-tier and two-tier split pushes SKU count toward the rubric's operational complexity penalty",
+      "Not seasonal, which is the one clear operational advantage this candidate has",
+      "The 12-day tracked delivery promise is the hardest to keep here of the four, because heavy rigid parcels are the first to be downgraded to slower lanes when freight capacity tightens"
+    ]
+  }
+}

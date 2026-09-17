@@ -1,0 +1,85 @@
+{
+  "product_id": "P-2026-09-17-001",
+  "agent": "supplier",
+  "status": "blocked",
+  "summary": "No supplier page could be read for the portable adjustable aluminium laptop stand: CJdropshipping, AliExpress, Alibaba, Zendrop and Spocket all returned EGRESS_BLOCKED at the network proxy for both WebFetch and curl, confirmed directly this session, so landed unit cost remains UNKNOWN. The likely HTS classification (8473.30, parts/accessories for computers) carries a Free MFN base rate per a third-party aggregator, but China-origin surcharges are plausible and unconfirmed. Physical construction (foldable, light aluminium) gives this product the second-best shipping profile of the four in scope, and the $11.71 landed-cost ceiling looks tight-but-plausible, constrained more by shipping than by raw material cost. Gate G5 is unknown.",
+  "facts": [
+    {"claim": "CJdropshipping lists a folding aluminium-alloy laptop stand product page ('New Laptop Stand Multifunctional Folding Lift Portable Laptop Stand Monitor Increase Rack Aluminum Alloy Base'), confirming this product type is stocked by at least one dropship supplier, though the unit price did not render for this fetcher.", "evidence_id": "E-001"},
+    {"claim": "A CBP ruling (HQ H014942) specifically addresses the tariff classification of a notebook computer stand (Targus Ergonomic M-Stand), supporting HTS heading 8473 (parts and accessories of automatic data processing machines) as the applicable family for laptop stands.", "evidence_id": "E-002"},
+    {"claim": "A third-party HTS aggregator (htshub.com) lists subheading 8473.30.51.00 ('parts and accessories... other') with a general (MFN/Column 1) duty rate of Free.", "evidence_id": "E-003"}
+  ],
+  "estimates": [
+    {"claim": "If this stand is sourced from China, effective landed duty is likely to exceed the Free MFN base once China-specific surcharges are added, plausibly in a 12%-25%+ range, based on an analogous Flexport worked example showing a 12.5% effective aluminium-derivative surcharge on the same HTS subheading for a non-China origin, and a separate search snippet referencing a 25% Section 301 China surcharge on the same subheading family. The exact current 2026 stacked rate for this specific product and origin was not confirmed.", "method": "analogy from one comparable HTS 8473.30.51.00 worked example plus unconfirmed search-snippet mentions of surcharge programs; hts.usitc.gov itself is blocked for this fetcher so no primary page was read", "confidence": "low"},
+    {"claim": "The $11.71 landed-cost ceiling (unit + ship + duty) at the $30.46 target price looks tight-but-plausible for this category: folding aluminium stands are mechanically simple (stamped/extruded aluminium, hinges, rubber pads, no electronics) and are a commodity item, so raw unit cost is unlikely to be the binding constraint. The likelier constraint is supplier shipping cost, given the item's moderate weight and non-trivial folded footprint.", "method": "category reasoning from physical construction, informed by one comparable listing's stated weight (0.96 kg) for a similar folding aluminium stand", "confidence": "low"}
+  ],
+  "assumptions": [
+    "Assumed the in-scope product is a passive, foldable, non-electronic aluminium stand (matching the discovery record), not a motorized or lit stand, consistent with the brief's exclusion of mains-powered/lithium-battery electronics.",
+    "Assumed a comparable folding aluminium laptop stand's stated weight of roughly 0.96 kg (from a CJdropshipping listing summary) is representative of this product category for shipping-profile reasoning, pending a real supplier spec sheet."
+  ],
+  "unknowns": [
+    {"question": "Unit price at CJdropshipping, AliExpress or Alibaba for this exact stand at 1, 10 and 50 units", "why_unresolved": "cjdropshipping.com, aliexpress.com and alibaba.com are blocked at the network egress proxy for both WebFetch and curl in this environment; a direct WebFetch attempt on a specific CJdropshipping product page returned EGRESS_BLOCKED this session. WebSearch scoped to these domains returns only prose summaries with no per-unit price tied to a checkable quote."},
+    {"question": "Whether a supplier quote would be DDP or DDU, and the exact combined 2026 duty rate for China-origin aluminium laptop stands under HTS 8473.30.51.00 after Section 301 and any aluminium-derivative (Proclamation 10895) surcharge", "why_unresolved": "hts.usitc.gov is blocked at the network egress proxy for WebFetch (confirmed by a direct EGRESS_BLOCKED error this session); only third-party aggregator search snippets were reachable, and none stated a single current combined rate for this classification and origin."},
+    {"question": "Verified carrier (e.g. USPS, ePacket, 4PX) transit time to a US address for this product", "why_unresolved": "No supplier or carrier page could be loaded; only blocked supplier-platform claims exist, which is why gate G5 is recorded as unknown rather than passing or failing."}
+  ],
+  "evidence": [
+    {"id": "E-001", "url": "https://cjdropshipping.com/product/new-laptop-stand-multifunctional-folding-lift-portable-laptop-stand-monitor-increase-rack-aluminum-alloy-base-p-DCB495CC-80F8-4ED9-B5BD-26E39B751776.html", "accessed": "2026-09-17", "quote": "New Laptop Stand Multifunctional Folding Lift Portable Laptop Stand Monitor Increase Rack Aluminum Alloy Base - CJdropshipping", "type": "search", "verification": "OBSERVED"},
+    {"id": "E-002", "url": "https://rulings.cbp.gov/ruling/H014942", "accessed": "2026-09-17", "quote": "Customs Ruling HQ H014942 - Tariff classification of the \"Targus Ergonomic M-Stand for Notebooks\"", "type": "registry", "verification": "OBSERVED"},
+    {"id": "E-003", "url": "https://www.htshub.com/us-hs/detail/8473305100", "accessed": "2026-09-17", "quote": "8473.30.51.00 - Other; general (Column 1) rate of duty: Free", "type": "other", "verification": "OBSERVED"},
+    {"id": "E-004", "url": "https://tariffs.flexport.com/examples/2026-02-04-aluminum-50-percent-gb-9903-85-15-25-percent", "accessed": "2026-09-17", "quote": "HTS 8473.30.51.00: Parts and accessories from United Kingdom, aluminum 50 percent, 9903.85.15 25 percent - effective duty example", "type": "other", "verification": "OBSERVED"}
+  ],
+  "flags": ["SOURCE_UNAVAILABLE"],
+  "recommendation": "proceed_with_conditions",
+  "limits_used": {"fetches": 5, "searches": 14, "minutes": 30},
+  "data": {
+    "suppliers": [],
+    "econ_inputs": {
+      "unit_cost": {"pessimistic": null, "base": null, "optimistic": null},
+      "ship_cost": {"pessimistic": null, "base": null, "optimistic": null},
+      "incoterms_base": "UNKNOWN",
+      "basis": "No real supplier quote could be read for this product; CJdropshipping, AliExpress, Alibaba, Zendrop and Spocket are all blocked at the network egress proxy in this environment (confirmed by direct EGRESS_BLOCKED errors this session). No cost figure is supplied here rather than an invented one. The Research Lead's computed landed-cost ceiling of $11.71 (unit + ship + duty combined) at the $30.46 target price and 2.5 break-even ROAS is the number any future real quote must beat."
+    },
+    "fastest_tracked_delivery_days": null,
+    "gate_G5": {"result": "unknown", "reason": "No supplier or independent carrier transit-time evidence could be obtained; all supplier-platform pages are blocked and no carrier quote was found for this specific route."},
+    "cost_ceiling_test": {
+      "ceiling_usd": 11.71,
+      "target_price_usd": 30.46,
+      "assessment": "ASSESSMENT: tight-but-plausible. Aluminium folding stands are a mature, low-complexity commodity (stamped/extruded aluminium, a hinge, rubber feet), so raw unit cost is unlikely to be the binding constraint on its own. The more likely risk is supplier shipping cost given the item's moderate weight and non-flat folded footprint, plus an unconfirmed but plausible China-origin duty surcharge on top of the Free MFN base rate."
+    },
+    "shipping_profile": {
+      "est_weight_g": "500-1000 (ASSUMPTION, anchored to a comparable CJdropshipping listing's stated 0.96 kg for a similar folding aluminium stand)",
+      "packed_dims_est_cm": "roughly 30 x 10 x 4 when folded (ASSUMPTION, typical for this stand style; not measured)",
+      "rank_of_4": 2,
+      "rank_reasoning": "Folds to a fairly slim profile and is structurally durable (aluminium doesn't crush or leak), giving it a moderate, not minimal, actual and volumetric weight. Better than the two bulkier/rigid household items in this set, worse than the flat-packing vacuum bags."
+    },
+    "duty_exposure": {
+      "hts_code": "8473.30.51.00 (candidate)",
+      "description": "Parts and accessories (other than covers, carrying cases and the like) suitable for use solely or principally with machines of headings 8470 to 8472 - Other",
+      "base_duty_rate": "Free (MFN/Column 1) per a third-party HTS aggregator; not independently confirmed by directly loading hts.usitc.gov, which is blocked for this fetcher",
+      "china_surcharge_note": "Search snippets indicate a possible ~25% Section 301-family surcharge on this subheading for China-origin goods, and a possible aluminium-derivative surcharge (Proclamation 10895, heading family 9903.85.xx) if the aluminium content triggers it; a comparable worked example (different product, UK origin, 50% aluminium content) showed a 12.5% effective surcharge. Net effective 2026 rate for this exact product and origin is UNKNOWN pending direct verification.",
+      "source_urls": ["https://rulings.cbp.gov/ruling/H014942", "https://www.htshub.com/us-hs/detail/8473305100", "https://tariffs.flexport.com/examples/2026-02-04-aluminum-50-percent-gb-9903-85-15-25-percent"],
+      "confidence": "low - search-snippet only, hts.usitc.gov itself blocked"
+    },
+    "supplier_questions_ordered": [
+      "Is this quote DDP (you pay US duty) or DDU/DAP (duty billed to us or the customer)?",
+      "What is the unit price for the aluminium laptop stand at 1 unit, at 10 units, and at 50 units (state FOB or ex-works)?",
+      "What is your processing/handling time before a tracked shipment is handed to the carrier?",
+      "What carrier and service do you use to a US address, and what is the stated transit time in days from handover to delivery?",
+      "Is end-to-end tracking provided to the US delivery address? Can you share a live tracking link for a recent shipment?",
+      "What is your return and defect policy for units damaged or lost in transit, and where does a US customer send a defective unit?",
+      "What is the minimum order quantity, and is there a price break at higher volumes beyond 50 units?",
+      "What colour/finish and height-adjustment variants exist, and do any carry a different unit price or MOQ?",
+      "What packaging do you ship in (branded box, plain box, poly bag), and can it be customized, and at what added cost/MOQ?",
+      "Will you send a single sample unit before a bulk order, what does the sample cost, and what is the sample lead time?"
+    ],
+    "cross_product_shipping_rank": [
+      {"rank": 1, "product_id": "P-2026-09-17-004", "name": "Manual hand-pump vacuum compression storage bags"},
+      {"rank": 2, "product_id": "P-2026-09-17-001", "name": "Portable adjustable aluminium laptop stand"},
+      {"rank": 3, "product_id": "P-2026-09-17-002", "name": "Collapsible multi-compartment car trunk organizer"},
+      {"rank": 4, "product_id": "P-2026-09-17-003", "name": "Over-the-sink adjustable 2-tier dish drying rack"}
+    ],
+    "sample_recommendation": {
+      "pick": "P-2026-09-17-004 - Manual hand-pump vacuum compression storage bags",
+      "reasoning": "ASSESSMENT: of the four products, the vacuum bags have the most favourable cost-ceiling odds and the best shipping profile, so a sample there is cheapest to justify and fastest to receive. Crucially, the product's entire value proposition (does the seal actually hold vacuum over days, does the hand pump work smoothly and not fail) cannot be assessed from a listing photo and is exactly what a physical sample settles. Dish rack (P-003) is the second-highest-value sample if budget allows a second one, since it combines the tightest cost ceiling with the worst shipping profile and an untested adjustable/telescoping mechanism."
+    }
+  }
+}

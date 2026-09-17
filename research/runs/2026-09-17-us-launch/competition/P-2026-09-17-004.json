@@ -1,0 +1,67 @@
+{
+  "product_id": "P-2026-09-17-004",
+  "agent": "competitor",
+  "status": "complete",
+  "summary": "Manual hand-pump vacuum compression storage bags are a crowded, low-priced category. Confirmed competitor pricing clusters well below the brief's $25-60 band for small/medium multi-packs ($10.99 for a 5-piece small set, $12.96 for a 6-pack) and only reaches the floor of the band with a large 15-piece bundle (Hibag, $25.99). The same Walmart search also surfaced a USB-rechargeable cordless-pump variant, which is explicitly EXCLUDED under the brief as lithium-battery electronics and must not be sourced or referenced in creative. The strongest, most repeated complaint theme is that bags lose their seal and re-inflate over hours to weeks, with secondary complaints about zipper misalignment, puncture-prone material, and a fiddly pump-valve clip. Demonstration value is high: a stuffed bag visibly shrinking as air is pumped out is a strong, fast before/after visual. All evidence is WebSearch-snippet text, not a direct page read, because the relevant commerce domains are blocked at the environment's network proxy.",
+  "facts": [
+    {"claim": "Hibag 15-Pack Travel Seal Saver Vacuum Compression Storage Bags (3 Small/Medium/Large/Jumbo/Roll-Up sizes) with hand pump lists at $25.99 on Walmart.com.", "evidence_id": "E-001"},
+    {"claim": "A 5-piece small-size Space Saver vacuum storage bag set with hand pump was returned at $10.99 in a combined Walmart search summary; the specific SKU-to-URL match was not independently confirmed by opening the page.", "evidence_id": "E-002"},
+    {"claim": "A 6-pack of vacuum storage bags with a free hand pump for travel was returned at $12.96 in the same combined Walmart search summary; the specific SKU-to-URL match was not independently confirmed.", "evidence_id": "E-002"},
+    {"claim": "Target carries at least five named manual hand-pump vacuum storage bag sets (Home-Complete 25-pack, DOMETOUR 25/20-pack, a 20-pack with 5 assorted sizes, a 10-pack, and a 10 Jumbo-pack), but no prices were visible in search snippets.", "evidence_id": "E-003"},
+    {"claim": "The same Walmart search that surfaced manual hand-pump products also surfaced a 'Travel Vacuum Storage Bags with Rechargeable Wireless & Hand Pump' listing, which is a battery-powered variant excluded by the brief's lithium-battery-electronics rule and is not treated as an in-scope competitor here.", "evidence_id": "E-004"},
+    {"claim": "The most repeated customer complaint is that bags fail to hold their seal and re-inflate, ranging from slow re-inflation over about a week to all bags re-inflating within minutes.", "evidence_id": "E-005"},
+    {"claim": "A recurring complaint is that the zipper track does not align the two sides well enough to seal properly.", "evidence_id": "E-005"},
+    {"claim": "A recurring complaint is that the bag material is thin and puncture-prone, with at least one report of a bag getting a hole from being dropped.", "evidence_id": "E-005"},
+    {"claim": "A recurring complaint is that the pump-valve clip is difficult to reattach correctly once removed.", "evidence_id": "E-005"}
+  ],
+  "estimates": [],
+  "assumptions": [],
+  "unknowns": [
+    {"question": "Confirmed per-unit price and exact product-page URL for the $10.99 5-piece and $12.96 6-pack Walmart listings.", "why_unresolved": "The WebSearch engine returned these two prices as part of a single synthesized answer to a multi-result query rather than tied to one specific listed URL; direct page fetch to disambiguate is blocked by the environment's proxy."},
+    {"question": "Prices for the five named Target-listed manual hand-pump sets.", "why_unresolved": "Target search snippets returned product titles and store policy text (same-day delivery, $35 free-shipping threshold) but no dollar figures; direct page fetch is blocked."},
+    {"question": "Frequency of the re-inflation, zipper, puncture and valve-clip complaints relative to satisfied buyers.", "why_unresolved": "Search-snippet evidence surfaces complaint themes via engine-synthesized summaries of multiple reviews at once; exact counts or percentages are not obtainable this way and are not estimated."}
+  ],
+  "evidence": [
+    {"id": "E-001", "url": "https://www.walmart.com/ip/Hibag-15-Pack-Vacuum-Compression-Storage-Bags-with-Hand-Pump-3-Small-3-Medium-3-Large-3-Jumbo-3-Roll-Up-Bags/755726186", "accessed": "2026-09-17", "quote": "Hibag 15 Pack Travel Seal Saver Vacuum Compression Storage Bags (3 Small/Medium/Large/Jumbo/Roll Up Bags) with Pump - Walmart.com", "type": "search", "verification": "OBSERVED"},
+    {"id": "E-002", "url": "https://www.walmart.com/c/kp/hand-vacuum-pump", "accessed": "2026-09-17", "quote": "5Pcs Small Size Space Saver Vacuum Storage Bags with hand pump for $10.99... Vacuum Storage Bags with Free Hand Pump for Travel (6 Pack) for $12.96", "type": "search", "verification": "OBSERVED"},
+    {"id": "E-003", "url": "https://www.target.com/s/vacuum+compression+bags", "accessed": "2026-09-17", "quote": "Home-Complete 25 Vacuum Storage Bags with Pump for Storing Clothes... DOMETOUR 25/20 Pack Space Saver Bags... 20 Pack Vacuum Storage Bags with Hand Pump for Clothes Bedding Travel - 5 Assorted Sizes... 10 Jumbo Vacuum Storage Bags", "type": "search", "verification": "OBSERVED"},
+    {"id": "E-004", "url": "https://www.walmart.com/ip/Travel-Vacuum-Storage-Bags-Rechargeable-Wireless-Hand-Pump-Portable-Space-Saver-Bags-Travel-Home-Vacuum-Compression-Packing-Seal-Clothes-Blankets-Sea/20266304459", "accessed": "2026-09-17", "quote": "Travel Vacuum Storage Bags with Rechargeable Wireless & Hand Pump, Portable Space Saver Bags for Travel & Home", "type": "search", "verification": "OBSERVED"},
+    {"id": "E-005", "url": "https://www.amazon.com/Spacesaver-Hand-Pump-Double-Zip-Comforters-Blankets/dp/B07L6TLZBS", "accessed": "2026-09-17", "quote": "the vacuum storage bags leaking after a few hours of use... not sealing properly, as the air gets back in and the bags stop holding it... the zipper not aligning the two sides and sealing them together well... instantly got a hole when accidentally dropped", "type": "search", "verification": "OBSERVED"}
+  ],
+  "flags": ["SOURCE_UNAVAILABLE"],
+  "recommendation": "proceed_with_conditions",
+  "reject_reason": "",
+  "limits_used": {"fetches": 0, "searches": 3, "minutes": 6},
+  "data": {
+    "competitors": [
+      {"name": "Hibag 15-Pack Travel Seal Saver Vacuum Compression Storage Bags (with hand pump)", "url": "https://www.walmart.com/ip/Hibag-15-Pack-Vacuum-Compression-Storage-Bags-with-Hand-Pump-3-Small-3-Medium-3-Large-3-Jumbo-3-Roll-Up-Bags/755726186", "price": 25.99, "variants": 5, "shipping_promise": "UNKNOWN", "positioning": "Largest observed bundle (15 bags, 5 sizes), lands at the floor of the target band", "offer": "UNKNOWN", "catalogue_size": null, "ads_observed": false, "ads_note": "UNKNOWN - not queried; ad presence is not evidence of sales", "evidence_id": "E-001"},
+      {"name": "5-Piece Small Space Saver Vacuum Storage Bags (hand pump)", "url": "https://www.walmart.com/c/kp/hand-vacuum-pump", "price": 10.99, "variants": null, "shipping_promise": "UNKNOWN", "positioning": "Entry-level small set", "offer": "UNKNOWN", "catalogue_size": null, "ads_observed": false, "ads_note": "UNKNOWN", "evidence_id": "E-002"},
+      {"name": "6-Pack Vacuum Storage Bags with Free Hand Pump (Travel)", "url": "https://www.walmart.com/c/kp/hand-vacuum-pump", "price": 12.96, "variants": null, "shipping_promise": "UNKNOWN", "positioning": "Travel-oriented small bundle", "offer": "UNKNOWN", "catalogue_size": null, "ads_observed": false, "ads_note": "UNKNOWN", "evidence_id": "E-002"},
+      {"name": "Home-Complete 25-Pack Vacuum Storage Bags with Pump", "url": "https://www.target.com/p/25-vacuum-storage-bags-compression-packs-for-storing-clothes-and-linens-airtight-space-saving-bags-in-4-sizes-with-pump-by-home-complete-clear/-/A-88304048", "price": null, "variants": 4, "shipping_promise": "Target same-day delivery/drive-up; free standard shipping on $35+ orders", "positioning": "Largest observed pack count (25 bags), price unconfirmed", "offer": "UNKNOWN", "catalogue_size": null, "ads_observed": false, "ads_note": "UNKNOWN", "evidence_id": "E-003"}
+    ],
+    "price_band_observed": {"low": 10.99, "high": 25.99, "median": 12.96},
+    "motivations": [
+      "Reclaim closet or under-bed storage space for seasonal clothing and bedding",
+      "Protect stored items from dust, moisture and pests between seasons",
+      "Simplify packing and moving by compressing bulky soft goods"
+    ],
+    "complaints": [
+      {"complaint": "Bags lose their seal and re-inflate over time, from slow leaks over a week to full re-inflation within minutes", "quote": "the vacuum storage bags not sealing properly, as the air gets back in and the bags stop holding it... some users report ALL of their bags re-inflating", "evidence_id": "E-005", "frequency": "UNKNOWN"},
+      {"complaint": "Zipper track doesn't align both sides well enough to seal", "quote": "the zipper not aligning the two sides and sealing them together well", "evidence_id": "E-005", "frequency": "UNKNOWN"},
+      {"complaint": "Material is thin and punctures or scratches easily", "quote": "the bag instantly got a hole when accidentally dropped, noting these are super fragile bags that get holes or punctures pretty easily", "evidence_id": "E-005", "frequency": "UNKNOWN"},
+      {"complaint": "Pump-valve clip is fiddly and hard to reattach correctly once removed", "quote": "if the clip comes off the valve, it is very difficult to put it back on correctly, as the tab inside the clip must be positioned between the top and bottom pieces", "evidence_id": "E-005", "frequency": "UNKNOWN"},
+      {"complaint": "Quality is inconsistent within the same multi-bag set, with some bags in a pack leaking while others do not", "quote": "eight out of ten jumbo bags worked flawlessly but two had very slow leaks", "evidence_id": "E-005", "frequency": "UNKNOWN"}
+    ],
+    "differentiation": [
+      {"angle": "Double-zip seal plus a wider turbo-valve channel, demonstrated by pumping a bag flat on camera and showing it still flat 24 hours later", "type": "testable_in_content", "rationale": "Directly answers the leading complaint (re-inflation); testable in content only once the sourced bag's zip/valve spec is confirmed to actually differ from the flimsy competitor norm."},
+      {"angle": "Thicker-gauge, puncture-resistant material (heavier mil-count than the typical thin competitor bag) with reinforced corners", "type": "requires_product_change", "rationale": "Answers the puncture/fragility complaint; requires sourcing a different material spec from the supplier, not just different marketing copy."},
+      {"angle": "A simple 'does not re-inflate in 30 days or we replace it' guarantee as the core offer mechanic", "type": "testable_in_content", "rationale": "Converts the category's most common failure mode into a risk-reversal offer that can be tested in ad copy and landing-page content without necessarily changing the physical product."}
+    ],
+    "paid_ads_fit": {
+      "silent_5s_demo": "Very strong - a stuffed bag visibly shrinking flat as air is pumped out is a fast, clear before/after visual that needs no audio or context.",
+      "buyer": "US renters and small-home households managing seasonal clothing and bedding changeovers.",
+      "policy_hazard": "Low for the manual hand-pump product itself, generic storage good with no restricted claims. Operational hazard: creative and sourcing must show only the manual hand-pump version; the USB-rechargeable/cordless variant seen in the same searches is excluded by the brief as lithium-battery electronics and must never appear in imagery, copy or supplier orders."
+    },
+    "gate_G8": {"result": "fail", "reason": "Confirmed competitor retail for small/medium multi-packs clusters at $10.99-$12.96, well below the $25-60 floor. Only the largest observed bundle (Hibag, 15 bags/5 sizes) reaches $25.99, barely inside the floor. As a standalone small-or-medium set this product does not clear the band; landing inside it would require a large multi-size bundle (matching or exceeding the 15-piece competitor) or added accessories/guarantee to justify a premium over the observed competitor norm."}
+  }
+}

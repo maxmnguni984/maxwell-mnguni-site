@@ -1,0 +1,86 @@
+{
+  "product_id": "P-2026-09-17-002",
+  "agent": "supplier",
+  "status": "blocked",
+  "summary": "No supplier page could be read for the collapsible car trunk organizer: AliExpress and Alibaba are both blocked at the network egress proxy, confirmed this session, so landed unit cost remains UNKNOWN. Likely HTS classification is uncertain because competitor listings span two different constructions (soft fabric divider box vs rigid collapsible plastic bin), which land in different tariff chapters with very different base duty rates (as high as 17.6% base for a fabric 'travel/similar bag' classification per a secondary source, versus a low single-digit rate if classified as a plastics article). This item also has the third-best shipping profile of the four: it collapses but keeps a large footprint because of internal stiffening, so dimensional-weight shipping cost is a real risk against the $13.65 ceiling. Gate G5 is unknown.",
+  "facts": [
+    {"claim": "AliExpress hosts multiple wholesale search pages for 'collapsible car trunk organizer' and related terms, confirming the category is stocked by many sellers, but no per-unit price rendered for this fetcher.", "evidence_id": "E-001"},
+    {"claim": "Alibaba shows a showroom category with over 3,690 'collapsible trunk car organizer' listings, confirming broad supplier availability, but again no per-unit price rendered.", "evidence_id": "E-002"},
+    {"claim": "HTS Chapter 42 defines 'travel, sports and similar bags' as goods designed for carrying clothing and other personal effects during travel, including backpacks and shopping bags, and notes that textile fabric coated/laminated with plastics is classified by whichever surface (textile or plastic) is exterior.", "evidence_id": "E-003"},
+    {"claim": "A third-party HTS aggregator lists subheading 4202.92.3131 with a cited duty rate of 17.6% base plus an additional 42.6% all-in figure attributed to a China Section 301 provision.", "evidence_id": "E-004"}
+  ],
+  "estimates": [
+    {"claim": "The correct HTS classification for this product is genuinely uncertain: the discovery record shows competitor listings of two different constructions - soft fabric divider organizers (would likely fall under 4202.92, cited base duty as high as 17.6%) and a rigid 'heavy-duty collapsible storage bin' style (more likely a plastics-chapter classification, typically a low single-digit base duty). Which applies depends on the exact SKU sourced, which is unknown without a supplier spec.", "method": "comparison of two structurally different competitor products already logged in the discovery record against two different HTS chapter families found via search", "confidence": "low"},
+    {"claim": "The $13.65 landed-cost ceiling at the $34.99 target price looks tight for this category, because of the combination of (a) a possibly high base duty rate if the fabric-bodied classification applies, and (b) a shipping cost risk driven by the item's bulky packed volume rather than its actual weight.", "method": "category + duty reasoning from the two findings above", "confidence": "low"}
+  ],
+  "assumptions": [
+    "Assumed the in-scope product matches the discovery record's description (a foldable multi-compartment trunk organizer, not a rigid non-collapsible crate), pending confirmation of the exact SKU and its material."
+  ],
+  "unknowns": [
+    {"question": "Unit price at AliExpress or Alibaba for a comparable trunk organizer at 1, 10 and 50 units", "why_unresolved": "aliexpress.com and alibaba.com are blocked at the network egress proxy for both WebFetch and curl in this environment. WebSearch scoped to these domains returns only prose summaries with no per-unit price tied to a checkable quote."},
+    {"question": "The exact material construction (fabric-bodied vs rigid plastic bin) of the SKU that would actually be sourced, and therefore its correct HTS classification and duty rate", "why_unresolved": "No supplier product page could be loaded to confirm material; the discovery record shows both constructions appearing in competitor search results without a single confirmed target SKU."},
+    {"question": "Verified carrier transit time to a US address for this product", "why_unresolved": "No supplier or carrier page could be loaded; only blocked supplier-platform claims exist, which is why gate G5 is recorded as unknown."}
+  ],
+  "evidence": [
+    {"id": "E-001", "url": "https://www.aliexpress.com/w/wholesale-collapsible-car-trunk-organizer.html", "accessed": "2026-09-17", "quote": "Collapsible Car Trunk Organizer - AliExpress wholesale search results page", "type": "search", "verification": "OBSERVED"},
+    {"id": "E-002", "url": "https://www.alibaba.com/showroom/collapsible-trunk-car-organizer.html", "accessed": "2026-09-17", "quote": "Collapsible Trunk Car Organizer(3690+) - Alibaba showroom", "type": "search", "verification": "OBSERVED"},
+    {"id": "E-003", "url": "https://hts.usitc.gov/reststop/file?release=currentRelease&filename=Chapter+42", "accessed": "2026-09-17", "quote": "The term 'travel, sports and similar bags' means goods... designed for carrying clothing and other personal effects during travel, including backpacks and shopping bags, but excluding items like binocular cases, camera cases...", "type": "other", "verification": "OBSERVED"},
+    {"id": "E-004", "url": "https://tariffsentinel.com/hts/4202-92-31", "accessed": "2026-09-17", "quote": "4202.92.3131 Duty Rate: 17.6% Base + 42.6% China (Sec 301)", "type": "other", "verification": "OBSERVED"}
+  ],
+  "flags": ["SOURCE_UNAVAILABLE"],
+  "recommendation": "proceed_with_conditions",
+  "limits_used": {"fetches": 5, "searches": 14, "minutes": 30},
+  "data": {
+    "suppliers": [],
+    "econ_inputs": {
+      "unit_cost": {"pessimistic": null, "base": null, "optimistic": null},
+      "ship_cost": {"pessimistic": null, "base": null, "optimistic": null},
+      "incoterms_base": "UNKNOWN",
+      "basis": "No real supplier quote could be read for this product; AliExpress and Alibaba are both blocked at the network egress proxy in this environment. No cost figure is supplied here rather than an invented one. The Research Lead's computed landed-cost ceiling of $13.65 (unit + ship + duty combined) at the $34.99 target price and 2.5 break-even ROAS is the number any future real quote must beat."
+    },
+    "fastest_tracked_delivery_days": null,
+    "gate_G5": {"result": "unknown", "reason": "No supplier or independent carrier transit-time evidence could be obtained; all supplier-platform pages are blocked and no carrier quote was found for this specific route."},
+    "cost_ceiling_test": {
+      "ceiling_usd": 13.65,
+      "target_price_usd": 34.99,
+      "assessment": "ASSESSMENT: tight. The classification uncertainty (fabric vs rigid) is the single biggest lever here - a fabric-bodied SKU under a ~17.6% base duty family, stacked with China surcharges, could consume a large share of the ceiling before unit cost or shipping is even counted. A rigid plastics-chapter SKU would likely fare much better on duty but could cost more to ship given its bulk."
+    },
+    "shipping_profile": {
+      "est_weight_g": "600-900 (ASSUMPTION, typical for a collapsible fabric/board organizer of this size)",
+      "packed_dims_est_cm": "roughly 38 x 28 x 28 even collapsed (ASSUMPTION, based on typical trunk-organizer box dimensions; needs internal stiffener board/frame to hold its shape, so it does not pack flat)",
+      "rank_of_4": 3,
+      "rank_reasoning": "Lighter than the dish rack but bulkier than either the laptop stand or the vacuum bags. Because it needs a rigid liner or stiff base to hold its box shape open, it keeps a large minimum packed volume even collapsed, which is likely to trigger dimensional-weight (volumetric) pricing well above what its actual weight would suggest."
+    },
+    "duty_exposure": {
+      "hts_code": "4202.92 (candidate, if fabric-bodied) or a Chapter 39 plastics heading (candidate, if a rigid collapsible bin) - MATERIAL NOT CONFIRMED",
+      "description": "4202.92: travel, sports and similar bags with a textile or plastic-sheeting outer surface. Chapter 39 alternative: other articles of plastics.",
+      "base_duty_rate": "Cited as 17.6% (MFN/Column 1) for subheading 4202.92.3131 by a third-party aggregator if fabric-bodied; likely much lower (roughly 3-5%, unconfirmed) if the actual SKU is a rigid plastics-chapter bin. Neither figure was confirmed by directly loading hts.usitc.gov, which is blocked for this fetcher.",
+      "china_surcharge_note": "The same third-party source cites an additional all-in figure of 42.6% for China-origin goods under 4202.92.3131 (Section 301 List 3). Not independently confirmed, and does not apply if the sourced SKU turns out to be plastics-chapter rather than 4202.92.",
+      "source_urls": ["https://hts.usitc.gov/reststop/file?release=currentRelease&filename=Chapter+42", "https://tariffsentinel.com/hts/4202-92-31"],
+      "confidence": "low - search-snippet only, hts.usitc.gov itself blocked, and classification itself is unresolved"
+    },
+    "supplier_questions_ordered": [
+      "Is this quote DDP (you pay US duty) or DDU/DAP (duty billed to us or the customer)?",
+      "What is the exact outer material (textile/nylon vs a rigid plastics shell) of the organizer body, since this changes its US tariff classification and duty rate materially?",
+      "What is the unit price for the trunk organizer at 1 unit, at 10 units, and at 50 units (state FOB or ex-works)?",
+      "What is your processing/handling time before a tracked shipment is handed to the carrier?",
+      "What carrier and service do you use to a US address, and what is the stated transit time in days from handover to delivery?",
+      "Is end-to-end tracking provided to the US delivery address? Can you share a live tracking link for a recent shipment?",
+      "What is your return and defect policy for units damaged or lost in transit?",
+      "What is the minimum order quantity, and is there a price break at higher volumes beyond 50 units?",
+      "What colour and compartment-configuration variants exist, and do any carry a different unit price or MOQ?",
+      "What are the packed carton dimensions and weight for a single unit, since this drives shipping cost more than for most of the other candidate products?",
+      "Will you send a single sample unit before a bulk order, what does the sample cost, and what is the sample lead time?"
+    ],
+    "cross_product_shipping_rank": [
+      {"rank": 1, "product_id": "P-2026-09-17-004", "name": "Manual hand-pump vacuum compression storage bags"},
+      {"rank": 2, "product_id": "P-2026-09-17-001", "name": "Portable adjustable aluminium laptop stand"},
+      {"rank": 3, "product_id": "P-2026-09-17-002", "name": "Collapsible multi-compartment car trunk organizer"},
+      {"rank": 4, "product_id": "P-2026-09-17-003", "name": "Over-the-sink adjustable 2-tier dish drying rack"}
+    ],
+    "sample_recommendation": {
+      "pick": "P-2026-09-17-004 - Manual hand-pump vacuum compression storage bags",
+      "reasoning": "ASSESSMENT: this product is not the top sample pick. Its biggest open question is a classification/material question (fabric vs rigid) which a supplier spec sheet or photo can resolve more cheaply than a full sample; a sample only becomes clearly worthwhile once the material and HTS exposure are known and it still clears the cost ceiling on paper."
+    }
+  }
+}

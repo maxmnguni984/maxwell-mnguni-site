@@ -1,0 +1,84 @@
+{
+  "product_id": "P-2026-09-17-004",
+  "agent": "supplier",
+  "status": "blocked",
+  "summary": "No supplier page could be read for the manual hand-pump vacuum compression storage bag set: CJdropshipping, AliExpress, Alibaba, Zendrop and Spocket are all blocked at the network egress proxy, confirmed this session, so landed unit cost remains UNKNOWN. This product has the best shipping profile of the four in scope (thin-film bags pack flat and a small manual pump is the only rigid component) and the lowest cited base HTS duty rate (3.4% for plastics household articles), which together make the $9.37 landed-cost ceiling the most plausible to clear of the four. It is also the clearest REQUIRES_SAMPLE case, since the product's core value proposition - whether the seal actually holds vacuum and the pump is durable - cannot be assessed from a listing. Gate G5 is unknown; this handoff explicitly excludes the USB-rechargeable cordless-pump variant per the brief.",
+  "facts": [
+    {"claim": "Made-in-China.com lists a dedicated category of Chinese manufacturers and wholesalers for 'Vacuum Compression Storage Bag', confirming broad supplier availability, but no per-unit price this agent loaded directly rendered a checkable figure.", "evidence_id": "E-001"},
+    {"claim": "A search snippet citing HTS subheading 3924.90.5650 describes it as 'Tableware, kitchenware, other household articles and hygienic or toilet articles, of plastics: Other: Other: Other' with a duty rate of 3.4 percent ad valorem, plus an additional 7.5 percent ad valorem cited for China-origin goods under that subheading.", "evidence_id": "E-002"}
+  ],
+  "estimates": [
+    {"claim": "The likely HTS classification for the bag component is 3924.90 (other household articles of plastics); the accompanying manual hand pump (a small rigid item with no motor) most likely classifies separately as a plastics article (e.g. 3926.90) rather than under a machinery heading, since it has no motorized mechanism.", "method": "category reasoning by analogy to the found 3924.90.5650 subheading and general HTS structure for plastics vs machinery headings", "confidence": "low"},
+    {"claim": "The 7.5% 'China additional' figure cited alongside the 3.4% base rate reads as an older Section 301 List 4A-style rate and likely understates the fuller 2025-2026 IEEPA/reciprocal-tariff stacking that has since applied to Chinese-origin goods; the true current combined rate is UNKNOWN pending direct verification.", "method": "comparison of the cited rate's style/magnitude against general awareness of the broader 2025 US tariff escalation on Chinese goods, not a page-verified current figure", "confidence": "low"},
+    {"claim": "The $9.37 landed-cost ceiling at the $25.00 target price is the most plausible of the four products in this run to clear: thin polyethylene/nylon-laminate bags plus one small plastic manual pump are low-cost, low-complexity materials, the finished set packs flat and light (minimizing the shipping-cost risk that threatens the other three products), and the cited base duty rate (3.4%) is the lowest of the four categories found.", "method": "category + physical + duty reasoning, combining more corroborating signals in the same favourable direction than for the other three products", "confidence": "med"}
+  ],
+  "assumptions": [
+    "Assumed the in-scope product is strictly the manual hand-pump variant (e.g. a Hefty Shrink-Pak-style set), explicitly excluding the USB-rechargeable cordless-pump version that appeared in the same category searches, per the brief's exclusion of lithium-battery electronics."
+  ],
+  "unknowns": [
+    {"question": "Unit price at CJdropshipping, AliExpress or Alibaba for a comparable manual-pump vacuum bag set at 1, 10 and 50 units", "why_unresolved": "cjdropshipping.com, aliexpress.com and alibaba.com are blocked at the network egress proxy for both WebFetch and curl in this environment. WebSearch scoped to these domains returns only prose summaries with no per-unit wholesale price tied to a checkable quote. A retail-context price for a similar hand pump alone ($7.89, brand Wovilon) appeared in one search result but is a single-unit consumer retail price, not a wholesale supplier quote, and is not used as a cost input here."},
+    {"question": "The exact current (2026) combined duty rate for plastics household storage bags from China under HTS 3924.90.5650 after all 2025-2026 tariff actions are stacked", "why_unresolved": "hts.usitc.gov is blocked at the network egress proxy for WebFetch; only a search snippet citing an older-style Section 301 rate was found, and it is flagged as likely outdated."},
+    {"question": "Verified carrier transit time to a US address for this product", "why_unresolved": "No supplier or carrier page could be loaded; only blocked supplier-platform claims exist, which is why gate G5 is recorded as unknown."},
+    {"question": "Real-world seal integrity and manual pump durability over repeated use", "why_unresolved": "This cannot be assessed from any listing or search snippet; it is the core reason this product is flagged REQUIRES_SAMPLE below."}
+  ],
+  "evidence": [
+    {"id": "E-001", "url": "https://www.made-in-china.com/products-search/hot-china-products/Vacuum_Compression_Storage_Bag.html", "accessed": "2026-09-17", "quote": "China Vacuum Compression Storage Bag, Vacuum Compression Storage Bag Wholesale, Manufacturers, Price | Made-in-China.com", "type": "search", "verification": "OBSERVED"},
+    {"id": "E-002", "url": "https://rulings.cbp.gov/ruling/n335315", "accessed": "2026-09-17", "quote": "Subheading 3924.90.5650: Tableware, kitchenware, other household articles... of plastics: Other: Other: Other; rate of duty 3.4 percent ad valorem, plus an additional 7.5 percent ad valorem for products of China under this subheading", "type": "registry", "verification": "OBSERVED"}
+  ],
+  "flags": ["SOURCE_UNAVAILABLE", "REQUIRES_SAMPLE"],
+  "recommendation": "proceed_with_conditions",
+  "limits_used": {"fetches": 5, "searches": 14, "minutes": 30},
+  "data": {
+    "suppliers": [],
+    "econ_inputs": {
+      "unit_cost": {"pessimistic": null, "base": null, "optimistic": null},
+      "ship_cost": {"pessimistic": null, "base": null, "optimistic": null},
+      "incoterms_base": "UNKNOWN",
+      "basis": "No real supplier quote could be read for this product; CJdropshipping, AliExpress, Alibaba, Zendrop and Spocket are all blocked at the network egress proxy in this environment. A single retail-context price ($7.89 for a comparable hand pump alone, brand Wovilon) appeared in search results but is a single-unit consumer retail price, not a wholesale supplier quote for the full bag set, and is deliberately not used as a cost input here. The Research Lead's computed landed-cost ceiling of $9.37 (unit + ship + duty combined) at the $25.00 target price and 2.5 break-even ROAS is the number any future real quote must beat."
+    },
+    "fastest_tracked_delivery_days": null,
+    "gate_G5": {"result": "unknown", "reason": "No supplier or independent carrier transit-time evidence could be obtained; all supplier-platform pages are blocked and no carrier quote was found for this specific route."},
+    "cost_ceiling_test": {
+      "ceiling_usd": 9.37,
+      "target_price_usd": 25.00,
+      "assessment": "ASSESSMENT: plausible, and the most comfortable of the four products in this run. Materials are cheap and simple (thin plastic film bags plus one small manual pump, no electronics), the finished set is light and packs flat, and the cited base duty rate is the lowest found across the four categories. This is the product where the ceiling looks most achievable on paper, though a real quote is still needed to confirm it."
+    },
+    "shipping_profile": {
+      "est_weight_g": "300-600 for a multi-bag set plus pump (ASSUMPTION, based on typical vacuum storage bag set construction, which is naturally flat-packing thin sheet plastic)",
+      "packed_dims_est_cm": "roughly 30 x 25 x 3, i.e. a flat pack (ASSUMPTION, not measured)",
+      "rank_of_4": 1,
+      "rank_reasoning": "Best of the four: thin-film bags fold completely flat and the only rigid component is a small hand pump, giving the lowest actual weight and the lowest volumetric/dimensional-weight footprint in this set. This gives it the best odds of fitting a cheap, fast, trackable small-parcel service within the 12-day requirement."
+    },
+    "duty_exposure": {
+      "hts_code": "3924.90.5650 (bags, candidate) with the hand pump likely 3926.90 (other plastics articles, candidate) - not independently confirmed for this exact combined-SKU product",
+      "description": "Tableware, kitchenware, other household articles and hygienic or toilet articles, of plastics: Other: Other: Other",
+      "base_duty_rate": "3.4% ad valorem (MFN/Column 1) cited via a search snippet referencing a CBP-adjacent source; not confirmed by directly loading hts.usitc.gov, which is blocked for this fetcher",
+      "china_surcharge_note": "A 7.5% 'China additional' figure was cited in the same snippet, but this reads as an older Section 301 List 4A-style rate; it likely does not capture the fuller 2025-2026 IEEPA/reciprocal-tariff stacking that applies to Chinese-origin goods more broadly, so the real combined 2026 rate is UNKNOWN pending direct verification.",
+      "source_urls": ["https://rulings.cbp.gov/ruling/n335315"],
+      "confidence": "low - search-snippet only, hts.usitc.gov itself blocked"
+    },
+    "supplier_questions_ordered": [
+      "Is this quote DDP (you pay US duty) or DDU/DAP (duty billed to us or the customer)?",
+      "Can you confirm this is the manual hand-pump variant only, with no battery, motor or USB-rechargeable component?",
+      "What is the unit price for the bag set (state bag count and sizes) at 1 unit, at 10 units, and at 50 units (state FOB or ex-works)?",
+      "What is your processing/handling time before a tracked shipment is handed to the carrier?",
+      "What carrier and service do you use to a US address, and what is the stated transit time in days from handover to delivery?",
+      "Is end-to-end tracking provided to the US delivery address? Can you share a live tracking link for a recent shipment?",
+      "What is your return and defect policy for bags that fail to hold a seal or arrive punctured, or for a pump that fails?",
+      "What is the minimum order quantity, and is there a price break at higher volumes beyond 50 units?",
+      "What bag-count and size-mix variants exist, and do any carry a different unit price or MOQ?",
+      "What material is the bag film (nylon/PE laminate, PE only, etc.) and what is its rated shelf/seal life?",
+      "Will you send a single sample set before a bulk order, what does the sample cost, and what is the sample lead time?"
+    ],
+    "cross_product_shipping_rank": [
+      {"rank": 1, "product_id": "P-2026-09-17-004", "name": "Manual hand-pump vacuum compression storage bags"},
+      {"rank": 2, "product_id": "P-2026-09-17-001", "name": "Portable adjustable aluminium laptop stand"},
+      {"rank": 3, "product_id": "P-2026-09-17-002", "name": "Collapsible multi-compartment car trunk organizer"},
+      {"rank": 4, "product_id": "P-2026-09-17-003", "name": "Over-the-sink adjustable 2-tier dish drying rack"}
+    ],
+    "sample_recommendation": {
+      "pick": "P-2026-09-17-004 - Manual hand-pump vacuum compression storage bags",
+      "reasoning": "ASSESSMENT: this is the top pick for a first sample. It is cheapest and lightest to have a supplier ship as a sample, has the best cost-ceiling odds of the four so a favourable sample outcome is most likely to translate into a viable launch, and its central value proposition - does the seal actually hold vacuum over days and is the manual pump durable and easy to use - is a moving-parts and durability claim that no amount of desk research can settle. REQUIRES_SAMPLE applies here on multiple brief criteria at once: moving parts (the pump mechanism), material/seal quality being central to the value proposition, and an implicit durability claim (repeated compression/release cycles)."
+    }
+  }
+}

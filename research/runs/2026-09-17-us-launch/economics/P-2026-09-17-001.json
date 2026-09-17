@@ -1,0 +1,211 @@
+{
+  "product_id": "P-2026-09-17-001",
+  "agent": "economics",
+  "status": "partial",
+  "summary": "Portable adjustable aluminium laptop stand at a $30.46 target price. No supplier quote exists in this environment, so economics were run backwards with cost_ceiling.py: the maximum landed cost the product may bear is $11.71 at the base case (target ROAS 2.5), $4.67 pessimistic (ROAS 1.8) and $17.51 optimistic (ROAS 3.5). Requiring $5.00 profit per order cuts the base ceiling to $6.99 and the pessimistic ceiling to $0.21, which is effectively nothing. Risk screen: no CPSC recall found for passive laptop risers (the recalls in this space are powered or spring-loaded sit-stand converters, a different mechanism); no Meta, TikTok or Shopify policy category applies; the patents found on portable laptop stands are 2007-2014 filings on generic folding geometries. G2, G3 and G4 pass. G6 is unknown because the item is metal and heavy, and no one has yet read a landed cost to compare against $11.71.",
+  "facts": [
+    {
+      "claim": "The CPSC recalls returned for laptop stands and risers are all powered or spring-loaded sit-stand desk converters and workstations, not passive laptop risers; the Humanscale QuickStand Lite recall (2019) cites 52 reports of the arm breaking and 12 reports of minor injury",
+      "evidence_id": "E-001"
+    },
+    {
+      "claim": "Meta's advertising Restricted Goods and Services categories are weapons/ammunition/explosives, drugs and pharmaceuticals, health and wellness, financial services and gambling; a laptop stand falls in none of them",
+      "evidence_id": "E-002"
+    },
+    {
+      "claim": "TikTok's advertising policy categories cover adult content, alcohol, animals, dangerous products, deceptive practices, financial services, gambling, healthcare and pharmaceuticals, IP infringement, misinformation, politics, self-harm, teen safety, violence and weight management; a laptop stand falls in none of them",
+      "evidence_id": "E-003"
+    },
+    {
+      "claim": "Shopify's Acceptable Use Policy restricted list covers regulated/illegal products, age-restricted products, adult products, financial and gambling services, self-harm items, toxic or flammable goods including lithium batteries, and pseudo-pharmaceuticals; a laptop stand falls in none of them",
+      "evidence_id": "E-004"
+    },
+    {
+      "claim": "The patents found covering portable and adjustable laptop stands are US20080251680A1, US20080251659A1, US8800937B1, US7748667B1, US7819247B2 and US20090159763A1 - all 2007 to 2014 filings on generic folding and tilting geometries rather than a single distinctive commercial design",
+      "evidence_id": "E-005"
+    },
+    {
+      "claim": "US duty-free de minimis treatment was suspended for all countries effective 12:01 a.m. EDT on 29 August 2025 under Executive Order 14324, and later Federal Register documents dated 24 June 2026 record indefinite suspension of the de minimis exemption for both postal and non-postal modes",
+      "evidence_id": "E-006"
+    }
+  ],
+  "estimates": [
+    {
+      "claim": "Maximum landed cost per unit at the base case is $11.71 (38.4% of the $30.46 price), $4.67 pessimistic and $17.51 optimistic, at break-even after paid acquisition",
+      "method": "research/tools/cost_ceiling.py --price 30.46, standard three-scenario model; output stored in P-2026-09-17-001.econ.json",
+      "confidence": "high"
+    },
+    {
+      "claim": "Requiring $5.00 profit per order drops the ceiling to $6.99 base and $0.21 pessimistic",
+      "method": "research/tools/cost_ceiling.py --price 30.46 --profit 5; output stored in P-2026-09-17-001.profit5.json",
+      "confidence": "high"
+    },
+    {
+      "claim": "Anodised aluminium construction makes this the second-heaviest of the four candidates, so tracked US delivery plus duty will consume a large share of the $11.71 base ceiling",
+      "method": "qualitative comparison of the four candidates by material and shipping weight; no weight was read from a supplier page",
+      "confidence": "low"
+    },
+    {
+      "claim": "A passive folding riser stores no energy and so does not share the failure mode behind the sit-stand converter recalls, which involve gas-lift or spring arms carrying a monitor overhead",
+      "method": "comparison of the recalled mechanism described in E-001 with the mechanism of a passive riser",
+      "confidence": "med"
+    }
+  ],
+  "assumptions": [
+    "Every rate inside cost_ceiling.py is an ASSUMPTION for a store with no trading history: discount 15/10/5 percent, refunds 12/6/3 percent, chargebacks 1.5/0.7/0.3 percent, packaging $1.50/$1.00/$0.50 across pessimistic/base/optimistic.",
+    "Payment fees assume the Shopify Payments US online card rate of 2.9 percent plus $0.30. The owner has no Shopify plan, so this is unconfirmed.",
+    "Target ROAS of 2.5 in the base case is an ASSUMPTION about cold-traffic performance, not a prediction. No one can promise it, and no ad has been run.",
+    "The $30.46 price is carried from the discovery handoff as a single confirmed price point; it sits inside the brief's $25 to $60 band.",
+    "Duty is assumed to sit inside the landed cost figure the supplier must beat, because the applicable HTS rate could not be read."
+  ],
+  "unknowns": [
+    {
+      "question": "Landed cost per unit from any supplier",
+      "why_unresolved": "Every supplier catalogue (aliexpress.com, alibaba.com, cjdropshipping.com, zendrop, spocket) is refused by the network egress proxy. The supplier handoff for this product, suppliers/P-2026-09-17-001.json, exists but has status 'blocked' and every econ_inputs field is null, so there is no cost to compare against the ceiling."
+    },
+    {
+      "question": "Applicable HTS duty rate for an aluminium laptop stand",
+      "why_unresolved": "hts.usitc.gov returns EGRESS_BLOCKED to direct fetching and scoped search returned index pages without a rate column"
+    },
+    {
+      "question": "Whether any live design patent covers a specific commercial laptop-stand silhouette we might clone",
+      "why_unresolved": "patents.google.com and the USPTO image server are blocked to direct fetching; only search snippets were available, and none of them stated grant dates, assignees or live status"
+    },
+    {
+      "question": "Trademark clearance for any marketing name",
+      "why_unresolved": "tmsearch.uspto.gov is not reachable in this environment; no marketing name has been chosen yet"
+    },
+    {
+      "question": "Base-case contribution margin in dollars and percent as rubric G6 literally defines it",
+      "why_unresolved": "Contribution margin requires a unit cost, which is unobtainable here; the cost ceiling is the inverse of that question and is the only honest substitute"
+    }
+  ],
+  "evidence": [
+    {
+      "id": "E-001",
+      "url": "https://www.cpsc.gov/Recalls/2019/Humanscale-Recalls-QuickStand-Lite-Workstations-Due-to-Injury-Hazard",
+      "accessed": "2026-09-17",
+      "quote": "The recalled workstation's arm can break and cause the workstation to fall, posing a risk of injury. The firm has received 52 reports of the arm breaking, including 12 reports of minor injuries.",
+      "type": "registry",
+      "verification": "OBSERVED"
+    },
+    {
+      "id": "E-002",
+      "url": "https://transparency.meta.com/policies/ad-standards/restricted-goods-services/health-wellness/",
+      "accessed": "2026-09-17",
+      "quote": "Restricted Goods and Services: Weapons, Ammunition or Explosives; Drugs and Pharmaceuticals; Health and Wellness; Financial and Insurance Products and Services; Online Gambling and Games.",
+      "type": "policy",
+      "verification": "OBSERVED"
+    },
+    {
+      "id": "E-003",
+      "url": "https://ads.tiktok.com/help/article/tiktok-advertising-policies-industry-entry",
+      "accessed": "2026-09-17",
+      "quote": "Adult Content, Alcohol, Animals and Environment, Dangerous Products or Services, Deceptive practices, Financial Services, Gambling and Games, Healthcare and Pharmaceuticals, Intellectual Property Infringement, Weight Management and Body Image.",
+      "type": "policy",
+      "verification": "OBSERVED"
+    },
+    {
+      "id": "E-004",
+      "url": "https://www.shopify.com/legal/aup",
+      "accessed": "2026-09-17",
+      "quote": "Products or services that require regulatory approval or compliance... age-restricted products... anything that is toxic or flammable - so no cleansers, no aerosol sprays, no lithium batteries... Pharmaceuticals and other products that make health claims that are not verified by a local or nat [...]",
+      "type": "policy",
+      "verification": "OBSERVED"
+    },
+    {
+      "id": "E-005",
+      "url": "https://patents.google.com/patent/US8800937B1/en",
+      "accessed": "2026-09-17",
+      "quote": "US8800937B1 - Adjustable laptop stand for a laptop computer - a leg is configured to be set at various angles with respect to a platen to angle the platen at different angles with respect to a work surface.",
+      "type": "registry",
+      "verification": "OBSERVED"
+    },
+    {
+      "id": "E-006",
+      "url": "https://www.federalregister.gov/documents/2025/09/02/2025-16802/notice-of-implementation-of-the-presidents-executive-order-14324-suspending-duty-free-de-minimis",
+      "accessed": "2026-09-17",
+      "quote": "Executive Order 14324 suspends the duty-free de minimis exemption otherwise authorized under section 321(a)(2)(C) of the Tariff Act of 1930, as amended, for all covered products, regardless of country of origin, valued at $800 or less... effective on or after 12:01 a.m. eastern daylight time o [...]",
+      "type": "policy",
+      "verification": "OBSERVED"
+    }
+  ],
+  "flags": [
+    "SOURCE_UNAVAILABLE",
+    "OPS"
+  ],
+  "recommendation": "proceed_with_conditions",
+  "limits_used": {
+    "fetches": 3,
+    "searches": 19,
+    "minutes": 32
+  },
+  "data": {
+    "scenarios_file": "P-2026-09-17-001.econ.json",
+    "profit5_file": "P-2026-09-17-001.profit5.json",
+    "method": "cost_ceiling (reverse economics). No supplier quote obtainable, so contribution margin is not computable; the maximum bearable landed cost is reported instead.",
+    "price": 30.46,
+    "price_label": "ESTIMATE - single confirmed discovery price point, inside the brief's $25-$60 band",
+    "max_landed_cost": {
+      "pessimistic": 4.67,
+      "base": 11.71,
+      "optimistic": 17.51
+    },
+    "max_landed_cost_pct_of_price": {
+      "pessimistic": 15.3,
+      "base": 38.4,
+      "optimistic": 57.5
+    },
+    "max_landed_cost_at_5_profit": {
+      "pessimistic": 0.21,
+      "base": 6.99,
+      "optimistic": 12.65
+    },
+    "break_even_roas": {
+      "pessimistic": 1.8,
+      "base": 2.5,
+      "optimistic": 3.5
+    },
+    "ad_cost_per_order": {
+      "pessimistic": 14.38,
+      "base": 10.97,
+      "optimistic": 8.27
+    },
+    "break_even_cac_at_ceiling_base": 10.97,
+    "tool_grade_breakeven": "WORKABLE",
+    "tool_grade_at_5_profit": "WORKABLE",
+    "check_this_number": 11.71,
+    "contribution_base": null,
+    "contribution_pct_base": null,
+    "gates": {
+      "G2": {
+        "result": "pass",
+        "reason": "Screen only, not legal advice. Portable laptop stand patents found are 2007-2014 filings on generic folding and tilting geometries (US7748667B1, US8800937B1, US20080251680A1); the folding aluminium riser is a widely sold commodity form with no character likeness or licensed imagery. Condition: do not visually clone a recognisable branded stand.",
+        "evidence_id": "E-005"
+      },
+      "G3": {
+        "result": "pass",
+        "reason": "No CPSC recall found for passive laptop risers. The recalls in this search space are powered or spring-loaded sit-stand converters and workstations, a different mechanism with stored energy. No health, medical, safety or efficacy claim is needed to sell a laptop riser; the angle-and-airflow benefit can be shown, not claimed.",
+        "evidence_id": "E-001"
+      },
+      "G4": {
+        "result": "pass",
+        "reason": "Not listed in Meta's Restricted Goods and Services, TikTok's prohibited industry entry list, or Shopify's Acceptable Use Policy restricted categories.",
+        "evidence_id": "E-002"
+      },
+      "G6": {
+        "result": "unknown",
+        "reason": "Base case allows $11.71 landed, $6.99 if $5 profit per order is required, and only $4.67 in the pessimistic case. No supplier quote is obtainable in this environment, and anodised aluminium plus tracked US delivery plus post-de-minimis duty could plausibly land on either side of $11.71. Resolve by reading one supplier's landed price and comparing it to $11.71."
+      }
+    },
+    "operational_risks": [
+      "Metal item, roughly 0.7 to 1.2 kg estimated: shipping weight is the single biggest threat to a $11.71 base ceiling and it is the input nobody has measured",
+      "Anodised surfaces scratch and dent in transit; a bent hinge or a scuffed arm is a return, and one return at this price wipes out the contribution on roughly three good orders",
+      "Silicone grip pads detaching is a common failure mode on folding metal stands and generates a non-defect-looking complaint",
+      "Two or three colour variants (silver, black, space grey) - manageable, no sizing",
+      "Laptop compatibility questions (does it hold a 17-inch machine) drive pre-sale support load and post-sale mismatch returns",
+      "Mild seasonality only, with back-to-school and new-year home-office peaks; not a seasonality cliff",
+      "12-day tracked delivery is achievable for a flat, dense metal item but leaves no slack for a reship after transit damage"
+    ]
+  }
+}

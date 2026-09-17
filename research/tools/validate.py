@@ -52,6 +52,7 @@ CONFIDENCES = {"low", "med", "high"}
 PRODUCT_ID_RE = re.compile(r"^P-\d{4}-\d{2}-\d{2}-\d{3}$")
 EVIDENCE_ID_RE = re.compile(r"^E-\d{3,}$")
 DATE_RE = re.compile(r"^\d{4}-\d{2}-\d{2}$")
+AUX_RE = re.compile(r"^P-\d{4}-\d{2}-\d{2}-\d{3}\.[A-Za-z0-9_]+\.json$")
 URL_RE = re.compile(r"^https?://")
 MONEY_RE = re.compile(r"(?<![\w.])(\$\s?\d[\d,]*(?:\.\d+)?|\d[\d,]*(?:\.\d+)?\s?%)")
 REGISTRY_GATES = ("G1", "G2", "G3", "G4", "G5", "G6", "G7", "G8")
@@ -354,6 +355,17 @@ def validate_run(run_dir, report):
         for name in sorted(os.listdir(fdir)):
             if not name.endswith(".json"):
                 continue
+            # Only <PID>.json is a handoff. Agents also write auxiliary files
+            # beside it, such as the economics agent's <PID>.econ.json
+            # calculator output, and those are not handoffs and must not be
+            # validated as though they were.
+            stem = name[:-len(".json")]
+            if not PRODUCT_ID_RE.match(stem):
+                if not AUX_RE.match(name):
+                    report.warn("%s/%s" % (folder, name),
+                                "unrecognised file; expected <PID>.json or an "
+                                "auxiliary <PID>.<kind>.json")
+                continue
             path = os.path.join(fdir, name)
             where = "%s/%s" % (folder, name)
             try:
@@ -526,6 +538,27 @@ def self_test():
                     "has no competition/"]:
             if sub not in regmsgs:
                 failures.append("registry: expected an error mentioning %r, got: %s" % (sub, regmsgs))
+
+        # Auxiliary calculator output beside a handoff must be ignored, not
+        # validated as a handoff and not warned about.
+        aux_dir = os.path.join(run, "economics")
+        with open(os.path.join(aux_dir, "P-2026-09-16-001.econ.json"), "w", encoding="utf-8") as fh:
+            json.dump({"scenarios": {}, "gate_G6": {"result": "pass"}}, fh)
+        aux = Report()
+        validate_run(run, aux)
+        if any("econ.json" in e["where"] for e in aux.errors):
+            failures.append("an auxiliary <PID>.econ.json must not be validated as a handoff")
+        if any("econ.json" in w["where"] for w in aux.warnings):
+            failures.append("a well-named auxiliary file should not warn")
+
+        # A genuinely unrecognised file still warns.
+        with open(os.path.join(aux_dir, "notes.json"), "w", encoding="utf-8") as fh:
+            json.dump({}, fh)
+        stray = Report()
+        validate_run(run, stray)
+        if not any("notes.json" in w["where"] for w in stray.warnings):
+            failures.append("an unrecognised json file in an agent folder should warn")
+        os.remove(os.path.join(aux_dir, "notes.json"))
 
         # Write-ownership violation: an economics handoff sitting in suppliers/
         misplaced = json.loads(json.dumps(GOOD_HANDOFF))

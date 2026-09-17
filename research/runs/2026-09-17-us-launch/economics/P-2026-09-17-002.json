@@ -1,0 +1,223 @@
+{
+  "product_id": "P-2026-09-17-002",
+  "agent": "economics",
+  "status": "partial",
+  "summary": "Collapsible multi-compartment car trunk organizer at a $34.99 target price. No supplier quote is obtainable, so economics were run backwards with cost_ceiling.py: maximum landed cost is $13.65 at the base case (target ROAS 2.5), $5.64 pessimistic (ROAS 1.8) and $20.23 optimistic (ROAS 3.5); requiring $5.00 profit per order leaves $8.93 base and $1.17 pessimistic. This is the widest ceiling of the four candidates and the item is soft-sided and compresses flat, which is the most favourable shipping profile in the set. Risk screen: no CPSC recall found for car trunk or cargo organizers (the storage-trunk recalls found are rigid lidded chests, a different product with a lid that can fall on a child); no Meta, TikTok or Shopify policy category applies; the trunk-organizer patents found are 2002-2015 filings and the plain collapsible fabric box is old art. G2, G3 and G4 pass, G6 passes on headroom with a named check number.",
+  "facts": [
+    {
+      "claim": "The CPSC storage recalls returned for trunk and cargo storage are rigid lidded chests and overhead garage racks, not soft-sided car trunk organizers: Target recalled 14 models of woven storage trunks in 2010 after reports of injuries when lids suddenly closed on children",
+      "evidence_id": "E-001"
+    },
+    {
+      "claim": "A separate CPSC recall in the same result set, Loctek Fleximounts overhead garage storage racks (2022), was caused by a U-shaped buckle on supporting cables failing, posing an impact injury hazard",
+      "evidence_id": "E-002"
+    },
+    {
+      "claim": "Meta's advertising Restricted Goods and Services categories are weapons/ammunition/explosives, drugs and pharmaceuticals, health and wellness, financial services and gambling; a car trunk organizer falls in none of them",
+      "evidence_id": "E-003"
+    },
+    {
+      "claim": "TikTok's advertising policy categories cover adult content, alcohol, animals, dangerous products, deceptive practices, financial services, gambling, healthcare, IP infringement, misinformation, politics, self-harm, teen safety, violence and weight management; a car trunk organizer falls in none of them",
+      "evidence_id": "E-004"
+    },
+    {
+      "claim": "Shopify's Acceptable Use Policy restricted list covers regulated/illegal products, age-restricted products, adult products, financial and gambling services, self-harm items, toxic or flammable goods including lithium batteries, and pseudo-pharmaceuticals; a car trunk organizer falls in none of them",
+      "evidence_id": "E-005"
+    },
+    {
+      "claim": "The patents found on collapsible vehicle cargo organizers are US6817504B2, US6938807, US7104582, US6979037, US7784632B2 and US9630562, filed between roughly 2002 and 2015, describing hinged case halves with collapsible walls and modular insertable bins",
+      "evidence_id": "E-006"
+    },
+    {
+      "claim": "US duty-free de minimis treatment was suspended for all countries effective 12:01 a.m. EDT on 29 August 2025 under Executive Order 14324, and Federal Register documents dated 24 June 2026 record indefinite suspension of the exemption for both postal and non-postal modes",
+      "evidence_id": "E-007"
+    }
+  ],
+  "estimates": [
+    {
+      "claim": "Maximum landed cost per unit at the base case is $13.65 (39.0% of the $34.99 price), $5.64 pessimistic and $20.23 optimistic, at break-even after paid acquisition",
+      "method": "research/tools/cost_ceiling.py --price 34.99; output stored in P-2026-09-17-002.econ.json",
+      "confidence": "high"
+    },
+    {
+      "claim": "Requiring $5.00 profit per order drops the ceiling to $8.93 base and $1.17 pessimistic",
+      "method": "research/tools/cost_ceiling.py --price 34.99 --profit 5; output stored in P-2026-09-17-002.profit5.json",
+      "confidence": "high"
+    },
+    {
+      "claim": "This candidate has the most economic headroom of the four: the highest absolute base ceiling in the set ($13.65) combined with the most shipping-efficient physical form, a soft-sided item that ships folded flat",
+      "method": "comparison of the four cost_ceiling outputs against the physical form of each product",
+      "confidence": "med"
+    },
+    {
+      "claim": "The recalled storage trunks do not indicate a hazard pattern for this product type, because the hazard in every one of them is a heavy hinged lid closing on a child, and an open-top soft-sided car organizer has no lid",
+      "method": "comparison of the recalled mechanism in E-001 with the mechanism of an open-top fabric organizer",
+      "confidence": "med"
+    }
+  ],
+  "assumptions": [
+    "Every rate inside cost_ceiling.py is an ASSUMPTION for a store with no trading history: discount 15/10/5 percent, refunds 12/6/3 percent, chargebacks 1.5/0.7/0.3 percent, packaging $1.50/$1.00/$0.50 across pessimistic/base/optimistic.",
+    "Payment fees assume the Shopify Payments US online card rate of 2.9 percent plus $0.30. The owner has no Shopify plan, so this is unconfirmed.",
+    "Target ROAS of 2.5 in the base case is an ASSUMPTION about cold-traffic performance, not a prediction.",
+    "The $34.99 price sits inside the $29.99 to $39.99 range recorded by discovery and inside the brief's $25 to $60 band.",
+    "Duty is assumed to sit inside the landed cost figure the supplier must beat, because the applicable HTS rate could not be read."
+  ],
+  "unknowns": [
+    {
+      "question": "Landed cost per unit from any supplier",
+      "why_unresolved": "Every supplier catalogue (aliexpress.com, alibaba.com, cjdropshipping.com, zendrop, spocket) is refused by the network egress proxy. The supplier handoff for this product, suppliers/P-2026-09-17-002.json, exists but has status 'blocked' and every econ_inputs field is null, so there is no cost to compare against the ceiling."
+    },
+    {
+      "question": "Applicable HTS duty rate for a textile or non-woven vehicle cargo organizer",
+      "why_unresolved": "hts.usitc.gov returns EGRESS_BLOCKED to direct fetching and scoped search returned index pages without a rate column"
+    },
+    {
+      "question": "Whether US9630562 or any other post-2015 filing is live and whether a plain collapsible fabric organizer reads on its claims",
+      "why_unresolved": "patents.google.com and the USPTO image server are blocked to direct fetching; search snippets gave titles and abstracts but no grant dates, assignees, claim text or live status"
+    },
+    {
+      "question": "Whether saferproducts.gov holds consumer incident reports for car trunk organizers",
+      "why_unresolved": "saferproducts.gov returns EGRESS_BLOCKED to direct fetching, including the keyless Recall REST endpoint, and scoped search returned no organizer records"
+    },
+    {
+      "question": "Base-case contribution margin in dollars and percent as rubric G6 literally defines it",
+      "why_unresolved": "Contribution margin requires a unit cost, which is unobtainable here; the cost ceiling is the inverse of that question"
+    }
+  ],
+  "evidence": [
+    {
+      "id": "E-001",
+      "url": "https://www.cpsc.gov/Recalls/2010/target-recalls-storage-trunks-due-to-strangulation-hazard",
+      "accessed": "2026-09-17",
+      "quote": "Target recalled 14 different models of storage trunks made of woven rattan, abaca or banana leaf with standard hinges. CPSC received reports of injuries when the storage trunks' lids suddenly closed on children.",
+      "type": "registry",
+      "verification": "OBSERVED"
+    },
+    {
+      "id": "E-002",
+      "url": "https://www.cpsc.gov/Recalls/2022/Loctek-Recalls-Fleximouts-Overhead-Garage-Storage-Racks-Due-to-Impact-Injury-Hazard",
+      "accessed": "2026-09-17",
+      "quote": "FLEXIMOUNTS Overhead Garage Storage Racks with model GL44B were recalled due to a U-shaped buckle on the supporting cables that can fail, posing an impact injury hazard.",
+      "type": "registry",
+      "verification": "OBSERVED"
+    },
+    {
+      "id": "E-003",
+      "url": "https://transparency.meta.com/policies/community-standards/restricted-goods-services/",
+      "accessed": "2026-09-17",
+      "quote": "Restricted Goods and Services: Weapons, Ammunition or Explosives; Drugs and Pharmaceuticals; Health and Wellness; Financial and Insurance Products and Services; Online Gambling and Games.",
+      "type": "policy",
+      "verification": "OBSERVED"
+    },
+    {
+      "id": "E-004",
+      "url": "https://ads.tiktok.com/resources/help/article/tiktok-advertising-policies-industry-entry-north-america",
+      "accessed": "2026-09-17",
+      "quote": "Some products and services are prohibited in all markets, while each country/region has its own list of products and services that are prohibited or restricted.",
+      "type": "policy",
+      "verification": "OBSERVED"
+    },
+    {
+      "id": "E-005",
+      "url": "https://www.shopify.com/legal/aup",
+      "accessed": "2026-09-17",
+      "quote": "Products or services that require regulatory approval or compliance... age-restricted products... anything that is toxic or flammable - so no cleansers, no aerosol sprays, no lithium batteries... Pharmaceuticals and other products that make health claims that are not verified by a local or nat [...]",
+      "type": "policy",
+      "verification": "OBSERVED"
+    },
+    {
+      "id": "E-006",
+      "url": "https://patents.google.com/patent/US7784632B2/en",
+      "accessed": "2026-09-17",
+      "quote": "US7784632B2 - Collapsible cargo organizer - an organizer for holding and organizing cargo comprising a case with hinged case halves and a collapsible wall containing two end walls and two side walls, configurable into a generally square-in-plan-view open configuration, or a generally flat, col [...]",
+      "type": "registry",
+      "verification": "OBSERVED"
+    },
+    {
+      "id": "E-007",
+      "url": "https://www.federalregister.gov/documents/2026/06/24/2026-12670/indefinite-suspension-of-the-de-minimis-exemption-for-merchandise-arriving-through-all-modes-other",
+      "accessed": "2026-09-17",
+      "quote": "Indefinite Suspension of the De Minimis Exemption for Merchandise Arriving Through All Modes Other Than the International Postal Network",
+      "type": "policy",
+      "verification": "OBSERVED"
+    }
+  ],
+  "flags": [
+    "SOURCE_UNAVAILABLE",
+    "OPS"
+  ],
+  "recommendation": "proceed_with_conditions",
+  "limits_used": {
+    "fetches": 3,
+    "searches": 19,
+    "minutes": 32
+  },
+  "data": {
+    "scenarios_file": "P-2026-09-17-002.econ.json",
+    "profit5_file": "P-2026-09-17-002.profit5.json",
+    "method": "cost_ceiling (reverse economics). No supplier quote obtainable, so contribution margin is not computable; the maximum bearable landed cost is reported instead.",
+    "price": 34.99,
+    "price_label": "ESTIMATE - midpoint-to-upper of the $29.99-$39.99 observed discovery range, inside the brief's $25-$60 band",
+    "max_landed_cost": {
+      "pessimistic": 5.64,
+      "base": 13.65,
+      "optimistic": 20.23
+    },
+    "max_landed_cost_pct_of_price": {
+      "pessimistic": 16.1,
+      "base": 39.0,
+      "optimistic": 57.8
+    },
+    "max_landed_cost_at_5_profit": {
+      "pessimistic": 1.17,
+      "base": 8.93,
+      "optimistic": 15.38
+    },
+    "break_even_roas": {
+      "pessimistic": 1.8,
+      "base": 2.5,
+      "optimistic": 3.5
+    },
+    "ad_cost_per_order": {
+      "pessimistic": 16.52,
+      "base": 12.6,
+      "optimistic": 9.5
+    },
+    "break_even_cac_at_ceiling_base": 12.6,
+    "tool_grade_breakeven": "WORKABLE",
+    "tool_grade_at_5_profit": "WORKABLE",
+    "check_this_number": 13.65,
+    "contribution_base": null,
+    "contribution_pct_base": null,
+    "gates": {
+      "G2": {
+        "result": "pass",
+        "reason": "Screen only, not legal advice. The collapsible cargo organizer patents found (US6817504B2, US6938807, US7104582, US6979037, US7784632B2) are 2002-2008 filings whose 20-year terms have expired or are expiring, and the one post-2015 filing found, US9630562, claims a modular insertable-bin drawer rather than a plain folding fabric box. No brand, character or licensed imagery is involved.",
+        "evidence_id": "E-006"
+      },
+      "G3": {
+        "result": "pass",
+        "reason": "No CPSC recall found for car trunk or cargo organizers. Every storage recall returned involves a rigid hinged lid closing on a child or a suspended garage rack failing; an open-top soft-sided organizer has neither mechanism. No health, medical, safety or efficacy claim is needed. Condition: marketing must not claim the product restrains cargo in a collision, which would be a safety claim and would convert this gate to a fail.",
+        "evidence_id": "E-001"
+      },
+      "G4": {
+        "result": "pass",
+        "reason": "Not listed in Meta's Restricted Goods and Services, TikTok's prohibited industry entry list, or Shopify's Acceptable Use Policy restricted categories.",
+        "evidence_id": "E-003"
+      },
+      "G6": {
+        "result": "pass",
+        "reason": "Widest ceiling of the four candidates: $13.65 landed at the base case, still $8.93 with $5.00 profit per order required, and positive ($5.64) even in the pessimistic case at break-even. Combined with the most shipping-efficient form in the set, a soft-sided item that ships folded flat, there is real headroom. Conditional: reverts to unknown if the first supplier quote lands above $13.65."
+      }
+    },
+    "operational_risks": [
+      "Fit risk is the main return driver: the organizer must suit the customer's specific trunk, and 'too big for my boot' returns are not defect returns but still cost the full contribution plus return freight",
+      "Stiffener boards and dividers arrive creased or bowed after flat-pack transit, which reads as poor quality even when the product is functional",
+      "Variant sprawl: size (one, two or three) multiplied by colour can reach six or more SKUs quickly; keep to three or fewer to hold sample cost and return complexity down",
+      "Velcro straps, buckles and non-slip bases are the usual failure points and generate 'it slides around' complaints",
+      "Mild seasonality around road-trip season and the holiday gifting window; not a cliff, but the launch month affects early ROAS readings",
+      "Low fragility and compressible bulk make the 12-day tracked delivery promise the most achievable of the four candidates",
+      "Single-supplier dependence is UNKNOWN because no supplier research exists for this run"
+    ]
+  }
+}
